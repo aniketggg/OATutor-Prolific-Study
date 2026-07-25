@@ -149,67 +149,134 @@ class LessonSelection extends React.Component {
                                                 </center>
                                             </Grid>
                                         )
-                                    : this.coursePlans[this.props.courseNum].lessons.map((lesson, i) => {
+                                    : (() => {
+                                        const course = this.coursePlans[this.props.courseNum];
+                                        const metaLessons = Array.isArray(course.metaLessons) ? course.metaLessons : [];
                                         return (
-                                            <Grid item xs={12} sm={6} md={4} key={i}>
-                                            <center>
-                                            <Paper className={classes.paper} style={{ position: "relative", height: "12rem" }}>
-                                                <IconButton
-                                                    size="small"
-                                                    style={{ position: 'absolute', top: 8, right: 8 }}
-                                                    aria-label={`View all problems for lesson ${lesson.id}`}
-                                                    onClick={() => this.props.history.push(`/lessons/${lesson.id}/problems`)}
-                                                >
-                                                    <MenuBookIcon fontSize="small" />
-                                                </IconButton>
+                                            <Fragment>
+                                            {course.lessons.map((lesson, i) => {
+                                                return (
+                                                    <Grid item xs={12} sm={6} md={4} key={i}>
+                                                    <center>
+                                                    <Paper className={classes.paper} style={{ position: "relative", height: "12rem" }}>
+                                                        <IconButton
+                                                            size="small"
+                                                            style={{ position: 'absolute', top: 8, right: 8 }}
+                                                            aria-label={`View all problems for lesson ${lesson.id}`}
+                                                            onClick={() => this.props.history.push(`/lessons/${lesson.id}/problems`)}
+                                                        >
+                                                            <MenuBookIcon fontSize="small" />
+                                                        </IconButton>
 
-                                                <div
-                                                    style={{
-                                                        height: "2.5em",
-                                                        marginTop: 5,
-                                                        marginBottom: 10,
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        justifyContent: "center",
-                                                        textAlign: "center",
-                                                    }}
-                                                >
-                                                    <h2 style={{ margin: 0 }}>{lesson.name.replace(/##/g, "")}</h2>
-                                                </div>
+                                                        <div
+                                                            style={{
+                                                                height: "2.5em",
+                                                                marginTop: 5,
+                                                                marginBottom: 10,
+                                                                display: "flex",
+                                                                alignItems: "center",
+                                                                justifyContent: "center",
+                                                                textAlign: "center",
+                                                            }}
+                                                        >
+                                                            <h2 style={{ margin: 0 }}>{lesson.name.replace(/##/g, "")}</h2>
+                                                        </div>
 
-                                                <div
-                                                    style={{
-                                                        height: "2em",
-                                                        marginTop: 5,
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        justifyContent: "center",
-                                                        textAlign: "center",
-                                                    }}
-                                                >
-                                                    <h3 style={{ margin: 0 }}>{lesson.topics}</h3>
-                                                </div>
+                                                        <div
+                                                            style={{
+                                                                height: "2em",
+                                                                marginTop: 5,
+                                                                display: "flex",
+                                                                alignItems: "center",
+                                                                justifyContent: "center",
+                                                                textAlign: "center",
+                                                            }}
+                                                        >
+                                                            <h3 style={{ margin: 0 }}>{lesson.topics}</h3>
+                                                        </div>
 
-                                                <Button
-                                                    variant="contained"
-                                                    color="primary"
-                                                    className={classes.button}
-                                                    style={{
-                                                        width: "8em",
-                                                        position: "absolute",
-                                                        bottom: "1.2em",
-                                                        left: "50%",
-                                                        transform: "translateX(-50%)"
-                                                    }}
-                                                    onClick={() => this.props.history.push(`/lessons/${lesson.id}`)}
-                                                >
-                                                    {translate('lessonSelection.onlyselect')}
-                                                </Button>
-                                            </Paper>
-                                            </center>
-                                        </Grid>
-                                        )
-                                    })
+                                                        <Button
+                                                            variant="contained"
+                                                            color="primary"
+                                                            className={classes.button}
+                                                            style={{
+                                                                width: "8em",
+                                                                position: "absolute",
+                                                                bottom: "1.2em",
+                                                                left: "50%",
+                                                                transform: "translateX(-50%)"
+                                                            }}
+                                                            onClick={() => this.props.history.push(`/lessons/${lesson.id}`)}
+                                                        >
+                                                            {translate('lessonSelection.onlyselect')}
+                                                        </Button>
+                                                    </Paper>
+                                                    </center>
+                                                </Grid>
+                                                )
+                                            })}
+                                            {metaLessons.length > 0 && (
+                                                <Fragment>
+                                                    <Grid item xs={12}>
+                                                        <Typography variant="h5" component="h3" style={{ marginTop: 16, marginBottom: 8 }}>
+                                                            Meta Lessons
+                                                        </Typography>
+                                                    </Grid>
+                                                    {metaLessons.map((metaLesson) => (
+                                                        <Grid item xs={12} sm={6} md={4} key={metaLesson.id}>
+                                                        <center>
+                                                        <Paper className={classes.paper} style={{ position: "relative", height: "12rem" }}>
+                                                            <div
+                                                                style={{
+                                                                    height: "2.5em",
+                                                                    marginTop: 5,
+                                                                    marginBottom: 10,
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                    textAlign: "center",
+                                                                }}
+                                                            >
+                                                                <h2 style={{ margin: 0 }}>{metaLesson.name || metaLesson.id}</h2>
+                                                            </div>
+
+                                                            <div
+                                                                style={{
+                                                                    height: "2em",
+                                                                    marginTop: 5,
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                    textAlign: "center",
+                                                                }}
+                                                            >
+                                                                <h3 style={{ margin: 0, color: "#5F6368" }}>Meta lesson</h3>
+                                                            </div>
+
+                                                            <Button
+                                                                variant="contained"
+                                                                color="primary"
+                                                                className={classes.button}
+                                                                style={{
+                                                                    width: "8em",
+                                                                    position: "absolute",
+                                                                    bottom: "1.2em",
+                                                                    left: "50%",
+                                                                    transform: "translateX(-50%)"
+                                                                }}
+                                                                onClick={() => this.props.history.push(`/lessons/${metaLesson.id}`)}
+                                                            >
+                                                                {translate('lessonSelection.onlyselect')}
+                                                            </Button>
+                                                        </Paper>
+                                                        </center>
+                                                    </Grid>
+                                                    ))}
+                                                </Fragment>
+                                            )}
+                                            </Fragment>
+                                        );
+                                    })()
                                 }
                             </Grid>
                             <Spacer/>

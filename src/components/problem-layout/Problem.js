@@ -455,7 +455,11 @@ class Problem extends React.Component {
                 relevantKc[x] = this.bktParams[x].probMastery;
             });
 
-            this.updateCanvas(score, relevantKc);
+            const { mastery: adjustedMastery, components: adjustedComponents } =
+                this.props.getMetaLessonAdjustedScore
+                    ? this.props.getMetaLessonAdjustedScore(score, relevantKc)
+                    : { mastery: score, components: relevantKc };
+            this.updateCanvas(adjustedMastery, adjustedComponents);
         }
 
         const nextStepStates = {
