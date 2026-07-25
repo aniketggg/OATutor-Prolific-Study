@@ -452,7 +452,7 @@ class Platform extends React.Component {
     if (this.currentMetaLessonIndex < this.metaLessonLessons.length) {
       const firstLessonId = this.metaLessonLessons[this.currentMetaLessonIndex];
       const firstLesson = findLessonById(firstLessonId);
-
+      console.log("[FindLesson TEST] firstLessonId:", firstLessonId, "| firstLesson found:", !!firstLesson, "| firstLesson:", firstLesson);
       if (firstLesson) {
         return this.selectLesson(
           {
@@ -556,6 +556,7 @@ class Platform extends React.Component {
       if (lessonId && lessonId !== this.lesson.id) return false;
       return true;
     });
+    console.log("[Problem Filter TEST] this.lesson.id:", this.lesson.id, "| total pool size:", this.problemIndex.problems.length, "| matched after filter:", problems.length);
     let chosenProblem;
 
     for (const problem of problems) {
