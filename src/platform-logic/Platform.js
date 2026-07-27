@@ -592,8 +592,12 @@ class Platform extends React.Component {
     score /= objectives.length;
     this.displayMastery(score);
 
+    const allMastered = !Object.keys(context.bktParams).some((skill) => context.bktParams[skill].probMastery <= MASTERY_THRESHOLD);
+    console.log("[NextProblem TEST] allMasteredGlobally:", allMastered, "| chosenProblem:", chosenProblem, "| isPartOfMetaLesson:", this.lesson?.isPartOfMetaLesson, "| hasMetaLesson:", !!this.metaLesson);
+
     if (!Object.keys(context.bktParams).some((skill) => context.bktParams[skill].probMastery <= MASTERY_THRESHOLD)) {
       if (this.lesson?.isPartOfMetaLesson && this.metaLesson) {
+        console.log("[NextProblem TEST] EXIT: meta-lesson guard, no status set");
         return null;
       }
       this.setState({ status: "graduated" });
@@ -617,6 +621,15 @@ class Platform extends React.Component {
         this.lesson.learningObjectives
       );
       return chosenProblem;
+    } else {
+      console.log("[NextProblem TEST] EXIT: no problem chosen, setting graduated");
+      // No problem could be selected -- typically because every problem in this
+      // lesson is already above MASTERY_THRESHOLD, so the heuristic skips them all
+      // (and the allowRecycle retry can't help, since mastery is unchanged).
+      // Without this, the method returns undefined with no status set, leaving the
+      // page completely blank on a fresh load of an already-mastered lesson.
+      this.setState({ status: "graduated" });
+      return null;
     }
   };
 
