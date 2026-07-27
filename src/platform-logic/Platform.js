@@ -414,7 +414,15 @@ class Platform extends React.Component {
     if (order === "random" && choose === "all") {
       lessonsToShow = applyMetaLessonLogic(resolvedLessonIds, order, choose);
     } else if (order === "random" && choose === "1") {
-      if (isValidRandomChoose1Path(savedPathRaw, metaLesson)) {
+      if (useDeterministicAssignment) {
+        // The branch is a pure function of the student's stable LMS id, so it
+        // recomputes identically on every launch -- persisting it adds nothing.
+        // Skipping the saved path also avoids a real bug: META_LESSON_PATH_KEY is
+        // not user-scoped, so on a shared browser (or after a Canvas "Reset
+        // Student") a previous user's saved branch would override the correct
+        // deterministic assignment for the next user.
+        lessonsToShow = [...resolvedLessonIds];
+      } else if (isValidRandomChoose1Path(savedPathRaw, metaLesson)) {
         lessonsToShow = [...savedPathRaw];
       } else {
         lessonsToShow = [...resolvedLessonIds];
