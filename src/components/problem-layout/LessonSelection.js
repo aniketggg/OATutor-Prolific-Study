@@ -152,9 +152,20 @@ class LessonSelection extends React.Component {
                                     : (() => {
                                         const course = this.coursePlans[this.props.courseNum];
                                         const metaLessons = Array.isArray(course.metaLessons) ? course.metaLessons : [];
+                                        // Hide any lesson that a meta-lesson can resolve to. Students should only
+                                        // reach those through the meta-lesson, which handles the A/B assignment --
+                                        // picking a variant directly would bypass it. Lessons not referenced by any
+                                        // meta-lesson still show normally.
+                                        const metaLessonChildIds = new Set();
+                                        metaLessons.forEach((m) => {
+                                            (Array.isArray(m.lessons) ? m.lessons : []).forEach((childId) => metaLessonChildIds.add(childId));
+                                        });
+                                        const visibleLessons = course.lessons.filter(
+                                            (lesson) => !metaLessonChildIds.has(lesson.metaId) && !metaLessonChildIds.has(lesson.id)
+                                        );
                                         return (
                                             <Fragment>
-                                            {course.lessons.map((lesson, i) => {
+                                            {visibleLessons.map((lesson, i) => {
                                                 return (
                                                     <Grid item xs={12} sm={6} md={4} key={i}>
                                                     <center>

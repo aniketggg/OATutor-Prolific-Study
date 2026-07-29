@@ -755,9 +755,16 @@ class Platform extends React.Component {
   renderMetaLessonSidebar() {
     const metaName = this.metaLesson?.name || "Meta lesson";
     const totalCount = this.metaLessonLessons.length;
-    const completedCount = this.completedMetaLessonLessons.size;
     const currentIndex = this.currentMetaLessonIndex;
-    const stepNumber = currentIndex >= 0 ? Math.min(currentIndex + 1, totalCount) : 1;
+    // Match the width of the problem column below (Problem.js renders the problem in
+    // a Grid item of md={drawerOpen ? 8 : 7} out of 12, with the hints panel beside it),
+    // so this header doesn't stretch the full container width and look detached.
+    const isMobileWidthView = isMobileWidth(this.props.width);
+    const headerWidth = isMobileWidthView ? "100%" : `${((this.state.drawerOpen ? 8 : 7) / 12) * 100}%`;
+    // Progress counts are intentionally hidden from students during the study.
+    // The per-lesson chips are also hidden when the resolved path is a single
+    // lesson (as in the Data 100 A/B meta-lessons), where they add no information.
+    const showLessonChips = totalCount > 1;
 
     return (
       <div
@@ -767,15 +774,14 @@ class Platform extends React.Component {
           borderRadius: 8,
           padding: "12px 16px",
           marginBottom: 16,
+          width: headerWidth,
+          boxSizing: "border-box",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
           <div style={{ fontWeight: 600, fontSize: 15 }}>{metaName}</div>
-          <div style={{ color: "#5F6368", fontSize: 13 }}>
-            Step {stepNumber} of {totalCount} &middot; {completedCount} of {totalCount} completed
-          </div>
         </div>
-        <div style={{ display: "flex", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
+        <div style={{ display: showLessonChips ? "flex" : "none", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
           {this.metaLessonLessons.map((lessonId, index) => {
             const lesson = findLessonById(lessonId);
             const label = lesson?.name || lesson?.topics || (lesson ? lesson.id : null) || "Unavailable lesson";
