@@ -648,6 +648,57 @@ class Platform extends React.Component {
       if (lessonId && lessonId !== this.lesson.id) return false;
       return true;
     });
+
+    // Ported from OATutor-halu2: when a lesson declares an explicit problem order,
+    // it fully overrides BKT problem selection. Problems are looked up by id across
+    // the whole pool, because the content pipeline only tags problems with a lesson
+    // *name* (no lessonId), so the KC-based heuristic cannot tell two sub-lessons
+    // with identical learningObjectives apart.
+    const fixedProblemOrder = Array.isArray(this.lesson?.fixedProblemOrder)
+      ? this.lesson.fixedProblemOrder
+      : null;
+
+    if (fixedProblemOrder && fixedProblemOrder.length > 0) {
+      const remaining = fixedProblemOrder.filter((id) => !this.completedProbs.has(id));
+
+      // Keep the mastery bar alive even though mastery no longer drives selection.
+      const objectives = Object.keys(this.lesson.learningObjectives || {});
+      if (objectives.length > 0) {
+        const rawScore =
+          objectives.reduce((sum, kc) => sum + (context.bktParams[kc]?.probMastery ?? 0), 0) /
+          objectives.length;
+        this.setState({ mastery: getNormalizedMastery(rawScore, this.lesson) });
+      }
+
+      for (const problemId of remaining) {
+        const nextFixedProblem = problems.find((problem) => problem.id === problemId);
+        if (!nextFixedProblem) {
+          console.error(
+            `Fixed problem order (${this.lesson.id}): problem "${problemId}" not found in the content pool, skipping it.`
+          );
+          continue;
+        }
+        console.debug(`Fixed problem order (${this.lesson.id}): chosen problem`, nextFixedProblem.id);
+        this.setState({ currProblem: nextFixedProblem, status: "learning" });
+        this.context.firebase.startedProblem(
+          nextFixedProblem.id,
+          nextFixedProblem.courseName,
+          nextFixedProblem.lesson,
+          this.lesson.learningObjectives
+        );
+        return nextFixedProblem;
+      }
+
+      console.debug(`Fixed problem order (${this.lesson.id}): all problems completed`);
+      // Inside a meta lesson the caller advances to the next sub-lesson when we
+      // return null, so don't end the whole assignment here.
+      if (this.lesson?.isPartOfMetaLesson && this.metaLesson) {
+        return null;
+      }
+      this.setState({ status: "graduated", currProblem: null });
+      return null;
+    }
+
     let chosenProblem;
 
     for (const problem of problems) {
