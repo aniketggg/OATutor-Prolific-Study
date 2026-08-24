@@ -59,3 +59,4 @@ aws/aiAgentGeneration/documents/assets/tables/**
 # Keep all raw PDFs / nested course folders out of git (local drop-in only)
 aws/aiAgentGeneration/documents/raw/**
 !aws/aiAgentGeneration/documents/raw/.gitkeep
+aws/lti-middleware/*.zip
