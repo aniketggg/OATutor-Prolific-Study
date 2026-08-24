@@ -391,9 +391,13 @@ class Platform extends React.Component {
     if (prevCompletedProbs) {
       this.completedProbs = new Set(prevCompletedProbs);
     }
+    const nextProblem = this._nextProblem(this.context ? this.context : context);
     this.setState({
-      currProblem: this._nextProblem(this.context ? this.context : context),
+      currProblem: nextProblem,
     });
+    if (!nextProblem && this.lesson?.isPartOfMetaLesson && this.metaLesson) {
+      await this.handleMetaSubLessonComplete();
+    }
   }
 
   async selectMetaLesson(metaLesson, updateServer = true) {
