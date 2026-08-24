@@ -16,13 +16,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Add SSH private keys for submodule repositories
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: |
-            ${{ secrets.OATUTOR_CONTENT_DEPLOY_KEY }}
-      - run: git submodule update --init --recursive
-
       - name: Save original git author and git email
         run: |
           echo "git_email=$(git log --format='%ae' HEAD^!)" >> $GITHUB_ENV
