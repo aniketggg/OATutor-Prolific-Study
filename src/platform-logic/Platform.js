@@ -101,6 +101,10 @@ class Platform extends React.Component {
     };
     this.completedProbs = new Set();
     this.lesson = null;
+    this.metaLesson = null;
+    this.metaLessonLessons = [];
+    this.currentMetaLessonIndex = -1;
+    this.completedMetaLessonLessons = new Set();
 
     // Tracks the platform-level language captured just before we override it
     // for a course/lesson. `null` means "not currently inside a course" —
@@ -396,7 +400,7 @@ class Platform extends React.Component {
     const order = metaLesson.order || "sequence";
     const choose = metaLesson.choose || "all";
 
-    const stableUserId = this.user?.user_id;
+    const stableUserId = this.user?.user_id || this.context?.userID;
     const useDeterministicAssignment = Boolean(stableUserId);
 
     const resolvedLessonIds = useDeterministicAssignment
@@ -1027,9 +1031,6 @@ class Platform extends React.Component {
         <div style={{ display: "flex", gap: 20, marginTop: 36 }}>
           <Button variant="contained" color="primary" onClick={this.continueMetaLesson}>
             Continue to Next Lesson
-          </Button>
-          <Button variant="outlined" color="primary" onClick={() => this.props.history.push("/")}>
-            Back to Home
           </Button>
         </div>
       </div>
