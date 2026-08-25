@@ -16,6 +16,7 @@ import {
     PROGRESS_STORAGE_KEY,
     SITE_VERSION,
     ThemeContext,
+    PROLIFIC_CONTEXT_STORAGE_KEY,
     USER_ID_STORAGE_KEY,
 } from "./config/config.js";
 
@@ -59,9 +60,56 @@ const queryParamToContext = {
     use_expanded_view: "use_expanded_view",
     do_not_restore: "noRestore",
     locale: "locale",
+    // Prolific appends these to the study entry link. STUDY_ID is deliberately
+    // mapped to a "prolific_" name so it cannot collide with the study_id that
+    // Firebase already derives from REACT_APP_STUDY_ID.
+    PROLIFIC_PID: "prolific_pid",
+    STUDY_ID: "prolific_study_id",
+    SESSION_ID: "prolific_session_id",
 };
 
-const queryParamsToKeep = ["use_expanded_view", "to", "do_not_restore", "locale"];
+const PROLIFIC_CONTEXT_KEYS = [
+    "prolific_pid",
+    "prolific_study_id",
+    "prolific_session_id",
+];
+
+const queryParamsToKeep = [
+    "use_expanded_view",
+    "to",
+    "do_not_restore",
+    "locale",
+    "PROLIFIC_PID",
+    "STUDY_ID",
+    "SESSION_ID",
+];
+
+/**
+ * Reads the Prolific identifiers back out of localStorage. The parameters only
+ * ride along on the entry link, so without this every log row after the first
+ * navigation would lose the participant id.
+ */
+function loadStoredProlificContext() {
+    try {
+        const raw = localStorage.getItem(PROLIFIC_CONTEXT_STORAGE_KEY);
+        const parsed = raw ? JSON.parse(raw) : null;
+        return parsed && typeof parsed === "object" ? parsed : {};
+    } catch (err) {
+        console.debug("could not read stored Prolific context", err);
+        return {};
+    }
+}
+
+function storeProlificContext(prolificContext) {
+    try {
+        localStorage.setItem(
+            PROLIFIC_CONTEXT_STORAGE_KEY,
+            JSON.stringify(prolificContext)
+        );
+    } catch (err) {
+        console.debug("could not persist Prolific context", err);
+    }
+}
 
 let treatmentMapping;
 
@@ -107,11 +155,16 @@ class App extends React.Component {
 
         const onLocationChange = () => {
             const additionalContext = {};
+            // Parameters can sit before the hash (…/?PROLIFIC_PID=x#/lessons/y) or
+            // after it (…/#/lessons/y?PROLIFIC_PID=x) depending on how the link was
+            // assembled, so accept both. Guard the indexOf: without a "?" in the hash
+            // it returns -1 and substr(0) would hand the whole route to URLSearchParams.
+            const hashQueryIndex = window.location.hash.indexOf("?");
             const search =
                 window.location.search ||
-                window.location.hash.substr(
-                    window.location.hash.indexOf("?") + 1
-                );
+                (hashQueryIndex >= 0
+                    ? window.location.hash.substr(hashQueryIndex + 1)
+                    : "");
             const sp = new URLSearchParams(search);
 
             Object.keys(queryParamToContext).forEach((qp) => {
@@ -128,16 +181,37 @@ class App extends React.Component {
                 additionalContext["studentName"] = user.full_name;
             }
 
+            // A link that carries the participant id wins and is remembered; every
+            // later navigation falls back to what was stored on the way in.
+            const prolificContext = Object.fromEntries(
+                PROLIFIC_CONTEXT_KEYS.map((key) => [key, additionalContext[key]])
+                    .filter(([, value]) => value != null)
+            );
+            if (prolificContext.prolific_pid) {
+                storeProlificContext(prolificContext);
+            } else {
+                Object.assign(prolificContext, loadStoredProlificContext());
+            }
+            Object.assign(additionalContext, prolificContext);
+
             // Firebase creation
             this.firebase = new Firebase(
                 this.userID,
                 config,
                 this.getTreatment(),
                 SITE_VERSION,
-                additionalContext.user
+                additionalContext.user,
+                prolificContext
             );
 
-            let targetLocation = window.location.href.split("?")[0];
+            // Rebuild the address instead of href.split("?"): when the parameters sit
+            // before the hash, splitting on "?" throws the hash route away too and the
+            // participant silently ends up on the course overview instead of the lesson.
+            const hashWithoutQuery =
+                hashQueryIndex >= 0
+                    ? window.location.hash.slice(0, hashQueryIndex)
+                    : window.location.hash;
+            let targetLocation = `${window.location.origin}${window.location.pathname}${hashWithoutQuery}`;
 
             const contextToKeep = queryParamsToKeep.map(
                 (qp) => queryParamToContext[qp] || qp

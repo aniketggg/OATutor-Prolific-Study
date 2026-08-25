@@ -66,7 +66,14 @@ function sanitizeForFirestore(value) {
 }
 
 class Firebase {
-    constructor(oats_user_id, credentials, treatment, siteVersion, ltiContext) {
+    constructor(
+        oats_user_id,
+        credentials,
+        treatment,
+        siteVersion,
+        ltiContext,
+        prolificContext
+    ) {
         if (!ENABLE_FIREBASE) {
             console.debug("Not using firebase for logging");
             return;
@@ -86,6 +93,7 @@ class Firebase {
         this.siteVersion = siteVersion;
         this.mouseLogBuffer = [];
         this.ltiContext = ltiContext;
+        this.prolificContext = prolificContext || {};
         this.metaLessonId = null;
         this.metaLessonArm = null;
     }
@@ -226,6 +234,10 @@ class Firebase {
             treatment: this.treatment,
             meta_lesson_id: this.metaLessonId ?? "n/a",
             meta_lesson_arm: this.metaLessonArm ?? "n/a",
+            prolific_pid: this.prolificContext?.prolific_pid ?? "n/a",
+            prolific_study_id: this.prolificContext?.prolific_study_id ?? "n/a",
+            prolific_session_id:
+                this.prolificContext?.prolific_session_id ?? "n/a",
             time_stamp: Date.now(),
 
             ...(process.env.REACT_APP_STUDY_ID
@@ -474,6 +486,22 @@ class Firebase {
     }
 
     /**
+     * Fields identifying the study participant and their assigned arm.
+     * The chat writes below bypass addMetaData, so without this they would be
+     * the only log path that cannot be traced back to a Prolific participant.
+     */
+    _studyContext() {
+        return {
+            prolific_pid: this.prolificContext?.prolific_pid ?? "n/a",
+            prolific_study_id: this.prolificContext?.prolific_study_id ?? "n/a",
+            prolific_session_id:
+                this.prolificContext?.prolific_session_id ?? "n/a",
+            meta_lesson_id: this.metaLessonId ?? "n/a",
+            meta_lesson_arm: this.metaLessonArm ?? "n/a",
+        };
+    }
+
+    /**
      * Write or update a chatSessions document.
      * Called with full initial metadata on session start, then with delta
      * objects (using Firestore increment()) for counter updates.
@@ -486,7 +514,7 @@ class Firebase {
         const docRef = doc(this.db, collection, sessionId);
         let payload;
         try {
-            payload = sanitizeForFirestore(data);
+            payload = sanitizeForFirestore({ ...this._studyContext(), ...data });
         } catch (err) {
             console.warn('[Firebase] logChatSession: failed to sanitize payload', err);
             return;
@@ -511,7 +539,11 @@ class Firebase {
         const docId = this._getReadableID();
         let payload;
         try {
-            payload = sanitizeForFirestore({ sessionId, ...messageData });
+            payload = sanitizeForFirestore({
+                sessionId,
+                ...this._studyContext(),
+                ...messageData,
+            });
         } catch (err) {
             console.warn('[Firebase] logChatMessage: failed to sanitize payload', err);
             return;

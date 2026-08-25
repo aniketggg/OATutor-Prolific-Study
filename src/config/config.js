@@ -88,6 +88,9 @@ export const LESSON_PROGRESS_STORAGE_KEY = (lessonId) =>
     `${PROGRESS_STORAGE_KEY}-${lessonId}`;
 
 const CANVAS_WARNING_STORAGE_KEY = `${_SHORT_SITE_NAME}-canvas-warning-dismissed`;
+// Prolific only appends its parameters to the entry link, so once the participant
+// navigates on they are gone. Stash them to keep tagging later log rows.
+const PROLIFIC_CONTEXT_STORAGE_KEY = `${_SHORT_SITE_NAME}-prolific-context`;
 
 // Firebase Config
 const MAX_BUFFER_SIZE = 100;
@@ -179,6 +182,7 @@ export {
     getNormalizedMastery,
     USER_ID_STORAGE_KEY,
     PROGRESS_STORAGE_KEY,
+    PROLIFIC_CONTEXT_STORAGE_KEY,
     SITE_NAME,
     HELP_DOCUMENT,
     SHOW_COPYRIGHT,
