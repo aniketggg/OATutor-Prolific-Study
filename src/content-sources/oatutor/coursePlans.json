@@ -36,10 +36,127 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": false,
+                "chat_display_mode": "Off",
                 "fixedProblemOrder": [
                     "a1c80a0motion2d9",
                     "a1c80a0motion2d19"
+                ]
+            },
+            {
+                "id": "6xE2t3qa-hKxM-gkM65yz8YN",
+                "metaId": "Physics-A-yesChat",
+                "name": "Lesson Physics_yesChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "projectile_motion": 0.85,
+                    "uniform_and_nonuniform_circular_motion": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "afb4b47motion2d10",
+                    "afb4b47motion2d18"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTv2.txt"
+            },
+            {
+                "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
+                "metaId": "Physics-A-noChat",
+                "name": "Lesson Physics_noChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "projectile_motion": 0.85,
+                    "uniform_and_nonuniform_circular_motion": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a1c80a0motion2d9",
+                    "a1c80a0motion2d19"
+                ],
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "6xE2t3qa-hKxM-gkM65yz8YN",
+                "metaId": "Physics-B-yesChat",
+                "name": "Lesson Physics_yesChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "projectile_motion": 0.85,
+                    "uniform_and_nonuniform_circular_motion": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "afb4b47motion2d10",
+                    "afb4b47motion2d18"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTvtest.txt"
+            },
+            {
+                "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
+                "metaId": "Physics-B-noChat",
+                "name": "Lesson Physics_noChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "projectile_motion": 0.85,
+                    "uniform_and_nonuniform_circular_motion": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a1c80a0motion2d9",
+                    "a1c80a0motion2d19"
+                ],
+                "chat_display_mode": "Off"
+            }
+        ],
+        "metaLessons": [
+            {
+                "id": "meta-Physics",
+                "type": "meta_lesson",
+                "name": "Physics Study",
+                "order": "random",
+                "choose": "1",
+                "lessons": [
+                    "meta-Physics-A",
+                    "meta-Physics-B"
+                ]
+            },
+            {
+                "id": "meta-Physics-A",
+                "type": "meta_lesson",
+                "name": "Physics Arm A",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Physics-A-yesChat",
+                    "Physics-A-noChat"
+                ]
+            },
+            {
+                "id": "meta-Physics-B",
+                "type": "meta_lesson",
+                "name": "Physics Arm B",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Physics-B-yesChat",
+                    "Physics-B-noChat"
                 ]
             }
         ]
@@ -81,10 +198,127 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": false,
+                "chat_display_mode": "Off",
                 "fixedProblemOrder": [
                     "ab29bf1functions30",
                     "ab29bf1functions18"
+                ]
+            },
+            {
+                "id": "3oNBQ1NS-Kevo-Y7tmofVLQX",
+                "metaId": "Math1-A-yesChat",
+                "name": "Lesson Math1_yesChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "ab2f376functions8",
+                    "ab2f376functions17"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTv2.txt"
+            },
+            {
+                "id": "7lAiiS8t-4IlN-MM5lfLjULW",
+                "metaId": "Math1-A-noChat",
+                "name": "Lesson Math1_noChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "ab29bf1functions30",
+                    "ab29bf1functions18"
+                ],
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "3oNBQ1NS-Kevo-Y7tmofVLQX",
+                "metaId": "Math1-B-yesChat",
+                "name": "Lesson Math1_yesChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "ab2f376functions8",
+                    "ab2f376functions17"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTvtest.txt"
+            },
+            {
+                "id": "7lAiiS8t-4IlN-MM5lfLjULW",
+                "metaId": "Math1-B-noChat",
+                "name": "Lesson Math1_noChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "ab29bf1functions30",
+                    "ab29bf1functions18"
+                ],
+                "chat_display_mode": "Off"
+            }
+        ],
+        "metaLessons": [
+            {
+                "id": "meta-Math1",
+                "type": "meta_lesson",
+                "name": "Math1 Study",
+                "order": "random",
+                "choose": "1",
+                "lessons": [
+                    "meta-Math1-A",
+                    "meta-Math1-B"
+                ]
+            },
+            {
+                "id": "meta-Math1-A",
+                "type": "meta_lesson",
+                "name": "Math1 Arm A",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Math1-A-yesChat",
+                    "Math1-A-noChat"
+                ]
+            },
+            {
+                "id": "meta-Math1-B",
+                "type": "meta_lesson",
+                "name": "Math1 Arm B",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Math1-B-yesChat",
+                    "Math1-B-noChat"
                 ]
             }
         ]
@@ -126,10 +360,127 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": false,
+                "chat_display_mode": "Off",
                 "fixedProblemOrder": [
                     "a0156d9alginequalabs10",
                     "a0156d9exp4"
+                ]
+            },
+            {
+                "id": "0LfyfvJV-tAxm-j8is0pvoAj",
+                "metaId": "Math2-A-yesChat",
+                "name": "Lesson Math2_yesChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "algebra_with_exponents_and_logarithms": 0.85,
+                    "inequalities_and_absolute_values": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a27f94calginequalabs11",
+                    "a27f94cexp9"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTv2.txt"
+            },
+            {
+                "id": "1L7hneRE-fxbQ-fMLHQiMddm",
+                "metaId": "Math2-A-noChat",
+                "name": "Lesson Math2_noChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "algebra_with_exponents_and_logarithms": 0.85,
+                    "inequalities_and_absolute_values": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a0156d9alginequalabs10",
+                    "a0156d9exp4"
+                ],
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "0LfyfvJV-tAxm-j8is0pvoAj",
+                "metaId": "Math2-B-yesChat",
+                "name": "Lesson Math2_yesChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "algebra_with_exponents_and_logarithms": 0.85,
+                    "inequalities_and_absolute_values": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a27f94calginequalabs11",
+                    "a27f94cexp9"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTvtest.txt"
+            },
+            {
+                "id": "1L7hneRE-fxbQ-fMLHQiMddm",
+                "metaId": "Math2-B-noChat",
+                "name": "Lesson Math2_noChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "algebra_with_exponents_and_logarithms": 0.85,
+                    "inequalities_and_absolute_values": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a0156d9alginequalabs10",
+                    "a0156d9exp4"
+                ],
+                "chat_display_mode": "Off"
+            }
+        ],
+        "metaLessons": [
+            {
+                "id": "meta-Math2",
+                "type": "meta_lesson",
+                "name": "Math2 Study",
+                "order": "random",
+                "choose": "1",
+                "lessons": [
+                    "meta-Math2-A",
+                    "meta-Math2-B"
+                ]
+            },
+            {
+                "id": "meta-Math2-A",
+                "type": "meta_lesson",
+                "name": "Math2 Arm A",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Math2-A-yesChat",
+                    "Math2-A-noChat"
+                ]
+            },
+            {
+                "id": "meta-Math2-B",
+                "type": "meta_lesson",
+                "name": "Math2 Arm B",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Math2-B-yesChat",
+                    "Math2-B-noChat"
                 ]
             }
         ]
@@ -171,10 +522,127 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": false,
+                "chat_display_mode": "Off",
                 "fixedProblemOrder": [
                     "a56276aS25M1Q1D",
                     "a56276arow4"
+                ]
+            },
+            {
+                "id": "2BYPiWsi-155k-tIsCNk0uZc",
+                "metaId": "Data-A-yesChat",
+                "name": "Lesson Data_yesChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "pandas": 0.85,
+                    "regex": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "aef2469F25M1Q1",
+                    "aef2469row2"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTv2.txt"
+            },
+            {
+                "id": "7437cwIS-K8Eu-0w1iy6DfqF",
+                "metaId": "Data-A-noChat",
+                "name": "Lesson Data_noChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "pandas": 0.85,
+                    "regex": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a56276aS25M1Q1D",
+                    "a56276arow4"
+                ],
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "2BYPiWsi-155k-tIsCNk0uZc",
+                "metaId": "Data-B-yesChat",
+                "name": "Lesson Data_yesChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "pandas": 0.85,
+                    "regex": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "aef2469F25M1Q1",
+                    "aef2469row2"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTvtest.txt"
+            },
+            {
+                "id": "7437cwIS-K8Eu-0w1iy6DfqF",
+                "metaId": "Data-B-noChat",
+                "name": "Lesson Data_noChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "pandas": 0.85,
+                    "regex": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a56276aS25M1Q1D",
+                    "a56276arow4"
+                ],
+                "chat_display_mode": "Off"
+            }
+        ],
+        "metaLessons": [
+            {
+                "id": "meta-Data",
+                "type": "meta_lesson",
+                "name": "Data Study",
+                "order": "random",
+                "choose": "1",
+                "lessons": [
+                    "meta-Data-A",
+                    "meta-Data-B"
+                ]
+            },
+            {
+                "id": "meta-Data-A",
+                "type": "meta_lesson",
+                "name": "Data Arm A",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Data-A-yesChat",
+                    "Data-A-noChat"
+                ]
+            },
+            {
+                "id": "meta-Data-B",
+                "type": "meta_lesson",
+                "name": "Data Arm B",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Data-B-yesChat",
+                    "Data-B-noChat"
                 ]
             }
         ]
@@ -220,6 +688,123 @@
                 "fixedProblemOrder": [
                     "a361716acidbase1",
                     "a361716chem10"
+                ]
+            },
+            {
+                "id": "07ZM5dz3-I7Dt-kp8nDxPDt1",
+                "metaId": "Chem-A-yesChat",
+                "name": "Lesson Chem_yesChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "module_b": 0.85,
+                    "module_g": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "ab9601eacidbase6",
+                    "ab9601echem15"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTv2.txt"
+            },
+            {
+                "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
+                "metaId": "Chem-A-noChat",
+                "name": "Lesson Chem_noChat (Arm A)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "module_b": 0.85,
+                    "module_g": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a361716acidbase1",
+                    "a361716chem10"
+                ],
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "07ZM5dz3-I7Dt-kp8nDxPDt1",
+                "metaId": "Chem-B-yesChat",
+                "name": "Lesson Chem_yesChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "module_b": 0.85,
+                    "module_g": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "ab9601eacidbase6",
+                    "ab9601echem15"
+                ],
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTvtest.txt"
+            },
+            {
+                "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
+                "metaId": "Chem-B-noChat",
+                "name": "Lesson Chem_noChat (Arm B)",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "module_b": 0.85,
+                    "module_g": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a361716acidbase1",
+                    "a361716chem10"
+                ],
+                "chat_display_mode": "Off"
+            }
+        ],
+        "metaLessons": [
+            {
+                "id": "meta-Chem",
+                "type": "meta_lesson",
+                "name": "Chem Study",
+                "order": "random",
+                "choose": "1",
+                "lessons": [
+                    "meta-Chem-A",
+                    "meta-Chem-B"
+                ]
+            },
+            {
+                "id": "meta-Chem-A",
+                "type": "meta_lesson",
+                "name": "Chem Arm A",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Chem-A-yesChat",
+                    "Chem-A-noChat"
+                ]
+            },
+            {
+                "id": "meta-Chem-B",
+                "type": "meta_lesson",
+                "name": "Chem Arm B",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "Chem-B-yesChat",
+                    "Chem-B-noChat"
                 ]
             }
         ]
