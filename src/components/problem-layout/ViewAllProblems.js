@@ -134,8 +134,37 @@ const ViewAllProblems = ({ translate, history }) => {
   // Filter by objectives
   const memoFiltered = useMemo(() => {
     if (!lesson || problemPool.length === 0) return [];
+
+    // Same lookup Platform uses: the content pipeline only tags problems with a
+    // lesson *name* (no lessonId), so a lesson pins its problems by id through
+    // fixedProblemOrder, and that order is the one to display them in.
+    const fixedProblemOrder = Array.isArray(lesson.fixedProblemOrder)
+      ? lesson.fixedProblemOrder
+      : null;
+
+    if (fixedProblemOrder && fixedProblemOrder.length > 0) {
+      return fixedProblemOrder
+        .map((problemId) => {
+          const problem = problemPool.find((candidate) => candidate.id === problemId);
+          if (!problem) {
+            console.error(
+              `Fixed problem order (${lesson.id}): problem "${problemId}" not found in the content pool, skipping it.`
+            );
+          }
+          return problem;
+        })
+        .filter(Boolean);
+    }
+
+    // Fall back to the lesson name for pools that carry no lessonId at all.
+    const lessonName = String(lesson.name || '').replace(/^Lesson\s+/i, '').trim();
+
     return problemPool
-      .filter(problem => problem.lessonId === lesson.id)
+      .filter(problem =>
+        problem.lessonId
+          ? problem.lessonId === lesson.id
+          : Boolean(lessonName) && problem.lesson === lessonName
+      )
       .sort((problemA, problemB) => {
         const numberA = getProblemNumber(problemA.id);
         const numberB = getProblemNumber(problemB.id);
@@ -305,7 +334,11 @@ const ViewAllProblems = ({ translate, history }) => {
           </Box>
         )) : (
           <Box className={classes.loadingBox}>
-            <Typography>{translate('loadingProblems') || 'Loading problems…'}</Typography>
+            <Typography>
+              {lesson && problemPool.length > 0 && filteredProblems.length === 0
+                ? 'No problems found for this lesson.'
+                : translate('loadingProblems') || 'Loading problems…'}
+            </Typography>
           </Box>
         )}
       </Container>
