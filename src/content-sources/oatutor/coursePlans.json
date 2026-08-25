@@ -1,286 +1,225 @@
 [
     {
-        "courseName": "Pre-Calculus Essentials (UC Berkeley Math 1B)",
-        "language": "en",
-        "courseOER": 0,
-        "courseLicense": 0,
+        "courseName": "Physics",
+        "courseOER": "OAGer",
+        "courseLicense": "CC BY 4.0",
         "lessons": [
             {
-                "id": "0pDEAYDr-oXlS-JNqzc08GRZ",
-                "name": "Lesson Algebra",
-                "topics": "with Absolute Values",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
+                "id": "6xE2t3qa-hKxM-gkM65yz8YN",
+                "name": "Lesson Physics_yesChat",
+                "topics": "",
+                "allowRecycle": false,
                 "learningObjectives": {
-                    "algebra_with_absolute_values": 0.85
+                    "projectile_motion": 0.85,
+                    "uniform_and_nonuniform_circular_motion": 0.85
                 },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-03"
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "afb4b47motion2d10",
+                    "afb4b47motion2d18"
                 ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
+                "chat_display_mode": "Window"
             },
             {
-                "id": "0YnVTGlC-x0GF-hL9gi8IWNQ",
-                "name": "Lesson Algebra",
-                "topics": "with Exponents and Logarithms",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
+                "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
+                "name": "Lesson Physics_noChat",
+                "topics": "",
+                "allowRecycle": false,
                 "learningObjectives": {
-                    "algebra_with_exponents_and_logarithms": 0.85
+                    "projectile_motion": 0.85,
+                    "uniform_and_nonuniform_circular_motion": 0.85
                 },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-02"
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "chat_display_mode": false,
+                "fixedProblemOrder": [
+                    "a1c80a0motion2d9",
+                    "a1c80a0motion2d19"
+                ]
+            }
+        ]
+    },
+    {
+        "courseName": "Math1",
+        "courseOER": "OAGer",
+        "courseLicense": "CC BY 4.1",
+        "lessons": [
+            {
+                "id": "3oNBQ1NS-Kevo-Y7tmofVLQX",
+                "name": "Lesson Math1_yesChat",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "ab2f376functions8",
+                    "ab2f376functions17"
                 ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
+                "chat_display_mode": "Window"
             },
             {
-                "id": "440CRpEu-q497-yJmQIEIOrf",
-                "name": "Lesson Geometry",
-                "topics": "and Algebra",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
+                "id": "7lAiiS8t-4IlN-MM5lfLjULW",
+                "name": "Lesson Math1_noChat",
+                "topics": "",
+                "allowRecycle": false,
                 "learningObjectives": {
-                    "geometry_and_algebra": 0.85
+                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
                 },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-01"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "chat_display_mode": false,
+                "fixedProblemOrder": [
+                    "ab29bf1functions30",
+                    "ab29bf1functions18"
+                ]
+            }
+        ]
+    },
+    {
+        "courseName": "Math2",
+        "courseOER": "OAGer",
+        "courseLicense": "CC BY 4.2",
+        "lessons": [
             {
-                "id": "37bAmbLW-jYzk-6IIqeG3JDs",
-                "name": "Lesson Trigonometric",
-                "topics": "Functions",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
+                "id": "0LfyfvJV-tAxm-j8is0pvoAj",
+                "name": "Lesson Math2_yesChat",
+                "topics": "",
+                "allowRecycle": false,
                 "learningObjectives": {
-                    "trigonometric_functions": 0.85
-                },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-10",
-                    "math1b-11",
-                    "math1b-12"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "19eobwON-8bno-gmbuF7wQsV",
-                "name": "Lesson Core",
-                "topics": "Functions: Exponential and Logarithmic",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
-                "learningObjectives": {
-                    "core_functions:_exponential_and_logarithmic": 0.85
-                },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-09"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "64wMTUtU-BzIS-CJIRppB2GT",
-                "name": "Lesson Algebra",
-                "topics": "with Inequalities",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
-                "learningObjectives": {
-                    "algebra_with_inequalities": 0.85
-                },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-03"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "52IAbql2-jE33-q5yKH8tH9X",
-                "name": "Lesson Inequalities",
-                "topics": "and Absolute Values",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
-                "learningObjectives": {
+                    "algebra_with_exponents_and_logarithms": 0.85,
                     "inequalities_and_absolute_values": 0.85
                 },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-03"
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "a27f94calginequalabs11",
+                    "a27f94cexp9"
                 ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
+                "chat_display_mode": "Window"
             },
             {
-                "id": "3iToK3qF-KYXf-z1RBdn9a4o",
-                "name": "Lesson Composition",
-                "topics": "of Functions",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
+                "id": "1L7hneRE-fxbQ-fMLHQiMddm",
+                "name": "Lesson Math2_noChat",
+                "topics": "",
+                "allowRecycle": false,
                 "learningObjectives": {
-                    "composition_of_functions": 0.85
+                    "algebra_with_exponents_and_logarithms": 0.85,
+                    "inequalities_and_absolute_values": 0.85
                 },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-05",
-                    "math1b-06",
-                    "math1b-07"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "5xDxBHaI-V4tX-Gyu8GRAdQ1",
-                "name": "Lesson Transformations",
-                "topics": "of Functions",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
-                "learningObjectives": {
-                    "transformations_of_functions": 0.85
-                },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-06",
-                    "math1b-07",
-                    "math1b-05",
-                    "math1b-10",
-                    "math1b-12",
-                    "math1b-11"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "2JPquRNR-6clQ-lrVRAWJE4B",
-                "name": "Lesson Core",
-                "topics": "Functions: Constant, Linear, and Quadratic",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
-                "learningObjectives": {
-                    "core_functions:_constant": 0.85,
-                    "linear_and_quadratic": 0.85
-                },
-                "chat_prompt": "PROMPT-math-1b-v1a.txt",
-                "chat_documents": [
-                    "math1b-08"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "0pDEAYDr-oXlS-JNqzc08GRZ",
-                "metaId": "TEST-absval-A",
-                "name": "Lesson Algebra",
-                "topics": "with Absolute Values A",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
-                "learningObjectives": {
-                    "algebra_with_absolute_values": 0.85
-                },
-                "chat_documents": [
-                    "math1b-03"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "0pDEAYDr-oXlS-JNqzc08GRZ",
-                "metaId": "TEST-absval-B",
-                "name": "Lesson Algebra",
-                "topics": "with Absolute Values B",
-                "allowRecycle": true,
-                "chat_display_mode": "Window",
-                "learningObjectives": {
-                    "algebra_with_absolute_values": 0.85
-                },
-                "chat_prompt": "PROMPTvtest.txt",
-                "chat_documents": [
-                    "math1b-03"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "3iToK3qF-KYXf-z1RBdn9a4o",
-                "metaId": "TEST-comp-A",
-                "name": "Lesson Composition",
-                "topics": "of Functions A",
-                "allowRecycle": true,
-                "chat_display_mode": "Off",
-                "learningObjectives": {
-                    "composition_of_functions": 0.85
-                },
-                "chat_documents": [
-                    "math1b-05",
-                    "math1b-06",
-                    "math1b-07"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
-            },
-            {
-                "id": "3iToK3qF-KYXf-z1RBdn9a4o",
-                "metaId": "TEST-comp-B",
-                "name": "Lesson Composition",
-                "topics": "of Functions B",
-                "allowRecycle": true,
-                "chat_display_mode": "Off",
-                "learningObjectives": {
-                    "composition_of_functions": 0.85
-                },
-                "chat_documents": [
-                    "math1b-05",
-                    "math1b-06",
-                    "math1b-07"
-                ],
-                "chat_penalty_mode": "Never",
-                "hint_penalty_mode": "OnOpen"
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "chat_display_mode": false,
+                "fixedProblemOrder": [
+                    "a0156d9alginequalabs10",
+                    "a0156d9exp4"
+                ]
             }
-        ],
-        "chat_display_mode": "Window",
-        "chat_prompt": "PROMPT-math-1b-v1a.txt",
-        "chat_penalty_mode": "Never",
-        "hint_penalty_mode": "OnOpen",
-        "metaLessons": [
+        ]
+    },
+    {
+        "courseName": "Data",
+        "courseOER": "OAGer",
+        "courseLicense": "CC BY 4.3",
+        "lessons": [
             {
-                "id": "meta_test_root",
-                "type": "meta_lesson",
-                "name": "Prolific Test Study",
-                "order": "random",
-                "choose": "1",
-                "lessons": [
-                    "meta_test_A",
-                    "meta_test_B"
-                ]
+                "id": "2BYPiWsi-155k-tIsCNk0uZc",
+                "name": "Lesson Data_yesChat",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "pandas": 0.85,
+                    "regex": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "aef2469F25M1Q1",
+                    "aef2469row2"
+                ],
+                "chat_display_mode": "Window"
             },
             {
-                "id": "meta_test_A",
-                "type": "meta_lesson",
-                "name": "Condition A",
-                "order": "sequence",
-                "choose": "all",
-                "lessons": [
-                    "TEST-absval-A",
-                    "TEST-comp-A"
+                "id": "7437cwIS-K8Eu-0w1iy6DfqF",
+                "name": "Lesson Data_noChat",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "pandas": 0.85,
+                    "regex": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "chat_display_mode": false,
+                "fixedProblemOrder": [
+                    "a56276aS25M1Q1D",
+                    "a56276arow4"
                 ]
+            }
+        ]
+    },
+    {
+        "courseName": "Chem",
+        "courseOER": "OAGer",
+        "courseLicense": "CC BY 4.4",
+        "lessons": [
+            {
+                "id": "07ZM5dz3-I7Dt-kp8nDxPDt1",
+                "name": "Lesson Chem_yesChat",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "module_b": 0.85,
+                    "module_g": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "fixedProblemOrder": [
+                    "ab9601eacidbase6",
+                    "ab9601echem15"
+                ],
+                "chat_display_mode": "Window"
             },
             {
-                "id": "meta_test_B",
-                "type": "meta_lesson",
-                "name": "Condition B",
-                "order": "sequence",
-                "choose": "all",
-                "lessons": [
-                    "TEST-absval-B",
-                    "TEST-comp-B"
+                "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
+                "name": "Lesson Chem_noChat",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "module_b": 0.85,
+                    "module_g": 0.85
+                },
+                "showStuMastery": false,
+                "doMasteryUpdate": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "chat_display_mode": "Off",
+                "fixedProblemOrder": [
+                    "a361716acidbase1",
+                    "a361716chem10"
                 ]
             }
         ]

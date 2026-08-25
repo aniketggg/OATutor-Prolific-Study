@@ -1,0 +1,10 @@
+{
+    "id": "afb4b47motion2d10",
+    "title": "Projectile Flight",
+    "body": "A projectile is launched at an angle of $$30**\\circ$$ and lands $$20\\, \\text{s}$$ later at the same height as it was launched.",
+    "variabilization": {},
+    "oer": "https://openstax.org/books/university-physics-volume-1/pages/4-problems",
+    "license": 0.0,
+    "lesson": "Physics_yesChat",
+    "courseName": "Physics"
+}

@@ -1,0 +1,72 @@
+[
+    {
+        "id": "a56276aS25M1Q1Da-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Understanding the Filter Condition",
+        "text": "To filter the DataFrame, you need to select rows where the item is 'banana' and the inventory is at least $$150$$. How can you express this condition using logical operators?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Da-h2",
+        "type": "hint",
+        "dependencies": [
+            "a56276aS25M1Q1Da-h1"
+        ],
+        "title": "Logical Operators in Pandas",
+        "text": "Remember that in Pandas, you can use '&' for logical AND and '|' for logical OR. How would you use these to filter for bananas with inventory greater than or equal to 150?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Da-h3",
+        "type": "hint",
+        "dependencies": [
+            "a56276aS25M1Q1Da-h2"
+        ],
+        "title": "Constructing the Filter Condition",
+        "text": "The condition is `(fruit[\"item\"] $$==$$ \"banana\") & (fruit[\"inventory\"] $$ \\geq $$ 150)` \u2014 two comparisons joined with `&`, each wrapped in its own parentheses.",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Da-h4",
+        "type": "hint",
+        "dependencies": [
+            "a56276aS25M1Q1Da-h3"
+        ],
+        "title": "Sorting the DataFrame",
+        "text": "After filtering, you need to sort the DataFrame by price in descending order. Which Pandas function allows you to sort a DataFrame?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Da-h5",
+        "type": "hint",
+        "dependencies": [
+            "a56276aS25M1Q1Da-h4"
+        ],
+        "title": "Using sort\\_values",
+        "text": "The function `sort\\_values` can be used to sort a DataFrame. What parameters would you use to sort by price in descending order?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Da-h6",
+        "type": "hint",
+        "dependencies": [
+            "a56276aS25M1Q1Da-h5"
+        ],
+        "title": "Sorting by Price",
+        "text": "Putting it together: `fruit[(fruit[\"item\"] $$==$$ \"banana\") & (fruit[\"inventory\"] $$ \\geq $$ 150)].sort\\_values(\"price\", $$ascending=False)`$$ \u2014 the filter goes inside `fruit[...]`, and $$`ascending=False`$$ puts the highest price first.",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    }
+]

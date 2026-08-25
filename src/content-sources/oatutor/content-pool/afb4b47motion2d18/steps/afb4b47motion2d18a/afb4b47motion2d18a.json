@@ -1,0 +1,12 @@
+{
+    "id": "afb4b47motion2d18a",
+    "stepAnswer": [
+        "$$10.6$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "At how many revolutions per minute are the riders subjected to a centripetal acceleration equal to that of gravity?",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$10.6$$"
+}

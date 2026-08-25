@@ -1,0 +1,12 @@
+{
+    "id": "ab9601echem15c",
+    "stepAnswer": [
+        "$$3$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "How many radial nodes do 4*s orbitals have?",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$3$$"
+}

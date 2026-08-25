@@ -1,0 +1,12 @@
+{
+    "id": "a1c80a0motion2d9a",
+    "stepAnswer": [
+        "$$0.55$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "How much time elapses before the bullet hits the ground (in $$\\text{s}$$)?",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$0.55$$"
+}

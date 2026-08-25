@@ -1,0 +1,70 @@
+[
+    {
+        "id": "a56276aS25M1Q1Db-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Understanding the Sorting Requirement",
+        "text": "To sort the DataFrame so that the store with the highest-priced bananas is at the top, which method should you use?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Db-h2",
+        "type": "hint",
+        "dependencies": [
+            "a56276aS25M1Q1Db-h1"
+        ],
+        "title": "Choosing the Correct Method",
+        "text": "Consider the method that allows you to sort the DataFrame based on a specific column, such as price.",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Db-h3",
+        "type": "scaffold",
+        "problemType": "MultipleChoice",
+        "answerType": "string",
+        "hintAnswer": [
+            "sort\\_values"
+        ],
+        "dependencies": [],
+        "title": "Identify the Sorting Method",
+        "text": "What method would you use to sort the DataFrame by price in descending order?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": "",
+        "choices": [
+            "sort\\_index",
+            "sort\\_values",
+            "order\\_by",
+            "nlargest",
+            "rank"
+        ]
+    },
+    {
+        "id": "a56276aS25M1Q1Db-h4",
+        "type": "scaffold",
+        "problemType": "MultipleChoice",
+        "answerType": "string",
+        "hintAnswer": [
+            "sort\\_values"
+        ],
+        "dependencies": [
+            "a56276aS25M1Q1Db-h3"
+        ],
+        "title": "Applying the Sorting Method",
+        "text": "Use the method identified to sort the DataFrame by the price column in descending order.",
+        "variabilization": {},
+        "oer": "openai",
+        "license": "",
+        "choices": [
+            "sort\\_index",
+            "sort\\_values",
+            "order\\_by",
+            "nlargest",
+            "rank"
+        ]
+    }
+]

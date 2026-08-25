@@ -1,0 +1,16 @@
+{
+    "id": "ab9601eacidbase6e",
+    "stepAnswer": [
+        "Basic Salt"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "K**+CN**-",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "Acidic Salt",
+        "Basic Salt",
+        "Neutral Salt"
+    ]
+}

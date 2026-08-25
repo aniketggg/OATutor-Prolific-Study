@@ -1,0 +1,17 @@
+{
+    "id": "aec2052chem_post_01a",
+    "stepAnswer": [
+        "Element"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "This is about task D).",
+    "stepBody": "##figure1.gif## ",
+    "answerType": "string",
+    "variabilization": {},
+    "choices": [
+        "Compound",
+        "Heterogeneous mixture",
+        "Homogeneous mixture",
+        "Element"
+    ]
+}

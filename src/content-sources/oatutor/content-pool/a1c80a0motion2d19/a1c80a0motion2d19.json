@@ -1,0 +1,10 @@
+{
+    "id": "a1c80a0motion2d19",
+    "title": "Rotating Fan",
+    "body": "A fan is rotating at a constant $$360.0$$ $$\\frac{rev}{min}$$.",
+    "variabilization": {},
+    "oer": "https://openstax.org/books/university-physics-volume-1/pages/4-problems",
+    "license": 0.0,
+    "lesson": "Physics_noChat",
+    "courseName": "Physics"
+}

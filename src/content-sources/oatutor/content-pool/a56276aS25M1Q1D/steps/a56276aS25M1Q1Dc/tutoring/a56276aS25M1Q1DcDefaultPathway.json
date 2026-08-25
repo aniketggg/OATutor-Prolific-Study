@@ -1,0 +1,87 @@
+[
+    {
+        "id": "a56276aS25M1Q1Dc-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Understanding the Sorting Requirement",
+        "text": "To sort the DataFrame so that the store with the highest-priced bananas is at the top, which column should you use for sorting?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Dc-h2",
+        "type": "hint",
+        "dependencies": [
+            "a56276aS25M1Q1Dc-h1"
+        ],
+        "title": "Identifying the Correct Column",
+        "text": "Consider which column in the DataFrame represents the price of the fruit. This is the column you need to sort by to get the highest-priced bananas at the top.",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Dc-h3",
+        "type": "scaffold",
+        "problemType": "MultipleChoice",
+        "answerType": "string",
+        "hintAnswer": [
+            "price"
+        ],
+        "dependencies": [],
+        "title": "Selecting the Column for Sorting",
+        "text": "Which column should be used to sort the DataFrame to have the highest-priced bananas at the top?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": "",
+        "choices": [
+            "inventory",
+            "item",
+            "price",
+            "[\"price\", \"inventory\"]",
+            "chain"
+        ]
+    },
+    {
+        "id": "a56276aS25M1Q1Dc-h4",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Sorting Order",
+        "text": "When sorting to have the highest-priced items at the top, should the sorting be in ascending or descending order?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Dc-h5",
+        "type": "hint",
+        "dependencies": [
+            "a56276aS25M1Q1Dc-h4"
+        ],
+        "title": "Choosing the Sorting Direction",
+        "text": "To have the highest-priced bananas at the top, you need to sort in descending order. What should the 'ascending' parameter be set to?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": ""
+    },
+    {
+        "id": "a56276aS25M1Q1Dc-h6",
+        "type": "scaffold",
+        "problemType": "MultipleChoice",
+        "answerType": "string",
+        "hintAnswer": [
+            "False"
+        ],
+        "dependencies": [],
+        "title": "Setting the Sorting Order",
+        "text": "What should the 'ascending' parameter be set to in order to have the highest-priced bananas at the top?",
+        "variabilization": {},
+        "oer": "openai",
+        "license": "",
+        "choices": [
+            "True",
+            "False"
+        ]
+    }
+]

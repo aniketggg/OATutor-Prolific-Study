@@ -1,0 +1,10 @@
+{
+    "id": "afb4b47motion2d18",
+    "title": "Fairground Ride",
+    "body": "A fairground ride spins its occupants inside a flying-saucer-shaped container. The horizontal circular path the riders follow has an $$8.00-m$$ radius.",
+    "variabilization": {},
+    "oer": "https://openstax.org/books/university-physics-volume-1/pages/4-problems",
+    "license": 0.0,
+    "lesson": "Physics_yesChat",
+    "courseName": "Physics"
+}

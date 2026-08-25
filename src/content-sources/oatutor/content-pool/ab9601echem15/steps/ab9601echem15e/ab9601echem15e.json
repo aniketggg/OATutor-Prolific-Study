@@ -1,0 +1,12 @@
+{
+    "id": "ab9601echem15e",
+    "stepAnswer": [
+        "$$2$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "How many radial nodes do 4*p orbitals have?",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$2$$"
+}

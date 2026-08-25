@@ -1,0 +1,17 @@
+{
+    "id": "a331da6precalc__post_02a",
+    "stepAnswer": [
+        "$$\\frac{5}{2}$$ or $$\\frac{3}{2}$$"
+    ],
+    "problemType": "MultipleChoice",
+    "stepTitle": "Find all values of $$x$$ such that $$\\left|\\frac{-3}{2-x}\\right|=6$$",
+    "stepBody": "",
+    "answerType": "string",
+    "variabilization": {},
+    "answerLatex": "$$\\frac{5}{2}$$ or $$\\frac{3}{2}$$",
+    "choices": [
+        "$$\\frac{5}{2}$$ or $$\\frac{3}{2}$$",
+        "$$\\frac{5}{2}$$",
+        "$$\\frac{3}{2}$$"
+    ]
+}
