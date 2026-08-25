@@ -45,6 +45,9 @@ export function getChatPenaltyMode(lesson) {
 
 /** UI badge under Hint / AI Tutor promo. */
 export function getHelpPenaltyBadgeText(mode, channel) {
+    // Disabled for the Prolific study — mastery is not shown to participants.
+    return null;
+
     const fallback = channel === "agent"
         ? DEFAULT_CHAT_PENALTY_MODE
         : DEFAULT_HINT_PENALTY_MODE;

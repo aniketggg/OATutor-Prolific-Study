@@ -39,7 +39,6 @@ import confetti from "canvas-confetti";
 
 import userIcon from "../assets/UserThumb.svg";
 import IconButton from "@material-ui/core/IconButton";
-import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
 import leftArrow from "../assets/chevron-left.svg";
 
@@ -1114,6 +1113,16 @@ class Platform extends React.Component {
     );
   }
 
+  getProlificCompletionCode() {
+    const metaLessonId = this.metaLesson?.id;
+    const lessonId = this.lesson?.metaId || this.lesson?.id;
+    const course = coursePlans.find((c) =>
+      (c.metaLessons || []).some((m) => m.id === metaLessonId) ||
+      (c.lessons || []).some((l) => l.metaId === lessonId || l.id === lessonId)
+    );
+    return course?.prolificCompletionCode || null;
+  }
+
   getMetaLessonMasteryScore(context, fallbackScore) {
     if (!this.isMetaLessonGradingContext()) {
       return fallbackScore;
@@ -1207,7 +1216,8 @@ class Platform extends React.Component {
 
     const lessonMasteryMap = this.getLessonMasteryMap(tocCourseName);
     const inLesson = Boolean(this.props.lessonID);
-    const showToc = inLesson && !this.isFromCanvas;
+    // Disabled for the Prolific study — was: inLesson && !this.isFromCanvas
+    const showToc = false;
     const progressData = this.getProgressBarData();
     const isCompletionMode = this.lesson?.enableCompletionMode;
     const barPercent = isCompletionMode
@@ -1317,7 +1327,7 @@ class Platform extends React.Component {
                       <img src={ToCButton} alt="Table of Contents" style={{ width: 24, height: 24 }} />
                     </IconButton>
                   )}
-                  <BrandLogoNav isPrivileged={this.isPrivileged} />
+                  <BrandLogoNav isPrivileged={this.isPrivileged} noLink />
                   {inLesson && mobileCourseTitle && (
                     <div
                       className={classes.mobileCourseTitle}
@@ -1328,9 +1338,6 @@ class Platform extends React.Component {
                     </div>
                   )}
                   <div style={{ display: "flex", alignItems: "center", marginLeft: "auto", flexShrink: 0 }}>
-                    <IconButton aria-label="about" title={`About ${SITE_NAME}`} onClick={this.togglePopup} size="small">
-                      <HelpOutlineOutlinedIcon htmlColor={"#344054"} style={{ fontSize: 28 }} />
-                    </IconButton>
                     {this.state.status === "learning" && (
                       <IconButton aria-label="report problem" onClick={this.toggleFeedback} title={"Report Problem"} size="small">
                         <FeedbackOutlinedIcon htmlColor={"#344054"} style={{ fontSize: 26 }} />
@@ -1345,9 +1352,11 @@ class Platform extends React.Component {
               ) : (
                 <Grid container spacing={0} role={"navigation"} alignItems={"center"}>
                   <Grid item xs={3} key={1}>
-                    <BrandLogoNav isPrivileged={this.isPrivileged} />
+                    <BrandLogoNav isPrivileged={this.isPrivileged} noLink />
                   </Grid>
                   <Grid item xs={5} key={2}></Grid>
+                  {/* Hidden for the Prolific study */}
+                  {false && (
                   <Grid xs={4} item key={3}>
                     <div
                       style={{
@@ -1362,6 +1371,7 @@ class Platform extends React.Component {
                       <div style={{ fontWeight: 600 }}>{this.studentNameDisplay}</div>
                     </div>
                   </Grid>
+                  )}
                 </Grid>
               )}
             </Toolbar>
@@ -1423,10 +1433,6 @@ class Platform extends React.Component {
                       border: "none",
                     }}
                   >
-                    <IconButton aria-label="about" title={`About ${SITE_NAME}`} onClick={this.togglePopup}>
-                      <HelpOutlineOutlinedIcon htmlColor={"#ffffff"} style={{ fontSize: 36, margin: -2 }} />
-                    </IconButton>
-
                     {this.state.status === "learning" && (
                       <IconButton aria-label="report problem" onClick={this.toggleFeedback} title={"Report Problem"}>
                         <FeedbackOutlinedIcon htmlColor={"#ffffff"} style={{ fontSize: 32 }} />
@@ -1468,6 +1474,8 @@ class Platform extends React.Component {
                       </IconButton>
                     )}
                     
+                    {/* Hidden for the Prolific study */}
+                    {false && (
                     <Grid item xs={12}>
                       <div style={CONTAINER_STYLE}>
                         <div
@@ -1705,6 +1713,7 @@ class Platform extends React.Component {
                         </div>
                       </div>
                     </Grid>
+                    )}
                   </Grid>
                 </Toolbar>
               </AppBar>
@@ -1774,9 +1783,60 @@ class Platform extends React.Component {
               ""
             )}
             {this.state.status === "graduated" ? (
-              <center>
-                <h2>Thank you for learning with {SITE_NAME}. You have mastered all the skills for this session!</h2>
-              </center>
+              (() => {
+                const completionCode = this.getProlificCompletionCode();
+                return (
+                  <div
+                    style={{
+                      minHeight: "60vh",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    {completionCode ? (
+                      <>
+                        <h2>Thank you for participating in our study.</h2>
+                        <p>Click the link below to complete your submission on Prolific:</p>
+                        <a
+                          href={`https://app.prolific.com/submissions/complete?cc=${completionCode}`}
+                          style={{
+                            fontSize: 20,
+                            fontWeight: 600,
+                            color: "#1565C0",
+                            textDecoration: "underline",
+                            padding: "16px 24px",
+                            wordBreak: "break-all",
+                            maxWidth: "90%",
+                          }}
+                        >
+                          {`https://app.prolific.com/submissions/complete?cc=${completionCode}`}
+                        </a>
+                        <p style={{ fontSize: 14, marginTop: 24, color: "#555" }}>
+                          If the link does not work, enter this code manually on Prolific:{" "}
+                          <code
+                            style={{
+                              fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+                              fontSize: 16,
+                              fontWeight: 700,
+                              userSelect: "all",
+                              padding: "4px 8px",
+                              backgroundColor: "#F0F4F5",
+                              borderRadius: 4,
+                            }}
+                          >
+                            {completionCode}
+                          </code>
+                        </p>
+                      </>
+                    ) : (
+                      <h2>Thank you for learning with {SITE_NAME}. You have mastered all the skills for this session!</h2>
+                    )}
+                  </div>
+                );
+              })()
             ) : (
               ""
             )}

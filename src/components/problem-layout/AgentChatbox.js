@@ -704,6 +704,7 @@ class AgentChatbox extends React.Component {
         const bubbleWrapClass = promoVisible
             ? classes.launcherBubbleWrapVisible
             : classes.launcherBubbleWrapHidden;
+        const agentBadgeText = getHelpPenaltyBadgeText(this._getChatPenaltyMode(), 'agent');
 
         if (isMobile && launcherPlacement === 'floating') {
             if (hintsOpen || this.props.drawerOpen || this.props.mathKeyboardOpen) {
@@ -752,9 +753,11 @@ class AgentChatbox extends React.Component {
                             <p className={classes.launcherDescription}>
                                 Ask me any question about this problem or topic.
                             </p>
-            <span className={classes.launcherPill}>
-                                {getHelpPenaltyBadgeText(this._getChatPenaltyMode(), 'agent')}
-                            </span>
+                            {agentBadgeText && (
+                                <span className={classes.launcherPill}>
+                                    {agentBadgeText}
+                                </span>
+                            )}
                         </div>
                     </div>
                     <div className={classes.launcherAvatarRow}>

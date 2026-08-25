@@ -1266,6 +1266,7 @@ class Problem extends React.Component {
             !isHintPortalOpen && (!hasHintBeenOpened || isHintHovering);
         const hintPromoVisible =
             hintPromoEligible && !hideHintPromoDueToOverlap;
+        const hintBadgeText = getHelpPenaltyBadgeText(this.hintPenaltyMode, "hint");
         const showHintCardChrome = isHintPortalOpen || hintPromoVisible;
 
         const hintThemePrimaryDark = "#3f7091";
@@ -1401,6 +1402,7 @@ class Problem extends React.Component {
                                     <p style={{ margin: "2px 0 0", fontSize: 12, lineHeight: 1.3, color: "#5c6b7a", whiteSpace: "nowrap" }}>
                                         Pre-written hints to help you with the problem.
                                     </p>
+                                    {hintBadgeText && (
                                     <span
                                         style={{
                                             display: "inline-block",
@@ -1415,8 +1417,9 @@ class Problem extends React.Component {
                                             lineHeight: 1.2,
                                         }}
                                     >
-                                        {getHelpPenaltyBadgeText(this.hintPenaltyMode, "hint")}
+                                        {hintBadgeText}
                                     </span>
+                                    )}
                                 </>
                             )}
                             <div
