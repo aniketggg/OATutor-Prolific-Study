@@ -86,6 +86,21 @@ class Firebase {
         this.siteVersion = siteVersion;
         this.mouseLogBuffer = [];
         this.ltiContext = ltiContext;
+        this.metaLessonId = null;
+        this.metaLessonArm = null;
+    }
+
+    /**
+     * Records which meta-lesson branch this session was assigned to, so every
+     * subsequent log row carries the study arm. Without it the assignment only
+     * exists in browser state and cannot be recovered from the data.
+     *
+     * @param metaLessonId id of the root (randomising) meta lesson
+     * @param metaLessonArm id of the chosen arm meta lesson
+     */
+    setMetaLessonAssignment(metaLessonId, metaLessonArm) {
+        this.metaLessonId = metaLessonId ?? null;
+        this.metaLessonArm = metaLessonArm ?? null;
     }
 
     getCollectionName(targetCollection) {
@@ -209,6 +224,8 @@ class Firebase {
             siteCommitHash: process.env.REACT_APP_COMMIT_HASH,
             oats_user_id: this.oats_user_id,
             treatment: this.treatment,
+            meta_lesson_id: this.metaLessonId ?? "n/a",
+            meta_lesson_arm: this.metaLessonArm ?? "n/a",
             time_stamp: Date.now(),
 
             ...(process.env.REACT_APP_STUDY_ID
@@ -404,7 +421,7 @@ class Firebase {
         return this.writeData("mouseMovement", data);
     }
 
-    startedProblem(problemID, courseName, lesson, lessonObjectives) {
+    startedProblem(problemID, courseName, lesson, lessonObjectives, lessonPlan = null) {
         if (!DO_LOG_DATA) return;
         console.debug(
             `Logging that the problem has been started (${problemID})`
@@ -414,6 +431,10 @@ class Firebase {
             Content: courseName,
             lesson,
             lessonObjectives,
+            // `lesson` above is the pool lesson name; these identify the lesson
+            // plan, which is what tells the two arms apart (same id, different metaId).
+            lessonPlanID: lessonPlan?.id ?? "n/a",
+            lessonPlanMetaID: lessonPlan?.metaId ?? "n/a",
         };
         return this.writeData(problemStartLogOutput, data);
     }

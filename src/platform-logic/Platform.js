@@ -528,6 +528,17 @@ class Platform extends React.Component {
     console.log("[selectMetaLesson TEST] resolvedLessonIds:", resolvedLessonIds);
     console.log("[selectMetaLesson TEST] finalSelectedLessonPath:", lessonsToShow);
 
+    // Which arm did the branch land in? The resolver returns leaf lesson ids, so
+    // find the direct child meta lesson that owns the first of them. Tagging the
+    // Firebase session with it is the only way the assignment survives into the data.
+    const armMetaLessonId =
+      (metaLesson.lessons || []).find((childId) => {
+        const child = findMetaLessonById(childId);
+        return Boolean(child) && (child.lessons || []).includes(lessonsToShow[0]);
+      }) || null;
+    this.context?.firebase?.setMetaLessonAssignment?.(metaLesson.id, armMetaLessonId);
+    console.log("[selectMetaLesson TEST] assignedArm:", armMetaLessonId);
+
     this.metaLessonLessons = lessonsToShow;
     this.currentMetaLessonIndex = 0;
 
@@ -684,7 +695,8 @@ class Platform extends React.Component {
           nextFixedProblem.id,
           nextFixedProblem.courseName,
           nextFixedProblem.lesson,
-          this.lesson.learningObjectives
+          this.lesson.learningObjectives,
+          this.lesson
         );
         return nextFixedProblem;
       }
@@ -762,7 +774,8 @@ class Platform extends React.Component {
         chosenProblem.id,
         chosenProblem.courseName,
         chosenProblem.lesson,
-        this.lesson.learningObjectives
+        this.lesson.learningObjectives,
+        this.lesson
       );
       return chosenProblem;
     }
