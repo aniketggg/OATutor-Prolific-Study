@@ -1,0 +1,69 @@
+{
+  "_comment": [
+    "Extra accepted answers for exact-match steps, applied to the generated",
+    "content pool by scripts/applyAnswerVariants.js.",
+    "",
+    "Why this exists: checkAnswer.js:176-185 compares answerType 'string'",
+    "literally -- parsed = attempt, then _equality, with no normalisation. But",
+    "_equality takes an array, so the platform already accepts a list of",
+    "correct answers. Only the tooling discards it: create_content.py:265",
+    "hardcodes stepAnswer: [answer]. So we supply the list here.",
+    "",
+    "Without this every Data 100 problem is effectively unsolvable: all three",
+    "regex answers are stored with literal surrounding backticks, which no",
+    "participant would type.",
+    "",
+    "Only list patterns that are genuinely correct for the question. The",
+    "script adds backtick- and r\"\"-wrapped forms of each entry automatically."
+  ],
+
+  "problems": {
+    "row2": {
+      "note": "Strip leading zeroes off a room number and capture the rest. Body guarantees no room number is all zeroes.",
+      "accept": [
+        "0*([\\dA-z]+)",
+        "0*(\\w+)",
+        "0*([A-Za-z0-9]+)",
+        "0*([0-9A-Za-z]+)",
+        "0*([a-zA-Z0-9]+)",
+        "0*(.+)",
+        "^0*([\\dA-z]+)",
+        "^0*(\\w+)"
+      ]
+    },
+
+    "row4": {
+      "note": "Capture the street name following the street number in '123 San Pablo Ave, 94702'.",
+      "accept": [
+        "\\d+\\s([A-Za-z\\s]+)",
+        "\\d+\\s+([A-Za-z\\s]+)",
+        "\\d+ ([A-Za-z\\s]+)",
+        "\\d+\\s([A-Za-z ]+)",
+        "\\d+\\s+([A-Za-z ]+)",
+        "\\d+\\s([a-zA-Z\\s]+)",
+        "[0-9]+\\s([A-Za-z\\s]+)",
+        "[0-9]+\\s+([A-Za-z\\s]+)"
+      ]
+    },
+
+    "row5": {
+      "note": "Course IDs of exactly three digits.",
+      "accept": [
+        "\\d{3}",
+        "[0-9]{3}",
+        "\\d\\d\\d",
+        "[0-9][0-9][0-9]"
+      ]
+    },
+
+    "row1": {
+      "note": "Matches of \\d+ against 'It has been 71 years since the year 1954.' -- an extraction result, not a pattern. commaSpacing expands the separators.",
+      "commaSpacing": true,
+      "accept": [
+        "71, 1954, NA",
+        "71, 1954, na",
+        "71, 1954, N/A"
+      ]
+    }
+  }
+}
