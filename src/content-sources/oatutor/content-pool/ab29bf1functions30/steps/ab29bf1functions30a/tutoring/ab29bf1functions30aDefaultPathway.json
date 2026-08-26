@@ -3,8 +3,20 @@
         "id": "ab29bf1functions30a-h1",
         "type": "hint",
         "dependencies": [],
-        "title": "Plugging it in",
-        "text": "Since $$-2$$ is a value, simply plug in $$f(-2)$$ $$=$$ $$8-3(-2)$$",
+        "title": "Setting up the equation",
+        "text": "This question is asking, what $$x$$ value would satisfy the equation $$8$$ - $$3x$$ $$=$$ -1?",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "ab29bf1functions30a-h2",
+        "type": "hint",
+        "dependencies": [
+            "ab29bf1functions30a-h1"
+        ],
+        "title": "Solving the equation",
+        "text": "Add $$3x$$ to both sides to get $$8$$ $$=$$ $$3x-1$$. Then you can add $$1$$ to both sides to get $$9$$ $$=$$ $$3x$$.",
         "variabilization": {},
         "oer": "",
         "license": ""

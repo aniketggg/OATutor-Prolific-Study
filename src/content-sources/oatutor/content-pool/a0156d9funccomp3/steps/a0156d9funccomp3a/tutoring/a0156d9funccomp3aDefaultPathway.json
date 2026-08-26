@@ -1,0 +1,162 @@
+[
+    {
+        "id": "a0156d9funccomp3a-h1",
+        "type": "hint",
+        "dependencies": [],
+        "title": "Substituting $$x$$",
+        "text": "For all instances of $$x$$, replace with 2*x-1.",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": ""
+    },
+    {
+        "id": "a0156d9funccomp3a-h2",
+        "type": "hint",
+        "dependencies": [
+            "a0156d9funccomp3a-h1"
+        ],
+        "title": "Substituting $$x$$ in 3*x**2",
+        "text": "Replacing $$x$$ within 3*x**2 results in 3*(2*x-1)**2.",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": ""
+    },
+    {
+        "id": "a0156d9funccomp3a-h3",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "4*x**2-4*x+1"
+        ],
+        "dependencies": [
+            "a0156d9funccomp3a-h2"
+        ],
+        "title": "Substituting $$x$$ in 3*x**2",
+        "text": "What is (2*x-1)**2?",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": "",
+        "subHints": [
+            {
+                "id": "a0156d9funccomp3a-h3-s1",
+                "type": "hint",
+                "dependencies": [],
+                "title": "Multiplying Binomials",
+                "text": "For a,b, (a*x+b)**2=(a**2)*x**2+2*a*b*x+b**2",
+                "variabilization": {},
+                "oer": "https://OATutor.io",
+                "license": ""
+            }
+        ]
+    },
+    {
+        "id": "a0156d9funccomp3a-h4",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "12*x**2-12*x+3"
+        ],
+        "dependencies": [
+            "a0156d9funccomp3a-h3"
+        ],
+        "title": "Substituting $$x$$ in 3*x**2",
+        "text": "What is 3*(4*x**2-4*x+1)?",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": "",
+        "subHints": [
+            {
+                "id": "a0156d9funccomp3a-h4-s1",
+                "type": "hint",
+                "dependencies": [],
+                "title": "Distributing Terms",
+                "text": "For a,b,c, $$a \\left(b+c\\right)=a b+a c$$.",
+                "variabilization": {},
+                "oer": "https://OATutor.io",
+                "license": ""
+            }
+        ]
+    },
+    {
+        "id": "a0156d9funccomp3a-h5",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "2*x-1"
+        ],
+        "dependencies": [
+            "a0156d9funccomp3a-h4"
+        ],
+        "title": "Substituting $$x$$ in $$x$$",
+        "text": "What is $$x$$ replaced with 2*x-1?",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": ""
+    },
+    {
+        "id": "a0156d9funccomp3a-h6",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "$$1$$"
+        ],
+        "dependencies": [
+            "a0156d9funccomp3a-h5"
+        ],
+        "title": "Substituting $$x$$ in $$1$$",
+        "text": "What is $$1$$ replaced with 2*x-1?",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": ""
+    },
+    {
+        "id": "a0156d9funccomp3a-h7",
+        "type": "hint",
+        "dependencies": [
+            "a0156d9funccomp3a-h6"
+        ],
+        "title": "Adding the Terms",
+        "text": "Add up 12*x**2-12*x+3, 2*x-1, and $$1$$ by combining like terms to get the final result.",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": ""
+    },
+    {
+        "id": "a0156d9funccomp3a-h8",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "-10*x"
+        ],
+        "dependencies": [
+            "a0156d9funccomp3a-h7"
+        ],
+        "title": "Adding the Terms",
+        "text": "What is -12*x+2*x?",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": ""
+    },
+    {
+        "id": "a0156d9funccomp3a-h9",
+        "type": "scaffold",
+        "problemType": "TextBox",
+        "answerType": "arithmetic",
+        "hintAnswer": [
+            "$$3$$"
+        ],
+        "dependencies": [
+            "a0156d9funccomp3a-h7"
+        ],
+        "title": "Adding the Terms",
+        "text": "What is 3-1+1?",
+        "variabilization": {},
+        "oer": "https://OATutor.io",
+        "license": ""
+    }
+]

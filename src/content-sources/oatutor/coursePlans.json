@@ -5,7 +5,7 @@
         "courseLicense": "CC BY 4.0",
         "lessons": [
             {
-                "id": "6xE2t3qa-hKxM-gkM65yz8YN",
+                "id": "6i1M5lQx-lJQi-gZYVyHehIe",
                 "name": "Lesson Physics_yesChat",
                 "topics": "",
                 "allowRecycle": false,
@@ -24,7 +24,7 @@
                 "chat_display_mode": "Window"
             },
             {
-                "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
+                "id": "3tYBrifV-jppo-i65YPLu3G6",
                 "name": "Lesson Physics_noChat",
                 "topics": "",
                 "allowRecycle": false,
@@ -36,14 +36,15 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a1c80a0motion2d9",
                     "a1c80a0motion2d19"
-                ]
+                ],
+                "chat_display_mode": "Off"
             },
             {
-                "id": "6xE2t3qa-hKxM-gkM65yz8YN",
+                "id": "6i1M5lQx-lJQi-gZYVyHehIe",
                 "name": "Lesson Physics_yesChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
@@ -65,7 +66,7 @@
                 "chat_prompt": "PROMPT-physics-7a-v1a.txt"
             },
             {
-                "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
+                "id": "3tYBrifV-jppo-i65YPLu3G6",
                 "name": "Lesson Physics_noChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
@@ -77,16 +78,17 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a1c80a0motion2d9",
                     "a1c80a0motion2d19"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Physics-A-noChat",
                 "displayName": "Part 2"
             },
             {
-                "id": "6xE2t3qa-hKxM-gkM65yz8YN",
+                "id": "6i1M5lQx-lJQi-gZYVyHehIe",
                 "name": "Lesson Physics_yesChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
@@ -108,7 +110,7 @@
                 "chat_prompt": "PROMPTv2.txt"
             },
             {
-                "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
+                "id": "3tYBrifV-jppo-i65YPLu3G6",
                 "name": "Lesson Physics_noChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
@@ -120,11 +122,12 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a1c80a0motion2d9",
                     "a1c80a0motion2d19"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Physics-B-noChat",
                 "displayName": "Part 2"
             }
@@ -172,13 +175,13 @@
         "courseLicense": "CC BY 4.1",
         "lessons": [
             {
-                "id": "3oNBQ1NS-Kevo-Y7tmofVLQX",
+                "id": "6P9VvrLo-vp41-vhVxNonOxt",
                 "name": "Lesson Math1_yesChat",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
+                    "quadratic_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -186,37 +189,38 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab2f376functions8",
-                    "ab2f376functions17"
+                    "ab2f376quadratic16"
                 ],
                 "chat_display_mode": "Window"
             },
             {
-                "id": "7lAiiS8t-4IlN-MM5lfLjULW",
+                "id": "1fipQkal-zr8g-CP1xQby4l2",
                 "name": "Lesson Math1_noChat",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
+                    "quadratic_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "ab29bf1functions30",
-                    "ab29bf1functions18"
-                ]
+                    "ab29bf1quadratic26"
+                ],
+                "chat_display_mode": "Off"
             },
             {
-                "id": "3oNBQ1NS-Kevo-Y7tmofVLQX",
+                "id": "6P9VvrLo-vp41-vhVxNonOxt",
                 "name": "Lesson Math1_yesChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
+                    "quadratic_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -224,7 +228,7 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab2f376functions8",
-                    "ab2f376functions17"
+                    "ab2f376quadratic16"
                 ],
                 "chat_display_mode": "Window",
                 "metaId": "Math1-A-yesChat",
@@ -232,34 +236,35 @@
                 "chat_prompt": "PROMPT-math-1b-v1b.txt"
             },
             {
-                "id": "7lAiiS8t-4IlN-MM5lfLjULW",
+                "id": "1fipQkal-zr8g-CP1xQby4l2",
                 "name": "Lesson Math1_noChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
+                    "quadratic_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "ab29bf1functions30",
-                    "ab29bf1functions18"
+                    "ab29bf1quadratic26"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Math1-A-noChat",
                 "displayName": "Part 2"
             },
             {
-                "id": "3oNBQ1NS-Kevo-Y7tmofVLQX",
+                "id": "6P9VvrLo-vp41-vhVxNonOxt",
                 "name": "Lesson Math1_yesChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
+                    "quadratic_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -267,7 +272,7 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab2f376functions8",
-                    "ab2f376functions17"
+                    "ab2f376quadratic16"
                 ],
                 "chat_display_mode": "Window",
                 "metaId": "Math1-B-yesChat",
@@ -275,23 +280,24 @@
                 "chat_prompt": "PROMPTv2.txt"
             },
             {
-                "id": "7lAiiS8t-4IlN-MM5lfLjULW",
+                "id": "1fipQkal-zr8g-CP1xQby4l2",
                 "name": "Lesson Math1_noChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": 0.85,
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85
+                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
+                    "quadratic_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "ab29bf1functions30",
-                    "ab29bf1functions18"
+                    "ab29bf1quadratic26"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Math1-B-noChat",
                 "displayName": "Part 2"
             }
@@ -339,58 +345,59 @@
         "courseLicense": "CC BY 4.2",
         "lessons": [
             {
-                "id": "0LfyfvJV-tAxm-j8is0pvoAj",
+                "id": "1Iy38dgl-UJZx-0HuZ1lz5H9",
                 "name": "Lesson Math2_yesChat",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
                     "algebra_with_exponents_and_logarithms": 0.85,
-                    "inequalities_and_absolute_values": 0.85
+                    "composition_of_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "a27f94calginequalabs11",
+                    "a27f94cfunccomp4",
                     "a27f94cexp9"
                 ],
                 "chat_display_mode": "Window"
             },
             {
-                "id": "1L7hneRE-fxbQ-fMLHQiMddm",
+                "id": "42WzTNuS-Kgjl-TiVrDJIt0Y",
                 "name": "Lesson Math2_noChat",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
                     "algebra_with_exponents_and_logarithms": 0.85,
-                    "inequalities_and_absolute_values": 0.85
+                    "composition_of_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a0156d9alginequalabs10",
+                    "a0156d9funccomp3",
                     "a0156d9exp4"
-                ]
+                ],
+                "chat_display_mode": "Off"
             },
             {
-                "id": "0LfyfvJV-tAxm-j8is0pvoAj",
+                "id": "1Iy38dgl-UJZx-0HuZ1lz5H9",
                 "name": "Lesson Math2_yesChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
                     "algebra_with_exponents_and_logarithms": 0.85,
-                    "inequalities_and_absolute_values": 0.85
+                    "composition_of_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "a27f94calginequalabs11",
+                    "a27f94cfunccomp4",
                     "a27f94cexp9"
                 ],
                 "chat_display_mode": "Window",
@@ -399,41 +406,42 @@
                 "chat_prompt": "PROMPT-precalc-v1a.txt"
             },
             {
-                "id": "1L7hneRE-fxbQ-fMLHQiMddm",
+                "id": "42WzTNuS-Kgjl-TiVrDJIt0Y",
                 "name": "Lesson Math2_noChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
                     "algebra_with_exponents_and_logarithms": 0.85,
-                    "inequalities_and_absolute_values": 0.85
+                    "composition_of_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a0156d9alginequalabs10",
+                    "a0156d9funccomp3",
                     "a0156d9exp4"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Math2-A-noChat",
                 "displayName": "Part 2"
             },
             {
-                "id": "0LfyfvJV-tAxm-j8is0pvoAj",
+                "id": "1Iy38dgl-UJZx-0HuZ1lz5H9",
                 "name": "Lesson Math2_yesChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
                     "algebra_with_exponents_and_logarithms": 0.85,
-                    "inequalities_and_absolute_values": 0.85
+                    "composition_of_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "a27f94calginequalabs11",
+                    "a27f94cfunccomp4",
                     "a27f94cexp9"
                 ],
                 "chat_display_mode": "Window",
@@ -442,23 +450,24 @@
                 "chat_prompt": "PROMPTv2.txt"
             },
             {
-                "id": "1L7hneRE-fxbQ-fMLHQiMddm",
+                "id": "42WzTNuS-Kgjl-TiVrDJIt0Y",
                 "name": "Lesson Math2_noChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
                     "algebra_with_exponents_and_logarithms": 0.85,
-                    "inequalities_and_absolute_values": 0.85
+                    "composition_of_functions": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a0156d9alginequalabs10",
+                    "a0156d9funccomp3",
                     "a0156d9exp4"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Math2-B-noChat",
                 "displayName": "Part 2"
             }
@@ -506,12 +515,11 @@
         "courseLicense": "CC BY 4.3",
         "lessons": [
             {
-                "id": "2BYPiWsi-155k-tIsCNk0uZc",
+                "id": "0JtIBAwZ-EGs6-n6lZF66VpC",
                 "name": "Lesson Data_yesChat",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -519,37 +527,36 @@
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "aef2469F25M1Q1",
+                    "aef2469row5",
                     "aef2469row2"
                 ],
                 "chat_display_mode": "Window"
             },
             {
-                "id": "7437cwIS-K8Eu-0w1iy6DfqF",
+                "id": "1hV5gYLO-kWos-a3yA1wjnVy",
                 "name": "Lesson Data_noChat",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a56276aS25M1Q1D",
-                    "a56276arow4"
-                ]
+                    "a56276arow4",
+                    "a56276arow1"
+                ],
+                "chat_display_mode": "Off"
             },
             {
-                "id": "2BYPiWsi-155k-tIsCNk0uZc",
+                "id": "0JtIBAwZ-EGs6-n6lZF66VpC",
                 "name": "Lesson Data_yesChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -557,7 +564,7 @@
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "aef2469F25M1Q1",
+                    "aef2469row5",
                     "aef2469row2"
                 ],
                 "chat_display_mode": "Window",
@@ -566,33 +573,32 @@
                 "chat_prompt": "PROMPT-data-100-v1a.txt"
             },
             {
-                "id": "7437cwIS-K8Eu-0w1iy6DfqF",
+                "id": "1hV5gYLO-kWos-a3yA1wjnVy",
                 "name": "Lesson Data_noChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a56276aS25M1Q1D",
-                    "a56276arow4"
+                    "a56276arow4",
+                    "a56276arow1"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Data-A-noChat",
                 "displayName": "Part 2"
             },
             {
-                "id": "2BYPiWsi-155k-tIsCNk0uZc",
+                "id": "0JtIBAwZ-EGs6-n6lZF66VpC",
                 "name": "Lesson Data_yesChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -600,7 +606,7 @@
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "aef2469F25M1Q1",
+                    "aef2469row5",
                     "aef2469row2"
                 ],
                 "chat_display_mode": "Window",
@@ -609,23 +615,23 @@
                 "chat_prompt": "PROMPTv2.txt"
             },
             {
-                "id": "7437cwIS-K8Eu-0w1iy6DfqF",
+                "id": "1hV5gYLO-kWos-a3yA1wjnVy",
                 "name": "Lesson Data_noChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a56276aS25M1Q1D",
-                    "a56276arow4"
+                    "a56276arow4",
+                    "a56276arow1"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Data-B-noChat",
                 "displayName": "Part 2"
             }
@@ -673,7 +679,7 @@
         "courseLicense": "CC BY 4.4",
         "lessons": [
             {
-                "id": "07ZM5dz3-I7Dt-kp8nDxPDt1",
+                "id": "0sHIjsjM-j7NS-Nsl4pOGtLS",
                 "name": "Lesson Chem_yesChat",
                 "topics": "",
                 "allowRecycle": false,
@@ -686,13 +692,13 @@
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "ab9601eacidbase6",
-                    "ab9601echem15"
+                    "ab9601echem15",
+                    "ab9601eacidbase11"
                 ],
                 "chat_display_mode": "Window"
             },
             {
-                "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
+                "id": "4XWHwxCL-EjqG-SRZxahwn3R",
                 "name": "Lesson Chem_noChat",
                 "topics": "",
                 "allowRecycle": false,
@@ -704,14 +710,15 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a361716acidbase1",
-                    "a361716chem10"
-                ]
+                    "a361716chem12",
+                    "a361716acidbase9"
+                ],
+                "chat_display_mode": "Off"
             },
             {
-                "id": "07ZM5dz3-I7Dt-kp8nDxPDt1",
+                "id": "0sHIjsjM-j7NS-Nsl4pOGtLS",
                 "name": "Lesson Chem_yesChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
@@ -724,8 +731,8 @@
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "ab9601eacidbase6",
-                    "ab9601echem15"
+                    "ab9601echem15",
+                    "ab9601eacidbase11"
                 ],
                 "chat_display_mode": "Window",
                 "metaId": "Chem-A-yesChat",
@@ -733,7 +740,7 @@
                 "chat_prompt": "PROMPT-chem-1a-v1a.txt"
             },
             {
-                "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
+                "id": "4XWHwxCL-EjqG-SRZxahwn3R",
                 "name": "Lesson Chem_noChat (Arm A)",
                 "topics": "",
                 "allowRecycle": false,
@@ -745,16 +752,17 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a361716acidbase1",
-                    "a361716chem10"
+                    "a361716chem12",
+                    "a361716acidbase9"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Chem-A-noChat",
                 "displayName": "Part 2"
             },
             {
-                "id": "07ZM5dz3-I7Dt-kp8nDxPDt1",
+                "id": "0sHIjsjM-j7NS-Nsl4pOGtLS",
                 "name": "Lesson Chem_yesChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
@@ -767,8 +775,8 @@
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "ab9601eacidbase6",
-                    "ab9601echem15"
+                    "ab9601echem15",
+                    "ab9601eacidbase11"
                 ],
                 "chat_display_mode": "Window",
                 "metaId": "Chem-B-yesChat",
@@ -776,7 +784,7 @@
                 "chat_prompt": "PROMPTv2.txt"
             },
             {
-                "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
+                "id": "4XWHwxCL-EjqG-SRZxahwn3R",
                 "name": "Lesson Chem_noChat (Arm B)",
                 "topics": "",
                 "allowRecycle": false,
@@ -788,11 +796,12 @@
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": true,
-                "chat_display_mode": "Off",
+                "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "a361716acidbase1",
-                    "a361716chem10"
+                    "a361716chem12",
+                    "a361716acidbase9"
                 ],
+                "chat_display_mode": "Off",
                 "metaId": "Chem-B-noChat",
                 "displayName": "Part 2"
             }

@@ -3,8 +3,8 @@
         "id": "ab2f376functions8a-h1",
         "type": "hint",
         "dependencies": [],
-        "title": "Input value is a number",
-        "text": "Since the input value is a number, we can plug in $$2$$ to every instance of $$x$$ and use algebra to simplify.",
+        "title": "Use the answers to your previous parts-- you already have $$f{\\left(a+h\\right)}$$ and f(a)!",
+        "text": "",
         "variabilization": {},
         "oer": "",
         "license": ""
@@ -15,13 +15,25 @@
         "problemType": "TextBox",
         "answerType": "arithmetic",
         "hintAnswer": [
-            "$$6$$"
+            "2ah+h**2 + $$3h$$"
         ],
         "dependencies": [
             "ab2f376functions8a-h1"
         ],
-        "title": "Plugging it in",
-        "text": "What is 2**(2) + 3(2) - $$4$$",
+        "title": "Simplifying the numerator",
+        "text": "What is $$f{\\left(a+h\\right)}-f{\\left(a\\right)}$$?",
+        "variabilization": {},
+        "oer": "",
+        "license": ""
+    },
+    {
+        "id": "ab2f376functions8a-h3",
+        "type": "hint",
+        "dependencies": [
+            "ab2f376functions8a-h2"
+        ],
+        "title": "Final step",
+        "text": "Now divide all terms by $$h$$.",
         "variabilization": {},
         "oer": "",
         "license": ""

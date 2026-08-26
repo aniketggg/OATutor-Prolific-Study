@@ -11,13 +11,13 @@
         "probSlip": 0.1,
         "probGuess": 0.1
     },
-    "evaluating_a_function_given_in_tabular_form_in_openstax_precalc": {
+    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": {
         "probMastery": 0.1,
         "probTransit": 0.1,
         "probSlip": 0.1,
         "probGuess": 0.1
     },
-    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": {
+    "quadratic_functions": {
         "probMastery": 0.1,
         "probTransit": 0.1,
         "probSlip": 0.1,
@@ -29,13 +29,7 @@
         "probSlip": 0.1,
         "probGuess": 0.1
     },
-    "inequalities_and_absolute_values": {
-        "probMastery": 0.1,
-        "probTransit": 0.1,
-        "probSlip": 0.1,
-        "probGuess": 0.1
-    },
-    "pandas": {
+    "composition_of_functions": {
         "probMastery": 0.1,
         "probTransit": 0.1,
         "probSlip": 0.1,

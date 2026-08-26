@@ -1,0 +1,12 @@
+{
+    "id": "ab29bf1quadratic26a",
+    "stepAnswer": [
+        "$$7.0$$"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "f(x)=-x**2+4x+3",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {},
+    "answerLatex": "$$7.0$$"
+}

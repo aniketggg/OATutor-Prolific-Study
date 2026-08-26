@@ -1,12 +1,12 @@
 {
     "id": "ab29bf1functions30a",
     "stepAnswer": [
-        "$$14.0$$"
+        "$$3.0$$"
     ],
     "problemType": "TextBox",
-    "stepTitle": "Evaluate $$f(-2)$$",
+    "stepTitle": "Solve for f(x) $$=$$ $$-1$$",
     "stepBody": "",
     "answerType": "arithmetic",
     "variabilization": {},
-    "answerLatex": "$$14.0$$"
+    "answerLatex": "$$3.0$$"
 }

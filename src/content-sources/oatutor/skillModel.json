@@ -1,194 +1,5 @@
 {
-    "a1fe306chem__pre_02a": [
-        "chem_kc_2_pre"
-    ],
-    "a1fe306chem__pre_03a": [
-        "chem_kc_3_pre"
-    ],
-    "a1fe306chem_pre_01a": [
-        "chem_kc_1_pre"
-    ],
-    "aec2052chem__post_02a": [
-        "chem_kc_2_post"
-    ],
-    "aec2052chem__post_03a": [
-        "chem_kc_3_post"
-    ],
-    "aec2052chem_post_01a": [
-        "chem_kc_1_post"
-    ],
-    "a2e8b89precalc__pre_02a": [
-        "precalc_kc_2_pre"
-    ],
-    "a2e8b89precalc__pre_03a": [
-        "precalc_kc_3_pre"
-    ],
-    "a2e8b89precalc_pre_01a": [
-        "precalc_kc_1_pre"
-    ],
-    "a331da6precalc__post_02a": [
-        "precalc_kc_2_post"
-    ],
-    "a331da6precalc__post_03a": [
-        "precalc_kc_3_post"
-    ],
-    "a331da6precalc_post_01a": [
-        "precalc_kc_1_post"
-    ],
-    "afb90d0control_chem_aq_01a": [
-        "control_chem_aq"
-    ],
-    "afb90d0control_chem_aq_02a": [
-        "control_chem_aq"
-    ],
-    "afb90d0control_chem_aq_03a": [
-        "control_chem_aq"
-    ],
-    "afb90d0control_chem_aq_04a": [
-        "control_chem_aq"
-    ],
-    "a9335a9accurate_chem_aq_01a": [
-        "accurate_chem_aq"
-    ],
-    "a9335a9accurate_chem_aq_02a": [
-        "accurate_chem_aq"
-    ],
-    "a9335a9accurate_chem_aq_03a": [
-        "accurate_chem_aq"
-    ],
-    "a9335a9accurate_chem_aq_04a": [
-        "accurate_chem_aq"
-    ],
-    "a07f039inaccurate1_chem_aq_01a": [
-        "inaccurate1_chem_aq"
-    ],
-    "a07f039inaccurate1_chem_aq_02a": [
-        "inaccurate1_chem_aq"
-    ],
-    "a07f039inaccurate1_chem_aq_03a": [
-        "inaccurate1_chem_aq"
-    ],
-    "a07f039inaccurate1_chem_aq_04a": [
-        "inaccurate1_chem_aq"
-    ],
-    "aad24a3inaccurate2_chem_aq_01a": [
-        "inaccurate2_chem_aq"
-    ],
-    "aad24a3inaccurate2_chem_aq_02a": [
-        "inaccurate2_chem_aq"
-    ],
-    "aad24a3inaccurate2_chem_aq_03a": [
-        "inaccurate2_chem_aq"
-    ],
-    "aad24a3inaccurate2_chem_aq_04a": [
-        "inaccurate2_chem_aq"
-    ],
-    "aa6b1dainaccurate3_chem_aq_01a": [
-        "inaccurate3_chem_aq"
-    ],
-    "aa6b1dainaccurate3_chem_aq_02a": [
-        "inaccurate3_chem_aq"
-    ],
-    "aa6b1dainaccurate3_chem_aq_03a": [
-        "inaccurate3_chem_aq"
-    ],
-    "aa6b1dainaccurate3_chem_aq_04a": [
-        "inaccurate3_chem_aq"
-    ],
-    "ab5d21dinaccurate4_chem_aq_01a": [
-        "inaccurate4_chem_aq"
-    ],
-    "ab5d21dinaccurate4_chem_aq_02a": [
-        "inaccurate4_chem_aq"
-    ],
-    "ab5d21dinaccurate4_chem_aq_03a": [
-        "inaccurate4_chem_aq"
-    ],
-    "ab5d21dinaccurate4_chem_aq_04a": [
-        "inaccurate4_chem_aq"
-    ],
-    "ac5a5cdcontrol_precalc_aq_01a": [
-        "control_precalc_aq"
-    ],
-    "ac5a5cdcontrol_precalc_aq_02a": [
-        "control_precalc_aq"
-    ],
-    "ac5a5cdcontrol_precalc_aq_03a": [
-        "control_precalc_aq"
-    ],
-    "ac5a5cdcontrol_precalc_aq_04a": [
-        "control_precalc_aq"
-    ],
-    "a2759dbaccurate_precalc_aq_01a": [
-        "accurate_precalc_aq"
-    ],
-    "a2759dbaccurate_precalc_aq_02a": [
-        "accurate_precalc_aq"
-    ],
-    "a2759dbaccurate_precalc_aq_03a": [
-        "accurate_precalc_aq"
-    ],
-    "a2759dbaccurate_precalc_aq_04a": [
-        "accurate_precalc_aq"
-    ],
-    "a9aae26inaccurate1_precalc_aq_01a": [
-        "inaccurate1_precalc_aq"
-    ],
-    "a9aae26inaccurate1_precalc_aq_02a": [
-        "inaccurate1_precalc_aq"
-    ],
-    "a9aae26inaccurate1_precalc_aq_03a": [
-        "inaccurate1_precalc_aq"
-    ],
-    "a9aae26inaccurate1_precalc_aq_04a": [
-        "inaccurate1_precalc_aq"
-    ],
-    "abe4ff1inaccurate2_precalc_aq_01a": [
-        "inaccurate2_precalc_aq"
-    ],
-    "abe4ff1inaccurate2_precalc_aq_02a": [
-        "inaccurate2_precalc_aq"
-    ],
-    "abe4ff1inaccurate2_precalc_aq_03a": [
-        "inaccurate2_precalc_aq"
-    ],
-    "abe4ff1inaccurate2_precalc_aq_04a": [
-        "inaccurate2_precalc_aq"
-    ],
-    "ab28d4binaccurate3_precalc_aq_01a": [
-        "inaccurate3_precalc_aq"
-    ],
-    "ab28d4binaccurate3_precalc_aq_02a": [
-        "inaccurate3_precalc_aq"
-    ],
-    "ab28d4binaccurate3_precalc_aq_03a": [
-        "inaccurate3_precalc_aq"
-    ],
-    "ab28d4binaccurate3_precalc_aq_04a": [
-        "inaccurate3_precalc_aq"
-    ],
-    "ae6089einaccurate4_precalc_aq_01a": [
-        "inaccurate4_precalc_aq"
-    ],
-    "ae6089einaccurate4_precalc_aq_02a": [
-        "inaccurate4_precalc_aq"
-    ],
-    "ae6089einaccurate4_precalc_aq_03a": [
-        "inaccurate4_precalc_aq"
-    ],
-    "ae6089einaccurate4_precalc_aq_04a": [
-        "inaccurate4_precalc_aq"
-    ],
     "afb4b47motion2d10a": [
-        "projectile_motion"
-    ],
-    "afb4b47motion2d10b": [
-        "projectile_motion"
-    ],
-    "afb4b47motion2d10c": [
-        "projectile_motion"
-    ],
-    "afb4b47motion2d10d": [
         "projectile_motion"
     ],
     "afb4b47motion2d18a": [
@@ -200,130 +11,52 @@
     "a1c80a0motion2d9a": [
         "projectile_motion"
     ],
-    "a1c80a0motion2d9b": [
-        "projectile_motion"
-    ],
-    "ab2f376functions17a": [
-        "evaluating_a_function_given_in_tabular_form_in_openstax_precalc"
-    ],
-    "ab2f376functions17b": [
-        "evaluating_a_function_given_in_tabular_form_in_openstax_precalc"
-    ],
     "ab2f376functions8a": [
         "evaluation_of_functions_in_algebra_forms_in_openstax_precalc"
     ],
-    "ab2f376functions8b": [
-        "evaluation_of_functions_in_algebra_forms_in_openstax_precalc"
-    ],
-    "ab2f376functions8c": [
-        "evaluation_of_functions_in_algebra_forms_in_openstax_precalc"
-    ],
-    "ab2f376functions8d": [
-        "evaluation_of_functions_in_algebra_forms_in_openstax_precalc"
-    ],
-    "ab29bf1functions18a": [
-        "evaluating_a_function_given_in_tabular_form_in_openstax_precalc"
-    ],
-    "ab29bf1functions18b": [
-        "evaluating_a_function_given_in_tabular_form_in_openstax_precalc"
+    "ab2f376quadratic16a": [
+        "quadratic_functions"
     ],
     "ab29bf1functions30a": [
         "evaluation_of_functions_in_algebra_forms_in_openstax_precalc"
     ],
-    "ab29bf1functions30b": [
-        "evaluation_of_functions_in_algebra_forms_in_openstax_precalc"
-    ],
-    "a27f94calginequalabs11a": [
-        "inequalities_and_absolute_values"
-    ],
-    "a27f94calginequalabs11b": [
-        "inequalities_and_absolute_values"
+    "ab29bf1quadratic26a": [
+        "quadratic_functions"
     ],
     "a27f94cexp9a": [
         "algebra_with_exponents_and_logarithms"
     ],
-    "a0156d9alginequalabs10a": [
-        "inequalities_and_absolute_values"
-    ],
-    "a0156d9alginequalabs10b": [
-        "inequalities_and_absolute_values"
+    "a27f94cfunccomp4a": [
+        "composition_of_functions"
     ],
     "a0156d9exp4a": [
         "algebra_with_exponents_and_logarithms"
     ],
-    "aef2469F25M1Q1a": [
-        "pandas"
-    ],
-    "aef2469F25M1Q1b": [
-        "pandas"
-    ],
-    "aef2469F25M1Q1c": [
-        "pandas"
-    ],
-    "aef2469F25M1Q1d": [
-        "pandas"
-    ],
-    "aef2469F25M1Q1e": [
-        "pandas"
+    "a0156d9funccomp3a": [
+        "composition_of_functions"
     ],
     "aef2469row2a": [
+        "regex"
+    ],
+    "aef2469row5a": [
+        "regex"
+    ],
+    "a56276arow1a": [
         "regex"
     ],
     "a56276arow4a": [
         "regex"
     ],
-    "ab9601eacidbase6a": [
-        "module_g"
-    ],
-    "ab9601eacidbase6b": [
-        "module_g"
-    ],
-    "ab9601eacidbase6c": [
-        "module_g"
-    ],
-    "ab9601eacidbase6d": [
-        "module_g"
-    ],
-    "ab9601eacidbase6e": [
+    "ab9601eacidbase11a": [
         "module_g"
     ],
     "ab9601echem15a": [
         "module_b"
     ],
-    "ab9601echem15b": [
-        "module_b"
-    ],
-    "ab9601echem15c": [
-        "module_b"
-    ],
-    "ab9601echem15d": [
-        "module_b"
-    ],
-    "ab9601echem15e": [
-        "module_b"
-    ],
-    "a361716acidbase1a": [
+    "a361716acidbase9a": [
         "module_g"
     ],
-    "a361716acidbase1b": [
-        "module_g"
-    ],
-    "a361716acidbase1c": [
-        "module_g"
-    ],
-    "a361716chem10a": [
+    "a361716chem12a": [
         "module_b"
-    ],
-    "a56276aS25M1Q1Da": [
-        "pandas"
-    ],
-    "a56276aS25M1Q1Db": [
-        "pandas"
-    ],
-    "a56276aS25M1Q1Dc": [
-        "pandas"
-    ],
-    "a56276aS25M1Q1Dd": [
-        "pandas"
     ]
 }

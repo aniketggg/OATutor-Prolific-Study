@@ -37,9 +37,9 @@
         "id": "a56276arow4a-h4",
         "type": "scaffold",
         "problemType": "TextBox",
-        "answerType": "string",
+        "answerType": "arithmetic",
         "hintAnswer": [
-            "\\d+\\s([A-Za-z\\s]+)"
+            "`\\d+\\s([A-Za-z\\s]+)`"
         ],
         "dependencies": [
             "a56276arow4a-h3"

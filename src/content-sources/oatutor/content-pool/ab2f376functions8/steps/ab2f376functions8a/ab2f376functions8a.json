@@ -1,12 +1,11 @@
 {
     "id": "ab2f376functions8a",
     "stepAnswer": [
-        "$$6$$"
+        "2a+h+3"
     ],
     "problemType": "TextBox",
-    "stepTitle": "$$2$$",
+    "stepTitle": "Evaluate $$\\frac{f{\\left(a+h\\right)}-f{\\left(a\\right)}}{h}$$",
     "stepBody": "",
     "answerType": "arithmetic",
-    "variabilization": {},
-    "answerLatex": "$$6$$"
+    "variabilization": {}
 }

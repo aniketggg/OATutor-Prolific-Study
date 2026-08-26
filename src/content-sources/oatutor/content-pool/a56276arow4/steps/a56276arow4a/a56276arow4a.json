@@ -1,7 +1,7 @@
 {
     "id": "a56276arow4a",
     "stepAnswer": [
-        "\\d+\\s([A-Za-z\\s]+)"
+        "`\\d+\\s([A-Za-z\\s]+)`"
     ],
     "problemType": "TextBox",
     "stepTitle": "Fill in the blank with the appropriate RegEx pattern:",

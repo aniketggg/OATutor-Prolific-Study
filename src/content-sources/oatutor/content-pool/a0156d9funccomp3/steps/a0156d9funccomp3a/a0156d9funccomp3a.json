@@ -1,0 +1,11 @@
+{
+    "id": "a0156d9funccomp3a",
+    "stepAnswer": [
+        "12*x**2-10*x+3"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "f(2*x-1)",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {}
+}

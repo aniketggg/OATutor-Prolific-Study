@@ -1,12 +1,12 @@
 {
     "id": "ab9601echem15a",
     "stepAnswer": [
-        "$$0$$"
+        "$$3$$"
     ],
     "problemType": "TextBox",
-    "stepTitle": "How many radial nodes do 3*d orbitals have",
+    "stepTitle": "How many radial nodes do 4*s orbitals have?",
     "stepBody": "",
     "answerType": "arithmetic",
     "variabilization": {},
-    "answerLatex": "$$0$$"
+    "answerLatex": "$$3$$"
 }
