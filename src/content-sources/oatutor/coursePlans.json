@@ -16,7 +16,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "afb4b47motion2d10",
                     "afb4b47motion2d18"
@@ -55,7 +55,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "afb4b47motion2d10",
                     "afb4b47motion2d18"
@@ -98,7 +98,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "afb4b47motion2d10",
                     "afb4b47motion2d18"
@@ -183,7 +183,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab2f376functions8",
                     "ab2f376functions17"
@@ -222,7 +222,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab2f376functions8",
                     "ab2f376functions17"
@@ -265,7 +265,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab2f376functions8",
                     "ab2f376functions17"
@@ -350,7 +350,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "a27f94calginequalabs11",
                     "a27f94cexp9"
@@ -389,7 +389,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "a27f94calginequalabs11",
                     "a27f94cexp9"
@@ -432,7 +432,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "a27f94calginequalabs11",
                     "a27f94cexp9"
@@ -517,7 +517,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "aef2469F25M1Q1",
                     "aef2469row2"
@@ -556,7 +556,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "aef2469F25M1Q1",
                     "aef2469row2"
@@ -599,7 +599,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "aef2469F25M1Q1",
                     "aef2469row2"
@@ -684,7 +684,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab9601eacidbase6",
                     "ab9601echem15"
@@ -723,7 +723,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab9601eacidbase6",
                     "ab9601echem15"
@@ -766,7 +766,7 @@
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
-                "giveStuHints": true,
+                "giveStuHints": false,
                 "fixedProblemOrder": [
                     "ab9601eacidbase6",
                     "ab9601echem15"
