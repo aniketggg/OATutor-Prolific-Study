@@ -1464,7 +1464,7 @@ class Problem extends React.Component {
             ? 'Off'
             : this.props.lesson?.chat_display_mode || 'Off';
         const isMobile = this.props.responsive?.isMobile ?? false;
-        const showHintPanel = !hideHintPanel && chatDisplayMode !== 'Avatar';
+        const showHintPanel = !hideHintPanel && chatDisplayMode !== 'Avatar' && this.giveStuHints;
         const showSideHintPanel = showHintPanel && !isMobile;
         const avatarHintStepIndex = this.state.avatarHintStepIndex ?? this.getAvatarHintTargetStepIndex();
         const avatarHintPayload = this.state.avatarHintsByStep[avatarHintStepIndex];
@@ -1528,7 +1528,7 @@ class Problem extends React.Component {
                     <Grid
                         item
                         xs={12}
-                        md={hideHintPanel || isMobile ? 12 : (drawerOpen ? 8 : 7)}
+                        md={hideHintPanel || isMobile || !this.giveStuHints ? 12 : (drawerOpen ? 8 : 7)}
                     >
                         <div className={classes.prompt} role={"banner"}>
                             <Card className={classes.titleCard}>
