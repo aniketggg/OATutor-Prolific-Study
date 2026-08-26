@@ -1528,7 +1528,7 @@ class Problem extends React.Component {
                     <Grid
                         item
                         xs={12}
-                        md={hideHintPanel || isMobile || !this.giveStuHints ? 12 : (drawerOpen ? 8 : 7)}
+                        md={hideHintPanel || isMobile ? 12 : (drawerOpen ? 8 : 7)}
                     >
                         <div className={classes.prompt} role={"banner"}>
                             <Card className={classes.titleCard}>
