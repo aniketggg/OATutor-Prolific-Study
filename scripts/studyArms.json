@@ -18,5 +18,19 @@
     "Math2":   { "A": "PROMPT-precalc-v1a.txt",    "B": "PROMPTv2.txt" },
     "Data":    { "A": "PROMPT-data-100-v1a.txt",   "B": "PROMPTv2.txt" },
     "Chem":    { "A": "PROMPT-chem-1a-v1a.txt",    "B": "PROMPTv2.txt" }
+  },
+
+  "_completionCodeComment": [
+    "Course-level field read by Platform.js:1123 for the end-of-study screen.",
+    "final.py rebuilds coursePlans.json from the workbooks and does not know",
+    "about it, so the builder restores it from here. These are placeholders --",
+    "replace with the real per-study codes from Prolific before launch."
+  ],
+  "prolificCompletionCodes": {
+    "Physics": "TEST-PHYSICS",
+    "Math1": "TEST-MATH1",
+    "Math2": "TEST-MATH2",
+    "Data": "TEST-DATA",
+    "Chem": "TEST-CHEM"
   }
 }

@@ -7,6 +7,9 @@
  * hand. This script rebuilds that structure from the base lessons, so a content
  * rebuild is no longer destructive.
  *
+ * It also restores course-level study fields that final.py does not emit,
+ * currently prolificCompletionCode (read by Platform.js:1123).
+ *
  * For each course it produces, per arm:
  *   <Course>-<Arm>-yesChat   the chatbot lesson, carrying that arm's prompt
  *   <Course>-<Arm>-noChat    the no-chatbot lesson
@@ -88,6 +91,19 @@ function buildCourse(course, config, warnings) {
     }
   }
 
+  const code = (config.prolificCompletionCodes || {})[course.courseName];
+  if (!code) {
+    warnings.push(
+      `${course.courseName}: no prolificCompletionCode in studyArms.json -- ` +
+      `Platform.js:1123 will show no completion code at the end of the study.`
+    );
+  } else if (/^TEST-/.test(code)) {
+    warnings.push(
+      `${course.courseName}: prolificCompletionCode is still the placeholder ` +
+      `"${code}" -- replace it with the real code from Prolific before launch.`
+    );
+  }
+
   const name = course.courseName;
   const metaLessons = [
     {
@@ -108,11 +124,14 @@ function buildCourse(course, config, warnings) {
     })),
   ];
 
-  return {
+  const rebuilt = {
     ...course,
     lessons: [base.yesChat, base.noChat, ...armLessons],
     metaLessons,
   };
+  // course-level study fields that final.py does not know about
+  if (code) rebuilt.prolificCompletionCode = code;
+  return rebuilt;
 }
 
 function main() {
