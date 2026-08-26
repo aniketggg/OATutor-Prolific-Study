@@ -61,7 +61,7 @@
                     "afb4b47motion2d18"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPT-physics-7a-v1a.txt"
             },
             {
                 "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
@@ -102,7 +102,7 @@
                     "afb4b47motion2d18"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTvtest.txt"
+                "chat_prompt": "PROMPTv2.txt"
             },
             {
                 "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
@@ -224,7 +224,7 @@
                     "ab2f376functions17"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPT-math-1b-v1b.txt"
             },
             {
                 "id": "7lAiiS8t-4IlN-MM5lfLjULW",
@@ -265,7 +265,7 @@
                     "ab2f376functions17"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTvtest.txt"
+                "chat_prompt": "PROMPTv2.txt"
             },
             {
                 "id": "7lAiiS8t-4IlN-MM5lfLjULW",
@@ -387,7 +387,7 @@
                     "a27f94cexp9"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPT-precalc-v1a.txt"
             },
             {
                 "id": "1L7hneRE-fxbQ-fMLHQiMddm",
@@ -428,7 +428,7 @@
                     "a27f94cexp9"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTvtest.txt"
+                "chat_prompt": "PROMPTv2.txt"
             },
             {
                 "id": "1L7hneRE-fxbQ-fMLHQiMddm",
@@ -550,7 +550,7 @@
                     "aef2469row2"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPT-data-100-v1a.txt"
             },
             {
                 "id": "7437cwIS-K8Eu-0w1iy6DfqF",
@@ -591,7 +591,7 @@
                     "aef2469row2"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTvtest.txt"
+                "chat_prompt": "PROMPTv2.txt"
             },
             {
                 "id": "7437cwIS-K8Eu-0w1iy6DfqF",
@@ -713,7 +713,7 @@
                     "ab9601echem15"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPT-chem-1a-v1a.txt"
             },
             {
                 "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
@@ -754,7 +754,7 @@
                     "ab9601echem15"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTvtest.txt"
+                "chat_prompt": "PROMPTv2.txt"
             },
             {
                 "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
