@@ -20,6 +20,7 @@ import {
     DYNAMIC_HINT_URL,
     DYNAMIC_HINT_TEMPLATE,
     ENABLE_BOTTOM_OUT_HINTS,
+    SHOW_FEEDBACK_SUPPRESSED_ICON,
     ThemeContext,
 } from "../../config/config.js";
 import { shouldPenalizeTopLevelHintUnlock } from "../../util/helpPenaltyMode.js";
@@ -1005,8 +1006,9 @@ class ProblemCard extends React.Component {
                                     </Button>
 
                                     
-                                    {(!this.showCorrectness ||
-                                        !this.allowRetry) && (
+                                    {SHOW_FEEDBACK_SUPPRESSED_ICON &&
+                                        (!this.showCorrectness ||
+                                            !this.allowRetry) && (
                                         <img
                                             className={classes.checkImage}
                                             style={{

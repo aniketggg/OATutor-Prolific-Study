@@ -73,6 +73,16 @@ const AB_TEST_MODE = false;
  */
 const ENABLE_BOTTOM_OUT_HINTS = true;
 
+/**
+ * When a lesson sets giveStuFeedback: false, the step card normally shows an
+ * exclamation icon tooltipped "The instructor has elected to hide correctness
+ * and disallow retries". The Prolific study turns feedback off on its noChat
+ * lessons purely so participants are never blocked, and that tooltip only
+ * confuses them, so the icon is suppressed.
+ * @type {boolean}
+ */
+const SHOW_FEEDBACK_SUPPRESSED_ICON = false;
+
 // DynamicText not supported for HTML body types
 const dynamicText = {
     "%CAR%": "Tesla car",
@@ -167,6 +177,7 @@ export {
     AB_TEST_MODE,
     dynamicText,
     ENABLE_BOTTOM_OUT_HINTS,
+    SHOW_FEEDBACK_SUPPRESSED_ICON,
     lessonPlans,
     coursePlans,
     _lessonPlansNoEditor,

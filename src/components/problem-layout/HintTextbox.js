@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import { chooseVariables } from '../../platform-logic/renderText.js';
-import { ThemeContext } from '../../config/config.js';
+import { ThemeContext, SHOW_FEEDBACK_SUPPRESSED_ICON } from '../../config/config.js';
 import ProblemInput from "../problem-input/ProblemInput";
 import { stagingProp } from "../../util/addStagingProperty";
 import { toastNotifyCorrectness } from "./ToastNotifyCorrectness";
@@ -159,7 +159,7 @@ class HintTextbox extends React.Component {
                             alignItems: "center",
                             justifyContent: "flex-start"
                         }}>
-                            {(!this.showCorrectness || !this.allowRetry) &&
+                            {SHOW_FEEDBACK_SUPPRESSED_ICON && (!this.showCorrectness || !this.allowRetry) &&
                                 <img className={classes.hintCheckImage}
                                     style={{ opacity: this.state.isCorrect == null ? 0 : 1 }}
                                     alt="Exclamation Mark Icon"
