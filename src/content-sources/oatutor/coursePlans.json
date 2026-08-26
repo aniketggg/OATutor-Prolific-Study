@@ -61,7 +61,8 @@
                     "afb4b47motion2d18"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPT-physics-7a-v1a.txt"
+                "chat_prompt": "PROMPT-physics-7a-v1a.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
@@ -81,7 +82,8 @@
                     "a1c80a0motion2d9",
                     "a1c80a0motion2d19"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             },
             {
                 "id": "6xE2t3qa-hKxM-gkM65yz8YN",
@@ -102,7 +104,8 @@
                     "afb4b47motion2d18"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPTv2.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "5KJ7hKLo-JIji-4ipKOZn7O4",
@@ -122,7 +125,8 @@
                     "a1c80a0motion2d9",
                     "a1c80a0motion2d19"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             }
         ],
         "metaLessons": [
@@ -224,7 +228,8 @@
                     "ab2f376functions17"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPT-math-1b-v1b.txt"
+                "chat_prompt": "PROMPT-math-1b-v1b.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "7lAiiS8t-4IlN-MM5lfLjULW",
@@ -244,7 +249,8 @@
                     "ab29bf1functions30",
                     "ab29bf1functions18"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             },
             {
                 "id": "3oNBQ1NS-Kevo-Y7tmofVLQX",
@@ -265,7 +271,8 @@
                     "ab2f376functions17"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPTv2.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "7lAiiS8t-4IlN-MM5lfLjULW",
@@ -285,7 +292,8 @@
                     "ab29bf1functions30",
                     "ab29bf1functions18"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             }
         ],
         "metaLessons": [
@@ -387,7 +395,8 @@
                     "a27f94cexp9"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPT-precalc-v1a.txt"
+                "chat_prompt": "PROMPT-precalc-v1a.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "1L7hneRE-fxbQ-fMLHQiMddm",
@@ -407,7 +416,8 @@
                     "a0156d9alginequalabs10",
                     "a0156d9exp4"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             },
             {
                 "id": "0LfyfvJV-tAxm-j8is0pvoAj",
@@ -428,7 +438,8 @@
                     "a27f94cexp9"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPTv2.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "1L7hneRE-fxbQ-fMLHQiMddm",
@@ -448,7 +459,8 @@
                     "a0156d9alginequalabs10",
                     "a0156d9exp4"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             }
         ],
         "metaLessons": [
@@ -550,7 +562,8 @@
                     "aef2469row2"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPT-data-100-v1a.txt"
+                "chat_prompt": "PROMPT-data-100-v1a.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "7437cwIS-K8Eu-0w1iy6DfqF",
@@ -570,7 +583,8 @@
                     "a56276aS25M1Q1D",
                     "a56276arow4"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             },
             {
                 "id": "2BYPiWsi-155k-tIsCNk0uZc",
@@ -591,7 +605,8 @@
                     "aef2469row2"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPTv2.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "7437cwIS-K8Eu-0w1iy6DfqF",
@@ -611,7 +626,8 @@
                     "a56276aS25M1Q1D",
                     "a56276arow4"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             }
         ],
         "metaLessons": [
@@ -713,7 +729,8 @@
                     "ab9601echem15"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPT-chem-1a-v1a.txt"
+                "chat_prompt": "PROMPT-chem-1a-v1a.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
@@ -733,7 +750,8 @@
                     "a361716acidbase1",
                     "a361716chem10"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             },
             {
                 "id": "07ZM5dz3-I7Dt-kp8nDxPDt1",
@@ -754,7 +772,8 @@
                     "ab9601echem15"
                 ],
                 "chat_display_mode": "Window",
-                "chat_prompt": "PROMPTv2.txt"
+                "chat_prompt": "PROMPTv2.txt",
+                "displayName": "Part 1"
             },
             {
                 "id": "7YT2r3Ef-Mi7o-PPnQJASILx",
@@ -774,7 +793,8 @@
                     "a361716acidbase1",
                     "a361716chem10"
                 ],
-                "chat_display_mode": "Off"
+                "chat_display_mode": "Off",
+                "displayName": "Part 2"
             }
         ],
         "metaLessons": [
