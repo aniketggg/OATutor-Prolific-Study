@@ -1,0 +1,22 @@
+{
+  "_comment": [
+    "Per-course A/B arm configuration for the Prolific study.",
+    "Arm A is the instructor-modified chatbot prompt, arm B the default.",
+    "Values transcribed from coursePlans.json as of commit b2a626a5fc; the",
+    "prompt names are still provisional -- Shreya owns the AWS prompt library.",
+    "Two things to check before launch, see scripts/buildStudyCoursePlans.js:",
+    "  - Math1 (OpenStax Pre-Calc) points at a math-1b prompt and Math2",
+    "    (Math 1B) at a precalc prompt; these look swapped.",
+    "  - PROMPT-math-1b-v1b.txt is not in aws/aiAgentGeneration/."
+  ],
+  "arms": ["A", "B"],
+  "displayNames": { "yesChat": "Part 1", "noChat": "Part 2" },
+  "defaultPrompt": "PROMPTv2.txt",
+  "courses": {
+    "Physics": { "A": "PROMPT-physics-7a-v1a.txt", "B": "PROMPTv2.txt" },
+    "Math1":   { "A": "PROMPT-math-1b-v1b.txt",    "B": "PROMPTv2.txt" },
+    "Math2":   { "A": "PROMPT-precalc-v1a.txt",    "B": "PROMPTv2.txt" },
+    "Data":    { "A": "PROMPT-data-100-v1a.txt",   "B": "PROMPTv2.txt" },
+    "Chem":    { "A": "PROMPT-chem-1a-v1a.txt",    "B": "PROMPTv2.txt" }
+  }
+}
