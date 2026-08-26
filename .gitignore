@@ -60,3 +60,6 @@ aws/aiAgentGeneration/documents/assets/tables/**
 aws/aiAgentGeneration/documents/raw/**
 !aws/aiAgentGeneration/documents/raw/.gitkeep
 aws/lti-middleware/*.zip
+
+# content-files build script bytecode
+content-files/__pycache__/
