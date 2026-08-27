@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/OATutor-Prolific-Study/static/css/main.2a7eb885.css",
-    "main.js": "/OATutor-Prolific-Study/static/js/main.aee02f25.js",
+    "main.js": "/OATutor-Prolific-Study/static/js/main.b57511ef.js",
     "static/media/Symbola.svg": "/OATutor-Prolific-Study/static/media/Symbola.f647c9292a2da02d9ae8.svg",
     "static/media/Symbola.eot": "/OATutor-Prolific-Study/static/media/Symbola.d25fbd520f6558203fb4.eot",
     "static/media/Symbola.ttf": "/OATutor-Prolific-Study/static/media/Symbola.1ac5fa7f9b82ed4ce3f3.ttf",
@@ -82,10 +82,10 @@
     "static/media/chat-bubble.svg": "/OATutor-Prolific-Study/static/media/chat-bubble.a3e6fd914499ad08c4f7f24aefc0e7ea.svg",
     "static/media/arrow.svg": "/OATutor-Prolific-Study/static/media/arrow.dced2ccdbc30d0d8ac04e695242fea0a.svg",
     "main.2a7eb885.css.map": "/OATutor-Prolific-Study/static/css/main.2a7eb885.css.map",
-    "main.aee02f25.js.map": "/OATutor-Prolific-Study/static/js/main.aee02f25.js.map"
+    "main.b57511ef.js.map": "/OATutor-Prolific-Study/static/js/main.b57511ef.js.map"
   },
   "entrypoints": [
     "static/css/main.2a7eb885.css",
-    "static/js/main.aee02f25.js"
+    "static/js/main.b57511ef.js"
   ]
 }
