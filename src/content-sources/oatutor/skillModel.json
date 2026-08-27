@@ -11,26 +11,28 @@
     "a1c80a0motion2d9a": [
         "projectile_motion"
     ],
-    "ab2f376functions8a": [
-        "evaluation_of_functions_in_algebra_forms_in_openstax_precalc"
-    ],
     "ab2f376quadratic16a": [
         "quadratic_functions"
     ],
-    "ab29bf1functions30a": [
-        "evaluation_of_functions_in_algebra_forms_in_openstax_precalc"
+    "ab2f376vector3a": [
+        "vectors"
     ],
     "ab29bf1quadratic26a": [
         "quadratic_functions"
     ],
-    "a27f94cexp9a": [
-        "algebra_with_exponents_and_logarithms"
+    "ab29bf1vector8a": [
+        "vectors"
+    ],
+    "a27f94ccorepoly1a": [
+        "core_functions:_constant",
+        "linear_and_quadratic"
     ],
     "a27f94cfunccomp4a": [
         "composition_of_functions"
     ],
-    "a0156d9exp4a": [
-        "algebra_with_exponents_and_logarithms"
+    "a0156d9corepoly2a": [
+        "core_functions:_constant",
+        "linear_and_quadratic"
     ],
     "a0156d9funccomp3a": [
         "composition_of_functions"

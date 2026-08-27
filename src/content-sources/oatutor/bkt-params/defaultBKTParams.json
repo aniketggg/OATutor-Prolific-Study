@@ -11,25 +11,31 @@
         "probSlip": 0.1,
         "probGuess": 0.1
     },
-    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": {
-        "probMastery": 0.1,
-        "probTransit": 0.1,
-        "probSlip": 0.1,
-        "probGuess": 0.1
-    },
     "quadratic_functions": {
         "probMastery": 0.1,
         "probTransit": 0.1,
         "probSlip": 0.1,
         "probGuess": 0.1
     },
-    "algebra_with_exponents_and_logarithms": {
+    "vectors": {
         "probMastery": 0.1,
         "probTransit": 0.1,
         "probSlip": 0.1,
         "probGuess": 0.1
     },
     "composition_of_functions": {
+        "probMastery": 0.1,
+        "probTransit": 0.1,
+        "probSlip": 0.1,
+        "probGuess": 0.1
+    },
+    "core_functions:_constant": {
+        "probMastery": 0.1,
+        "probTransit": 0.1,
+        "probSlip": 0.1,
+        "probGuess": 0.1
+    },
+    "linear_and_quadratic": {
         "probMastery": 0.1,
         "probTransit": 0.1,
         "probSlip": 0.1,

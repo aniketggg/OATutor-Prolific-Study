@@ -27,7 +27,7 @@
         "problemType": "TextBox",
         "answerType": "arithmetic",
         "hintAnswer": [
-            "$$2.0$$"
+            "$$2$$"
         ],
         "dependencies": [
             "ab29bf1quadratic26a-h2"

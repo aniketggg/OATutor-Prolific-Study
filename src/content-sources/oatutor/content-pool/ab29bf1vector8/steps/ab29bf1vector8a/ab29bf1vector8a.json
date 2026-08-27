@@ -1,0 +1,11 @@
+{
+    "id": "ab29bf1vector8a",
+    "stepAnswer": [
+        "-5i+3j"
+    ],
+    "problemType": "TextBox",
+    "stepTitle": "Use the vectors u $$=$$ i+5j, v $$=$$ -2i-3j, and w $$=$$ 4i-j to find $$u+v-w$$.",
+    "stepBody": "",
+    "answerType": "arithmetic",
+    "variabilization": {}
+}

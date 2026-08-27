@@ -180,15 +180,15 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
-                    "quadratic_functions": 0.85
+                    "quadratic_functions": 0.85,
+                    "vectors": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "ab2f376functions8",
+                    "ab2f376vector3",
                     "ab2f376quadratic16"
                 ],
                 "chat_display_mode": "Window"
@@ -199,8 +199,8 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
-                    "quadratic_functions": 0.85
+                    "quadratic_functions": 0.85,
+                    "vectors": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -208,7 +208,7 @@
                 "giveStuHints": true,
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "ab29bf1functions30",
+                    "ab29bf1vector8",
                     "ab29bf1quadratic26"
                 ],
                 "chat_display_mode": "Off"
@@ -219,15 +219,15 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
-                    "quadratic_functions": 0.85
+                    "quadratic_functions": 0.85,
+                    "vectors": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "ab2f376functions8",
+                    "ab2f376vector3",
                     "ab2f376quadratic16"
                 ],
                 "chat_display_mode": "Window",
@@ -241,8 +241,8 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
-                    "quadratic_functions": 0.85
+                    "quadratic_functions": 0.85,
+                    "vectors": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -250,7 +250,7 @@
                 "giveStuHints": true,
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "ab29bf1functions30",
+                    "ab29bf1vector8",
                     "ab29bf1quadratic26"
                 ],
                 "chat_display_mode": "Off",
@@ -263,15 +263,15 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
-                    "quadratic_functions": 0.85
+                    "quadratic_functions": 0.85,
+                    "vectors": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
                 "keepMCOrder": true,
                 "giveStuHints": false,
                 "fixedProblemOrder": [
-                    "ab2f376functions8",
+                    "ab2f376vector3",
                     "ab2f376quadratic16"
                 ],
                 "chat_display_mode": "Window",
@@ -285,8 +285,8 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "evaluation_of_functions_in_algebra_forms_in_openstax_precalc": 0.85,
-                    "quadratic_functions": 0.85
+                    "quadratic_functions": 0.85,
+                    "vectors": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -294,7 +294,7 @@
                 "giveStuHints": true,
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
-                    "ab29bf1functions30",
+                    "ab29bf1vector8",
                     "ab29bf1quadratic26"
                 ],
                 "chat_display_mode": "Off",
@@ -350,8 +350,9 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "algebra_with_exponents_and_logarithms": 0.85,
-                    "composition_of_functions": 0.85
+                    "composition_of_functions": 0.85,
+                    "core_functions:_constant": 0.85,
+                    "linear_and_quadratic": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -359,7 +360,7 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "a27f94cfunccomp4",
-                    "a27f94cexp9"
+                    "a27f94ccorepoly1"
                 ],
                 "chat_display_mode": "Window"
             },
@@ -369,8 +370,9 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "algebra_with_exponents_and_logarithms": 0.85,
-                    "composition_of_functions": 0.85
+                    "composition_of_functions": 0.85,
+                    "core_functions:_constant": 0.85,
+                    "linear_and_quadratic": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -379,7 +381,7 @@
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a0156d9funccomp3",
-                    "a0156d9exp4"
+                    "a0156d9corepoly2"
                 ],
                 "chat_display_mode": "Off"
             },
@@ -389,8 +391,9 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "algebra_with_exponents_and_logarithms": 0.85,
-                    "composition_of_functions": 0.85
+                    "composition_of_functions": 0.85,
+                    "core_functions:_constant": 0.85,
+                    "linear_and_quadratic": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -398,7 +401,7 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "a27f94cfunccomp4",
-                    "a27f94cexp9"
+                    "a27f94ccorepoly1"
                 ],
                 "chat_display_mode": "Window",
                 "metaId": "Math2-A-yesChat",
@@ -411,8 +414,9 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "algebra_with_exponents_and_logarithms": 0.85,
-                    "composition_of_functions": 0.85
+                    "composition_of_functions": 0.85,
+                    "core_functions:_constant": 0.85,
+                    "linear_and_quadratic": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -421,7 +425,7 @@
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a0156d9funccomp3",
-                    "a0156d9exp4"
+                    "a0156d9corepoly2"
                 ],
                 "chat_display_mode": "Off",
                 "metaId": "Math2-A-noChat",
@@ -433,8 +437,9 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "algebra_with_exponents_and_logarithms": 0.85,
-                    "composition_of_functions": 0.85
+                    "composition_of_functions": 0.85,
+                    "core_functions:_constant": 0.85,
+                    "linear_and_quadratic": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -442,7 +447,7 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "a27f94cfunccomp4",
-                    "a27f94cexp9"
+                    "a27f94ccorepoly1"
                 ],
                 "chat_display_mode": "Window",
                 "metaId": "Math2-B-yesChat",
@@ -455,8 +460,9 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
-                    "algebra_with_exponents_and_logarithms": 0.85,
-                    "composition_of_functions": 0.85
+                    "composition_of_functions": 0.85,
+                    "core_functions:_constant": 0.85,
+                    "linear_and_quadratic": 0.85
                 },
                 "showStuMastery": false,
                 "doMasteryUpdate": false,
@@ -465,7 +471,7 @@
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a0156d9funccomp3",
-                    "a0156d9exp4"
+                    "a0156d9corepoly2"
                 ],
                 "chat_display_mode": "Off",
                 "metaId": "Math2-B-noChat",

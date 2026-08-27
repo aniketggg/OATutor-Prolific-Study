@@ -69,6 +69,17 @@ SELECTION = {
 # Empty since the 2026-08-27 swap: vector3's step 1 title is self-contained.
 TITLE_OVERRIDES = {}
 
+# Answers that the platform cannot compare as written, (tab, problem) -> answer.
+# answerType "algebra" becomes "arithmetic" in the generated JSON, which
+# checkAnswer.js:117-173 hands to KAS. KAS cannot parse the "sqrt" glyph, so a
+# stored answer containing one never matches any input and the step is
+# unanswerable. Rewriting it in ASCII costs nothing: KAS compares symbolically,
+# so 6*sqrt(2) still accepts 6sqrt(2), sqrt(72), 6*2^(1/2), the decimal, and the
+# \sqrt{72} the equation editor emits.
+ANSWER_OVERRIDES = {
+    (VECT, "vector3"): "6*sqrt(2)",
+}
+
 # Meta flags land in the Meta column. process_sheet.py:533 scans the whole
 # column and ignores Row Type, so the row they sit on does not matter -- but
 # they must not be on a row that a later edit deletes.
@@ -163,11 +174,15 @@ def extract(path, tab, name, keep_step):
     if str(chosen[0].get("answerType", "")).strip() == "mc":
         raise SystemExit(f"{tab}/{name}: selected step is multiple choice")
 
-    override = TITLE_OVERRIDES.get((tab, name))
-    if override is not None:
+    title = TITLE_OVERRIDES.get((tab, name))
+    answer = ANSWER_OVERRIDES.get((tab, name))
+    if title is not None or answer is not None:
         chosen = list(chosen)
         chosen[0] = chosen[0].copy()
-        chosen[0]["Title"] = override
+        if title is not None:
+            chosen[0]["Title"] = title
+        if answer is not None:
+            chosen[0]["Answer"] = answer
 
     return [problem_row] + chosen
 
