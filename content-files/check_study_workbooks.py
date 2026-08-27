@@ -11,10 +11,20 @@ Checks, independently of build_study_workbooks.py:
     (the column the tooling actually reads -- process_sheet.py:159, :449;
     the plain "KC" column is inert and holds junk on some source tabs)
   - no datetime cells (the functions17 class of defect)
+  - no cell that the tooling mangles into literal "\$\$" (the motion2d9 class:
+    a bare "(...)" around $$math$$ gets wrapped in another $$...$$ with the
+    inner delimiters escaped, so the student sees dollar signs)
 """
 import datetime
 import sys
 import pandas as pd
+
+sys.path.insert(0, "/home/manu/OATutor-Tooling/content_script")
+try:
+    from process_text import preprocess_text_to_latex
+except ImportError as e:  # the tooling is a separate checkout
+    preprocess_text_to_latex = None
+    print(f"note: skipping the LaTeX mangling check -- {e}")
 
 OUT = "/home/manu/OATutor-Prolific-Study/content-files"
 SUBJECTS = ["Physics", "Math1", "Math2", "Chem", "Data"]
@@ -122,6 +132,26 @@ for subject in SUBJECTS:
             for c in df.columns:
                 if isinstance(r[c], (datetime.datetime, datetime.date)):
                     err(f"{sheet} row {i} col {c}: datetime cell {r[c]}")
+
+        # render_latex must be the *string* "TRUE" -- process_text.py:39
+        # compares it literally, so a bool quietly takes the other branch and
+        # the defect this checks for does not reproduce.
+        if preprocess_text_to_latex is not None:
+            for i, r in df.iterrows():
+                for c in ("Title", "Body Text", "Answer", "mcChoices"):
+                    v = str(r.get(c, "")).strip()
+                    if not v:
+                        continue
+                    try:
+                        out, _ = preprocess_text_to_latex(v, render_latex="TRUE")
+                    except Exception as exc:
+                        err(f"{sheet} row {i} col {c}: tooling raised {exc!r}")
+                        continue
+                    if r"\$\$" in out:
+                        err(f"{sheet} row {i} col {c} ({r['Problem Name']}): "
+                            f"tooling mangles this into literal dollar signs -- "
+                            f"move the parentheses inside the $$...$$\n"
+                            f"      in : {v}\n      out: {out}")
 
         kcs = sorted(set(problems["openstax KC"].astype(str).str.strip()))
         print(f"ok  {sheet:18s} {len(problems)} problems, {len(steps)} steps, KCs={kcs}")

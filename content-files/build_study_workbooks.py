@@ -64,20 +64,35 @@ SELECTION = {
     },
 }
 
-# Trimming a problem to one step can leave the surviving step title referring
-# to steps that no longer exist. Overrides are (tab, problem) -> new step title.
-# Empty since the 2026-08-27 swap: vector3's step 1 title is self-contained.
-TITLE_OVERRIDES = {}
+# Cell fixes applied to the rows we keep, so that they survive a rebuild.
+#
+# Key is (tab, problem, row), where row is
+#   "problem"        the problem row
+#   N                the step row of source step N (1-based)
+#   (N, "h3")        the hint/scaffold row with HintID h3 inside step N
+# Value is {column: replacement}. Anything fixed here lands in the study
+# workbook and therefore in the generated JSON; fixing the generated JSON
+# instead does not survive the next pipeline run (see motion2d9 below).
+OVERRIDES = {
+    # The tooling wraps a bare "(...)" containing $$math$$ in another $$...$$
+    # and escapes the inner delimiters, turning ($$1.5\,\text{m}$$) into
+    # $$(\$\$1.5\, \text{m}\$\$)$$ -- which renders as literal dollar signs.
+    # Moving the parens inside the math is visually identical and leaves the
+    # tooling nothing to grab. Commit 80874b8508 patched the generated JSON
+    # instead and was reverted by the very next pipeline run.
+    (MOTION, "motion2d9", "problem"): {
+        "Body Text": r"A bullet is shot horizontally from shoulder height "
+                     r"$$(1.5\,\text{m})$$ with an initial speed "
+                     r"$$200\,\tfrac{\text{m}}{\text{s}}$$.",
+    },
 
-# Answers that the platform cannot compare as written, (tab, problem) -> answer.
-# answerType "algebra" becomes "arithmetic" in the generated JSON, which
-# checkAnswer.js:117-173 hands to KAS. KAS cannot parse the "sqrt" glyph, so a
-# stored answer containing one never matches any input and the step is
-# unanswerable. Rewriting it in ASCII costs nothing: KAS compares symbolically,
-# so 6*sqrt(2) still accepts 6sqrt(2), sqrt(72), 6*2^(1/2), the decimal, and the
-# \sqrt{72} the equation editor emits.
-ANSWER_OVERRIDES = {
-    (VECT, "vector3"): "6*sqrt(2)",
+    # answerType "algebra" becomes "arithmetic" in the generated JSON, which
+    # checkAnswer.js:142-198 hands to KAS. KAS cannot parse the "sqrt" glyph, so
+    # a stored answer containing one never matches any input and the step is
+    # unanswerable. ASCII costs nothing: KAS compares symbolically, so
+    # 6*sqrt(2) still accepts 6sqrt(2), sqrt(72), 6*2^(1/2), the decimal, and
+    # the \sqrt{72} the equation editor emits.
+    (VECT, "vector3", 1): {"Answer": "6*sqrt(2)"},
 }
 
 # Meta flags land in the Meta column. process_sheet.py:533 scans the whole
@@ -171,20 +186,38 @@ def extract(path, tab, name, keep_step):
             )
         chosen = steps[keep_step - 1]
 
-    if str(chosen[0].get("answerType", "")).strip() == "mc":
+    step_no = 1 if keep_step is None else keep_step
+    if str(apply_overrides(tab, name, step_no, chosen[0])
+           .get("answerType", "")).strip() == "mc":
         raise SystemExit(f"{tab}/{name}: selected step is multiple choice")
 
-    title = TITLE_OVERRIDES.get((tab, name))
-    answer = ANSWER_OVERRIDES.get((tab, name))
-    if title is not None or answer is not None:
-        chosen = list(chosen)
-        chosen[0] = chosen[0].copy()
-        if title is not None:
-            chosen[0]["Title"] = title
-        if answer is not None:
-            chosen[0]["Answer"] = answer
+    return [apply_overrides(tab, name, "problem", problem_row)] + [
+        apply_overrides(tab, name, step_no if i == 0 else (step_no, hint_id(r)), r)
+        for i, r in enumerate(chosen)
+    ]
 
-    return [problem_row] + chosen
+
+def hint_id(row):
+    return str(row.get("HintID", "")).strip()
+
+
+# every OVERRIDES key that actually matched a row -- an entry that matches
+# nothing is a typo, and silently shipping the unfixed cell is the failure mode
+# this whole table exists to prevent
+_used_overrides = set()
+
+
+def apply_overrides(tab, name, row_key, row):
+    """Return row with any OVERRIDES entry for it applied."""
+    key = (tab, name, row_key)
+    fixes = OVERRIDES.get(key)
+    if not fixes:
+        return row
+    _used_overrides.add(key)
+    row = row.copy()
+    for column, value in fixes.items():
+        row[column] = value
+    return row
 
 
 def existing_lesson_id(subject, lesson):
@@ -252,9 +285,21 @@ def subjects_from_argv():
     return named
 
 
+def check_overrides_used(subjects):
+    """Fail on an OVERRIDES entry that matched no row in the rebuilt subjects."""
+    tabs = {tab for s in subjects for l in SELECTION[s].values() for _, tab, _, _ in l}
+    unused = [k for k in OVERRIDES if k[0] in tabs and k not in _used_overrides]
+    if unused:
+        raise SystemExit(
+            "OVERRIDES entries matched no row: "
+            + ", ".join(repr(k) for k in unused)
+        )
+
+
 def main():
     dry = "--dry-run" in sys.argv
-    for subject in subjects_from_argv():
+    subjects = subjects_from_argv()
+    for subject in subjects:
         sheets = {
             f"{subject}_{lesson}": build_sheet(subject, lesson)
             for lesson in ("yesChat", "noChat")
@@ -276,6 +321,7 @@ def main():
                 for sheet_name, df in sheets.items():
                     df.to_excel(w, sheet_name=sheet_name, index=False)
             print(f"  -> wrote {path}")
+    check_overrides_used(subjects)
 
 
 if __name__ == "__main__":
