@@ -3,37 +3,38 @@
     "Extra accepted answers for exact-match steps, applied to the generated",
     "content pool by scripts/applyAnswerVariants.js.",
     "",
-    "Why this exists: checkAnswer.js:176-185 compares answerType 'string'",
-    "literally -- parsed = attempt, then _equality, with no normalisation. But",
-    "_equality takes an array, so the platform already accepts a list of",
-    "correct answers. Only the tooling discards it: create_content.py:265",
-    "hardcodes stepAnswer: [answer]. So we supply the list here.",
+    "Why this exists: checkAnswer.js compares answerType 'string' literally --",
+    "parsed = attempt, then _equality. But _equality takes an array, so the",
+    "platform already accepts a list of correct answers. Only the tooling",
+    "discards it: create_content.py:265 hardcodes stepAnswer: [answer]. So we",
+    "supply the list here.",
     "",
-    "Without this every Data 100 problem is effectively unsolvable: all three",
-    "regex answers are stored with literal surrounding backticks, which no",
+    "Without this every Data 100 problem is effectively unsolvable: the regex",
+    "answers are stored with literal surrounding backticks, which no",
     "participant would type.",
     "",
-    "Only list patterns that are genuinely correct for the question. The",
-    "script adds backtick- and r\"\"-wrapped forms of each entry automatically."
+    "Scope: _equality now normalises whitespace, quote style and the",
+    "backtick / r\"\" wrappers on both sides, so those no longer need listing.",
+    "List only patterns that are genuinely, semantically correct.",
+    "",
+    "A key is normally a problem name. Use the full content-pool directory",
+    "name when one problem appears in both lessons of a course and each copy",
+    "keeps a different step -- their correct answers differ."
   ],
 
   "problems": {
-    "row2": {
-      "note": "Strip leading zeroes off a room number and capture the rest. Body guarantees no room number is all zeroes.",
+    "row5": {
+      "note": "Data_yesChat P1. Course IDs of exactly three digits.",
       "accept": [
-        "0*([\\dA-z]+)",
-        "0*(\\w+)",
-        "0*([A-Za-z0-9]+)",
-        "0*([0-9A-Za-z]+)",
-        "0*([a-zA-Z0-9]+)",
-        "0*(.+)",
-        "^0*([\\dA-z]+)",
-        "^0*(\\w+)"
+        "\\d{3}",
+        "[0-9]{3}",
+        "\\d\\d\\d",
+        "[0-9][0-9][0-9]"
       ]
     },
 
     "row4": {
-      "note": "Capture the street name following the street number in '123 San Pablo Ave, 94702'.",
+      "note": "Data_noChat P3. Capture the street name following the street number in '123 San Pablo Ave, 94702'.",
       "accept": [
         "\\d+\\s([A-Za-z\\s]+)",
         "\\d+\\s+([A-Za-z\\s]+)",
@@ -46,23 +47,40 @@
       ]
     },
 
-    "row5": {
-      "note": "Course IDs of exactly three digits.",
+    "aef2469S25FQ1B": {
+      "note": [
+        "Data_yesChat P2, S25FQ1B step (i): keep only the rooms whose",
+        "'renovated' is recorded. Keyed by directory because Data_noChat P4 is",
+        "the same problem on a different step.",
+        "NOT accepted, and deliberately: rooms.dropna() (drops any row with any",
+        "NA, not just renovated) and rooms[rooms['renovated'] != None] (does not",
+        "work in pandas) are the source's own distractors."
+      ],
       "accept": [
-        "\\d{3}",
-        "[0-9]{3}",
-        "\\d\\d\\d",
-        "[0-9][0-9][0-9]"
+        "rooms[~rooms[\"renovated\"].isna()]",
+        "rooms[rooms[\"renovated\"].notna()]",
+        "rooms[~rooms[\"renovated\"].isnull()]",
+        "rooms[rooms[\"renovated\"].notnull()]",
+        "rooms.dropna(subset=[\"renovated\"])"
       ]
     },
 
-    "row1": {
-      "note": "Matches of \\d+ against 'It has been 71 years since the year 1954.' -- an extraction result, not a pattern. commaSpacing expands the separators.",
-      "commaSpacing": true,
+    "a56276aS25FQ1B": {
+      "note": [
+        "Data_noChat P4, S25FQ1B step (ii): a building is modern when at least",
+        "80% of its rooms with recorded renovations were renovated in 2003 or",
+        "later. Long free-entry answer -- expect a low correct rate; noChat sets",
+        "giveStuFeedback: false, so a wrong answer still advances.",
+        "NOT accepted: (...>= 2003).sum() >= 0.80, a source distractor that",
+        "compares a count against a proportion."
+      ],
       "accept": [
-        "71, 1954, NA",
-        "71, 1954, na",
-        "71, 1954, N/A"
+        "lambda sf: (sum(sf[\"renovated\"].astype(int) >= 2003) / sf[\"renovated\"].size) >= 0.80",
+        "lambda sf: (sum(sf[\"renovated\"].astype(int) >= 2003) / sf[\"renovated\"].size) >= 0.8",
+        "lambda sf: (sf[\"renovated\"].astype(int) >= 2003).mean() >= 0.80",
+        "lambda sf: (sf[\"renovated\"].astype(int) >= 2003).mean() >= 0.8",
+        "lambda sf: ((sf[\"renovated\"].astype(int) >= 2003).sum() / sf[\"renovated\"].size) >= 0.80",
+        "lambda sf: ((sf[\"renovated\"].astype(int) >= 2003).sum() / sf[\"renovated\"].size) >= 0.8"
       ]
     }
   }

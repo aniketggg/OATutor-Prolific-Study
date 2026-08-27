@@ -36,6 +36,7 @@ COMP = "Composition of Functions"
 MODB = "Quantum Periodic Properties (Mo"
 MODG = "Acid Base (Module G)"
 REGEX = "Regex A"
+PANDAS = "Pandas A"
 VECT = "8.8 - Vectors"
 COREPOLY = "Core Functions Constant, Linear"
 
@@ -58,9 +59,11 @@ SELECTION = {
         "yesChat": [(CHEM, MODB, "chem15", 3), (CHEM, MODG, "acidbase11", None)],
         "noChat": [(CHEM, MODB, "chem12", None), (CHEM, MODG, "acidbase9", None)],
     },
+    # row4/row5 also exist on the "Pandas A" tab; extract() keys on
+    # (file, tab, name), so the Regex A ones are unambiguous.
     "Data": {
-        "yesChat": [(DATA, REGEX, "row5", 2), (DATA, REGEX, "row2", None)],
-        "noChat": [(DATA, REGEX, "row4", None), (DATA, REGEX, "row1", 1)],
+        "yesChat": [(DATA, REGEX, "row5", 2), (DATA, PANDAS, "S25FQ1B", 1)],
+        "noChat": [(DATA, REGEX, "row4", None), (DATA, PANDAS, "S25FQ1B", 2)],
     },
 }
 
@@ -93,6 +96,22 @@ OVERRIDES = {
     # 6*sqrt(2) still accepts 6sqrt(2), sqrt(72), 6*2^(1/2), the decimal, and
     # the \sqrt{72} the equation editor emits.
     (VECT, "vector3", 1): {"Answer": "6*sqrt(2)"},
+
+    # S25FQ1B ships as multiple choice; the study needs free entry. The
+    # conversion is both halves: answerType -> string picks the TextBox widget
+    # (handle_answer_type), and mcChoices must be emptied because
+    # create_content.py:249-256 builds a choices array whenever that cell is
+    # non-blank, whatever the answerType says, and latex-mangles the answer on
+    # the way. Step 1 is Data_yesChat P2, step 2 is Data_noChat P4.
+    (PANDAS, "S25FQ1B", 1): {"answerType": "string", "mcChoices": ""},
+    (PANDAS, "S25FQ1B", 2): {"answerType": "string", "mcChoices": ""},
+
+    # Same "algebra" -> KAS trap as vector3, but on scaffolds: these answers are
+    # Python, which KAS cannot parse, so they can never be satisfied. Step 2's
+    # chain is reachable -- Data_noChat sets giveStuHints: true.
+    (PANDAS, "S25FQ1B", (1, "h3")): {"answerType": "string"},
+    (PANDAS, "S25FQ1B", (2, "h3")): {"answerType": "string"},
+    (PANDAS, "S25FQ1B", (2, "h4")): {"answerType": "string"},
 }
 
 # Meta flags land in the Meta column. process_sheet.py:533 scans the whole

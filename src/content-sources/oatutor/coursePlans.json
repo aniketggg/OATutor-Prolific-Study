@@ -526,6 +526,7 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
+                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -534,7 +535,7 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "aef2469row5",
-                    "aef2469row2"
+                    "aef2469S25FQ1B"
                 ],
                 "chat_display_mode": "Window"
             },
@@ -544,6 +545,7 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
+                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -553,7 +555,7 @@
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a56276arow4",
-                    "a56276arow1"
+                    "a56276aS25FQ1B"
                 ],
                 "chat_display_mode": "Off"
             },
@@ -563,6 +565,7 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
+                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -571,7 +574,7 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "aef2469row5",
-                    "aef2469row2"
+                    "aef2469S25FQ1B"
                 ],
                 "chat_display_mode": "Window",
                 "metaId": "Data-A-yesChat",
@@ -584,6 +587,7 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
+                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -593,7 +597,7 @@
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a56276arow4",
-                    "a56276arow1"
+                    "a56276aS25FQ1B"
                 ],
                 "chat_display_mode": "Off",
                 "metaId": "Data-A-noChat",
@@ -605,6 +609,7 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
+                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -613,7 +618,7 @@
                 "giveStuHints": false,
                 "fixedProblemOrder": [
                     "aef2469row5",
-                    "aef2469row2"
+                    "aef2469S25FQ1B"
                 ],
                 "chat_display_mode": "Window",
                 "metaId": "Data-B-yesChat",
@@ -626,6 +631,7 @@
                 "topics": "",
                 "allowRecycle": false,
                 "learningObjectives": {
+                    "pandas": 0.85,
                     "regex": 0.85
                 },
                 "showStuMastery": false,
@@ -635,7 +641,7 @@
                 "giveStuFeedback": false,
                 "fixedProblemOrder": [
                     "a56276arow4",
-                    "a56276arow1"
+                    "a56276aS25FQ1B"
                 ],
                 "chat_display_mode": "Off",
                 "metaId": "Data-B-noChat",

@@ -20,8 +20,15 @@ const root = path.join(__dirname, "..");
 const poolDir = path.join(root, "src", "content-sources", "oatutor", "content-pool");
 const configPath = path.join(__dirname, "answerVariants.json");
 
-/** Content-pool directories are a 7-character prefix followed by the name. */
+/**
+ * Content-pool directories are a 7-character prefix followed by the name.
+ *
+ * A key may also be an exact directory name. That is needed when one problem is
+ * used in both lessons of a course and each copy keeps a different step: the
+ * bare name then matches two directories whose correct answers differ.
+ */
 function findProblemDir(name) {
+  if (fs.existsSync(path.join(poolDir, name))) return name;
   const re = new RegExp(`^[0-9a-z]{7}${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`);
   const matches = fs.readdirSync(poolDir).filter((d) => re.test(d));
   if (matches.length === 0) return null;
