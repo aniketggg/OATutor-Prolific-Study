@@ -10,14 +10,39 @@ if (IS_DEVELOPMENT) {
     window.KAS = KAS
 }
 
+/**
+ * Normalise a literally-compared answer so that formatting the student cannot
+ * be expected to guess does not decide correctness.
+ *
+ * Whitespace and \left/\right were already stripped here. The Data 100 steps
+ * ask for Python expressions, which adds two more kinds of noise that carry no
+ * meaning: the quote style (pandas accepts ' and " alike) and the wrapper the
+ * question happens to show the blank in (`...`, r"...", "..."). Both sides are
+ * normalised, so this only ever widens what is accepted -- it can never reject
+ * something that matched before.
+ *
+ * Replaying every stored answer of all four answerType "string" steps through
+ * this: it merges only the wrapper forms of one pattern, never two different
+ * patterns. The distinct-answer count per step is unchanged (3/8/8/4, matching
+ * the accept lists in scripts/answerVariants.json).
+ *
+ * String() also repairs the numeric branch below, which passes a Number and so
+ * threw on .replace for every numeric answer. No step in this study is numeric,
+ * so nothing here depends on that.
+ */
+function _normalizeLiteral(answer) {
+    return String(answer)
+        .replace(/\s+/g, '')
+        .replace(/\\left/g, '')
+        .replace(/\\right/g, '')
+        .replace(/^r?(["'`])([\s\S]*)\1$/, '$2')  // r"...", '...', `...`
+        .replace(/['`]/g, '"');                    // one quote style
+}
+
 // attempt = student answer, actual = [ans1, ans2]
 function _equality(attempt, actual) {
-    const parsedAttempt = attempt.replace(/\s+/g, '').replace(/\\left/g, '').replace(/\\right/g, '');
-    return actual.filter(stepAns => {
-        const parsedStepAns = stepAns.replace(/\s+/g, '').replace(/\\left/g, '').replace(/\\right/g, '');
-        //console.log("parsedAttempt: " + parsedAttempt + " parsedStepAns: " + parsedStepAns);
-        return parsedAttempt === parsedStepAns
-    });
+    const parsedAttempt = _normalizeLiteral(attempt);
+    return actual.filter(stepAns => _normalizeLiteral(stepAns) === parsedAttempt);
 }
 
 // attempt = student answer, actual = [ans1, ans2]
