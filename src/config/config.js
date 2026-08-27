@@ -101,6 +101,11 @@ const CANVAS_WARNING_STORAGE_KEY = `${_SHORT_SITE_NAME}-canvas-warning-dismissed
 // Prolific only appends its parameters to the entry link, so once the participant
 // navigates on they are gone. Stash them to keep tagging later log rows.
 const PROLIFIC_CONTEXT_STORAGE_KEY = `${_SHORT_SITE_NAME}-prolific-context`;
+// Records that this browser has accepted the study's consent form. The stored
+// value carries the CONSENT_VERSION it was accepted under: localStorage is scoped
+// per origin, not per path, so a participant arriving from another OATutor
+// deployment on the same GitHub Pages account must not inherit an acceptance.
+const CONSENT_STORAGE_KEY = `${_SHORT_SITE_NAME}-consent`;
 
 // Firebase Config
 const MAX_BUFFER_SIZE = 100;
@@ -194,6 +199,7 @@ export {
     USER_ID_STORAGE_KEY,
     PROGRESS_STORAGE_KEY,
     PROLIFIC_CONTEXT_STORAGE_KEY,
+    CONSENT_STORAGE_KEY,
     SITE_NAME,
     HELP_DOCUMENT,
     SHOW_COPYRIGHT,

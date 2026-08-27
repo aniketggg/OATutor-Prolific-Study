@@ -28,6 +28,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import parseJwt from "./util/parseJWT";
 import AssignmentNotLinked from "./pages/AssignmentNotLinked";
+import ConsentGate from "./pages/ConsentGate";
 import AssignmentAlreadyLinked from "./pages/AssignmentAlreadyLinked";
 import SessionExpired from "./pages/SessionExpired";
 import { Posts } from "./pages/Posts/Posts";
@@ -374,6 +375,7 @@ class App extends React.Component {
                         <ResponsiveProvider>
                         <Router>
                             <div className="Router">
+                                <ConsentGate>
                                 <Switch>
                                     <Route
                                         exact
@@ -512,6 +514,7 @@ class App extends React.Component {
 
                                     <Route component={NotFound} />
                                 </Switch>
+                                </ConsentGate>
                             </div>
                             {DO_FOCUS_TRACKING && <TabFocusTrackerWrapper />}
                         </Router>
