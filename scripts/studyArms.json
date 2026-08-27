@@ -2,12 +2,17 @@
   "_comment": [
     "Per-course A/B arm configuration for the Prolific study.",
     "Arm A is the instructor-modified chatbot prompt, arm B the default.",
-    "Values transcribed from coursePlans.json as of commit b2a626a5fc; the",
-    "prompt names are still provisional -- Shreya owns the AWS prompt library.",
-    "Two things to check before launch, see scripts/buildStudyCoursePlans.js:",
-    "  - Math1 (OpenStax Pre-Calc) points at a math-1b prompt and Math2",
-    "    (Math 1B) at a precalc prompt; these look swapped.",
-    "  - PROMPT-math-1b-v1b.txt is not in aws/aiAgentGeneration/."
+    "Shreya owns the AWS prompt library. aws/aiAgentGeneration/ is only a",
+    "partial mirror of it: the Lambda reads prompt files from its own",
+    "deployment bundle (agent-logic.mjs, join(__dirname, file)), so a prompt",
+    "can be live in production without ever landing in git.",
+    "buildStudyCoursePlans.js therefore warns 'prompt X is not in",
+    "aws/aiAgentGeneration/' for those; that warning is expected and must be",
+    "cleared against the deployed bundle, not against this repo. Currently",
+    "expected for Math1 (v1b, confirmed working in production) and Math2",
+    "(v1c, pending upload -- do not launch Math2 on Prolific until Shreya",
+    "confirms it is deployed, or arm A will error: there is no fallback for",
+    "a missing prompt file, loadPromptFileContents throws)."
   ],
   "arms": ["A", "B"],
   "displayNames": { "yesChat": "Part 1", "noChat": "Part 2" },
@@ -15,7 +20,7 @@
   "courses": {
     "Physics": { "A": "PROMPT-physics-7a-v1a.txt", "B": "PROMPTv2.txt" },
     "Math1":   { "A": "PROMPT-math-1b-v1b.txt",    "B": "PROMPTv2.txt" },
-    "Math2":   { "A": "PROMPT-precalc-v1a.txt",    "B": "PROMPTv2.txt" },
+    "Math2":   { "A": "PROMPT-math-1b-v1c.txt",    "B": "PROMPTv2.txt" },
     "Data":    { "A": "PROMPT-data-100-v1a.txt",   "B": "PROMPTv2.txt" },
     "Chem":    { "A": "PROMPT-chem-1a-v1a.txt",    "B": "PROMPTv2.txt" }
   },
