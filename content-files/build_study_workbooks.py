@@ -11,8 +11,13 @@ Each subject gets two sheets, <Subject>_yesChat (problems 1-2, chatbot on) and
 <Subject>_noChat (problems 3-4, chatbot off). Sheet row order is the problem
 order, which is what process_sheet.py turns into fixedProblemOrder.
 
-Run:  .venv/bin/python build_study_workbooks.py [--dry-run]
+Run:  .venv/bin/python build_study_workbooks.py [--dry-run] [--only Math1 Math2]
+
+--only restricts the rebuild to the named subjects. Use it: every rebuilt sheet
+carries a fresh Lesson ID unless the old one is carried over (see build_sheet),
+and there is no reason to disturb subjects that are not changing.
 """
+import os
 import sys
 import pandas as pd
 
@@ -26,13 +31,13 @@ CHEM = f"{SRC}/Chemistry 1A Summer Content.xlsx"
 DATA = f"{SRC}/data_100/Midterm 1 Worksheets.xlsx"
 
 MOTION = "4. Motion in Two and Three Dime"
-FUNCS = "1.1 Functions and Function Nota"
 QUAD = "3.2 - Quadratic Functions"
 COMP = "Composition of Functions"
-EXPO = "Algebra with Exponents and Loga"
 MODB = "Quantum Periodic Properties (Mo"
 MODG = "Acid Base (Module G)"
 REGEX = "Regex A"
+VECT = "8.8 - Vectors"
+COREPOLY = "Core Functions Constant, Linear"
 
 # (file, tab, problem name, 1-based step to keep or None when the problem is
 # already a single step)
@@ -42,12 +47,12 @@ SELECTION = {
         "noChat": [(PHYS, MOTION, "motion2d9", 1), (PHYS, MOTION, "motion2d19", None)],
     },
     "Math1": {
-        "yesChat": [(PREC, FUNCS, "functions8", 4), (PREC, QUAD, "quadratic16", None)],
-        "noChat": [(PREC, FUNCS, "functions30", 2), (PREC, QUAD, "quadratic26", None)],
+        "yesChat": [(PREC, VECT, "vector3", 1), (PREC, QUAD, "quadratic16", None)],
+        "noChat": [(PREC, VECT, "vector8", None), (PREC, QUAD, "quadratic26", None)],
     },
     "Math2": {
-        "yesChat": [(M1B, COMP, "funccomp4", None), (M1B, EXPO, "exp9", None)],
-        "noChat": [(M1B, COMP, "funccomp3", None), (M1B, EXPO, "exp4", None)],
+        "yesChat": [(M1B, COMP, "funccomp4", None), (M1B, COREPOLY, "corepoly1", None)],
+        "noChat": [(M1B, COMP, "funccomp3", None), (M1B, COREPOLY, "corepoly2", None)],
     },
     "Chem": {
         "yesChat": [(CHEM, MODB, "chem15", 3), (CHEM, MODG, "acidbase11", None)],
@@ -61,9 +66,8 @@ SELECTION = {
 
 # Trimming a problem to one step can leave the surviving step title referring
 # to steps that no longer exist. Overrides are (tab, problem) -> new step title.
-TITLE_OVERRIDES = {
-    (FUNCS, "functions8"): "Evaluate (f(a+h)-f(a))/h",
-}
+# Empty since the 2026-08-27 swap: vector3's step 1 title is self-contained.
+TITLE_OVERRIDES = {}
 
 # Meta flags land in the Meta column. process_sheet.py:533 scans the whole
 # column and ignores Row Type, so the row they sit on does not matter -- but
@@ -168,6 +172,26 @@ def extract(path, tab, name, keep_step):
     return [problem_row] + chosen
 
 
+def existing_lesson_id(subject, lesson):
+    """The Lesson ID already in the study workbook, or "" if there is none.
+
+    process_sheet.py:361-364 mints a Lesson ID only when the cell is blank, so
+    carrying the old one over keeps the lesson's identity -- and its Firestore
+    logs -- stable across a content rebuild. It lives on row 0 only.
+    """
+    path = f"{OUT}/{subject}.xlsx"
+    if not os.path.exists(path):
+        return ""
+    xl = pd.ExcelFile(path)
+    sheet = f"{subject}_{lesson}"
+    if sheet not in xl.sheet_names:
+        return ""
+    df = xl.parse(sheet, keep_default_na=False)
+    if "Lesson ID" not in df.columns or df.empty:
+        return ""
+    return str(df.at[0, "Lesson ID"]).strip()
+
+
 def build_sheet(subject, lesson):
     out = []
     for path, tab, name, keep in SELECTION[subject][lesson]:
@@ -175,9 +199,15 @@ def build_sheet(subject, lesson):
             out.append({c: r.get(c, "") for c in COLUMNS})
 
     df = pd.DataFrame(out, columns=COLUMNS)
-    # Problem ID / Lesson ID are minted by the tooling (process_sheet.py:254-261)
+    # Problem ID is deterministic -- create_dir.py:15 builds it as
+    # 'a' + sha1(sheet_name)[:6] + problem_name -- so blanking it here is safe:
+    # the tooling writes back the same value for every problem that stays.
     df["Problem ID"] = ""
+    # Lesson ID is a random generate_id(), so it must be carried over by hand.
     df["Lesson ID"] = ""
+    lesson_id = existing_lesson_id(subject, lesson)
+    if lesson_id:
+        df.at[0, "Lesson ID"] = lesson_id
     df["Validator Check"] = ""
     df["Time Last Checked"] = ""
     df["Debug Link"] = ""
@@ -190,9 +220,26 @@ def build_sheet(subject, lesson):
     return df
 
 
+def subjects_from_argv():
+    """Subjects named after --only, or all of them."""
+    if "--only" not in sys.argv:
+        return list(SELECTION)
+    named = [a for a in sys.argv[sys.argv.index("--only") + 1:]
+             if not a.startswith("--")]
+    if not named:
+        raise SystemExit("--only needs at least one subject")
+    unknown = [s for s in named if s not in SELECTION]
+    if unknown:
+        raise SystemExit(
+            f"unknown subject(s) {', '.join(unknown)} -- "
+            f"choose from {', '.join(SELECTION)}"
+        )
+    return named
+
+
 def main():
     dry = "--dry-run" in sys.argv
-    for subject in SELECTION:
+    for subject in subjects_from_argv():
         sheets = {
             f"{subject}_{lesson}": build_sheet(subject, lesson)
             for lesson in ("yesChat", "noChat")
@@ -203,7 +250,7 @@ def main():
             print(f"{sheet_name:18s} {len(probs)} problems, {len(steps)} steps, "
                   f"{len(df)} rows, types={sorted(set(steps['answerType']))}")
             # KC lives on the problem row, not the step row
-            kcs = dict(zip(probs["Problem Name"].str.strip(), probs["KC"]))
+            kcs = dict(zip(probs["Problem Name"].str.strip(), probs["openstax KC"]))
             for _, r in steps.iterrows():
                 name = str(r["Problem Name"]).strip()
                 print(f"    {name:12s} [{r['answerType']:7s}] "

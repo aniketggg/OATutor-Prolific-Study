@@ -7,7 +7,9 @@ Checks, independently of build_study_workbooks.py:
   - no answerType == "mc" on any *step* (mc scaffolds inside a hint chain are
     allowed but reported: they are invisible where giveStuHints is false)
   - required Meta flags present, giveStuFeedback only on noChat
-  - every step has a non-empty Answer and every problem a KC
+  - every step has a non-empty Answer and every problem an "openstax KC"
+    (the column the tooling actually reads -- process_sheet.py:159, :449;
+    the plain "KC" column is inert and holds junk on some source tabs)
   - no datetime cells (the functions17 class of defect)
 """
 import datetime
@@ -97,8 +99,8 @@ for subject in SUBJECTS:
             if not str(r["Answer"]).strip():
                 err(f"{sheet}/{r['Problem Name']}: step has no Answer")
         for _, r in problems.iterrows():
-            if not str(r["KC"]).strip():
-                err(f"{sheet}/{r['Problem Name']}: problem has no KC")
+            if not str(r["openstax KC"]).strip():
+                err(f"{sheet}/{r['Problem Name']}: problem has no openstax KC")
 
         metas = {}
         for m in df["Meta"]:
@@ -121,7 +123,7 @@ for subject in SUBJECTS:
                 if isinstance(r[c], (datetime.datetime, datetime.date)):
                     err(f"{sheet} row {i} col {c}: datetime cell {r[c]}")
 
-        kcs = sorted(set(problems["KC"].astype(str).str.strip()))
+        kcs = sorted(set(problems["openstax KC"].astype(str).str.strip()))
         print(f"ok  {sheet:18s} {len(problems)} problems, {len(steps)} steps, KCs={kcs}")
 
 print()

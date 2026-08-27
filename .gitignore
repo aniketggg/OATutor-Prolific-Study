@@ -63,3 +63,6 @@ aws/lti-middleware/*.zip
 
 # content-files build script bytecode
 content-files/__pycache__/
+
+# local safety copies of the study workbooks before a rebuild
+content-files.bak-*/
