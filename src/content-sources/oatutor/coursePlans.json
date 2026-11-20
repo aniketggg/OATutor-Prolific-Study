@@ -854,5 +854,205 @@
             }
         ],
         "prolificCompletionCode": "C1DLIOTB"
+    },
+    {
+        "courseName": "PreCalc",
+        "courseOER": 0.0,
+        "courseLicense": 0.0,
+        "prolificCompletionCode": "TEST-PRECALC",
+        "lessons": [
+            {
+                "id": "precalc-study-pretest",
+                "metaId": "PreCalc-noai-pretest",
+                "name": "PreCalc pretest (noai arm)",
+                "displayName": "Part 1",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "core_functions:_constant": 0.95,
+                    "linear_and_quadratic": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95
+                },
+                "fixedProblemOrder": [
+                    "a79dde1funccomp1",
+                    "a0dd0e7corepoly1",
+                    "aca598bexp4"
+                ],
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "keepMCOrder": true,
+                "giveStuHints": false,
+                "giveStuFeedback": false,
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "precalc-study-practice",
+                "metaId": "PreCalc-noai-practice",
+                "name": "PreCalc practice (noai arm)",
+                "displayName": "Part 2",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "core_functions:_constant": 0.95,
+                    "linear_and_quadratic": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95,
+                    "algebra_with_absolute_values": 0.95
+                },
+                "fixedProblemOrder": [
+                    "a79dde1funccomp2",
+                    "a79dde1funccomp3",
+                    "a0dd0e7corepoly2",
+                    "aca598bexp5",
+                    "aff8a70precala3"
+                ],
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "giveStuFeedback": true,
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "precalc-study-posttest",
+                "metaId": "PreCalc-noai-posttest",
+                "name": "PreCalc posttest (noai arm)",
+                "displayName": "Part 3",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "algebra_with_absolute_values": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95
+                },
+                "fixedProblemOrder": [
+                    "a79dde1funccomp4",
+                    "aff8a70precalnew3",
+                    "aca598bexp9"
+                ],
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "keepMCOrder": true,
+                "giveStuHints": false,
+                "giveStuFeedback": false,
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "precalc-study-pretest",
+                "metaId": "PreCalc-hybrid-pretest",
+                "name": "PreCalc pretest (hybrid arm)",
+                "displayName": "Part 1",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "core_functions:_constant": 0.95,
+                    "linear_and_quadratic": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95
+                },
+                "fixedProblemOrder": [
+                    "a79dde1funccomp1",
+                    "a0dd0e7corepoly1",
+                    "aca598bexp4"
+                ],
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "keepMCOrder": true,
+                "giveStuHints": false,
+                "giveStuFeedback": false,
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "precalc-study-practice",
+                "metaId": "PreCalc-hybrid-practice",
+                "name": "PreCalc practice (hybrid arm)",
+                "displayName": "Part 2",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "core_functions:_constant": 0.95,
+                    "linear_and_quadratic": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95,
+                    "algebra_with_absolute_values": 0.95
+                },
+                "fixedProblemOrder": [
+                    "a79dde1funccomp2",
+                    "a79dde1funccomp3",
+                    "a0dd0e7corepoly2",
+                    "aca598bexp5",
+                    "aff8a70precala3"
+                ],
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "keepMCOrder": true,
+                "giveStuHints": true,
+                "giveStuFeedback": true,
+                "chat_display_mode": "Window",
+                "chat_prompt": "PROMPTv2.txt"
+            },
+            {
+                "id": "precalc-study-posttest",
+                "metaId": "PreCalc-hybrid-posttest",
+                "name": "PreCalc posttest (hybrid arm)",
+                "displayName": "Part 3",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "algebra_with_absolute_values": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95
+                },
+                "fixedProblemOrder": [
+                    "a79dde1funccomp4",
+                    "aff8a70precalnew3",
+                    "aca598bexp9"
+                ],
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "keepMCOrder": true,
+                "giveStuHints": false,
+                "giveStuFeedback": false,
+                "chat_display_mode": "Off"
+            }
+        ],
+        "metaLessons": [
+            {
+                "id": "meta-PreCalc",
+                "type": "meta_lesson",
+                "name": "Pre-Calculus Study",
+                "order": "random",
+                "choose": "1",
+                "lessons": [
+                    "meta-PreCalc-noai",
+                    "meta-PreCalc-hybrid"
+                ]
+            },
+            {
+                "id": "meta-PreCalc-noai",
+                "type": "meta_lesson",
+                "name": "Pre-Calculus Study",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "PreCalc-noai-pretest",
+                    "PreCalc-noai-practice",
+                    "PreCalc-noai-posttest"
+                ]
+            },
+            {
+                "id": "meta-PreCalc-hybrid",
+                "type": "meta_lesson",
+                "name": "Pre-Calculus Study",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "PreCalc-hybrid-pretest",
+                    "PreCalc-hybrid-practice",
+                    "PreCalc-hybrid-posttest"
+                ]
+            }
+        ]
     }
 ]

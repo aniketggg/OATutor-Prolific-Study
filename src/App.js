@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Platform from "./platform-logic/Platform.js";
 import DebugPlatform from "./platform-logic/DebugPlatform.js";
+import DebugIndex from "./platform-logic/DebugIndex.js";
 import Firebase from "@components/Firebase.js";
 import { LocalizationProvider } from "./util/LocalizationContext";
 import {
@@ -445,10 +446,14 @@ class App extends React.Component {
                                         )}
                                     />
                                     <Route
+                                        exact
+                                        path="/debug"
+                                        component={DebugIndex}
+                                    />
+                                    <Route
                                         path="/debug/:problemID"
                                         render={(props) => (
                                             <DebugPlatform
-                                                key={Date.now()}
                                                 saveProgress={() =>
                                                     this.saveProgress()
                                                 }

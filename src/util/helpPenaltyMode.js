@@ -64,7 +64,7 @@ export function getHelpPenaltyBadgeText(mode, channel) {
     // return "Using help may reduce mastery credit";
 
     return channel === "agent"
-        ? "Using the AI tutor will not affect mastery credit"
+        ? "Using AI tutor will not increase mastery credit"
         : "Using hints will not increase mastery credit";
 }
 

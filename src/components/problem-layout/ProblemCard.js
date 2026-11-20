@@ -887,7 +887,7 @@ class ProblemCard extends React.Component {
                                         ),
                                         seed
                                     ),
-                                    this.context
+                                    this.context, this.step.figureAlts
                                 )}
                             </div>
                         )}

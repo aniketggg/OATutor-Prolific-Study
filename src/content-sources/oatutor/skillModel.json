@@ -60,5 +60,40 @@
     ],
     "a361716chem12a": [
         "module_b"
+    ],
+    "a79dde1funccomp1a": [
+        "composition_of_functions"
+    ],
+    "a0dd0e7corepoly1a": [
+        "core_functions:_constant",
+        "linear_and_quadratic"
+    ],
+    "aca598bexp4a": [
+        "algebra_with_exponents_and_logarithms"
+    ],
+    "a79dde1funccomp2a": [
+        "composition_of_functions"
+    ],
+    "a79dde1funccomp3a": [
+        "composition_of_functions"
+    ],
+    "a0dd0e7corepoly2a": [
+        "core_functions:_constant",
+        "linear_and_quadratic"
+    ],
+    "aca598bexp5a": [
+        "algebra_with_exponents_and_logarithms"
+    ],
+    "aff8a70precala3a": [
+        "algebra_with_absolute_values"
+    ],
+    "a79dde1funccomp4a": [
+        "composition_of_functions"
+    ],
+    "aff8a70precalnew3a": [
+        "algebra_with_absolute_values"
+    ],
+    "aca598bexp9a": [
+        "algebra_with_exponents_and_logarithms"
     ]
 }

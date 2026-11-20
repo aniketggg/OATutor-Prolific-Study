@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import courses from "../content-sources/oatutor/coursePlans.json";
+import { _coursePlansNoEditor } from "../config/config.js";
+import { isOfficeHoursLesson } from "../util/officeHours.js";
 import Grid from "@material-ui/core/Grid";
 
 import GeometryIcon from "../assets/TOC-icon.svg";
@@ -13,7 +14,9 @@ import LightningBoltIcon from "../assets/zap-blue.svg";
 import GreyLightningBoltIcon from "../assets/zap.svg";
 import CheckMark from "../assets/Circle.svg";
 
-import { MASTERY_THRESHOLD } from "../config/config.js";
+// The mastery map from Platform is already normalized per lesson (1 = lesson threshold reached)
+const MASTERY_THRESHOLD = 1;
+
 
 const useStyles = makeStyles(() => ({
   roundedCaps: {
@@ -211,7 +214,7 @@ const TableOfContents = ({
   selectedLessonId,
   drawerOpen
 }) => {
-  const coursePlansFiltered = courses.filter(
+  const coursePlansFiltered = _coursePlansNoEditor.filter(
     (course) => courseName && course.courseName === courseName
   );
   const classes = useStyles();
@@ -221,6 +224,7 @@ const TableOfContents = ({
   for (let i = 0; i < coursePlansFiltered.length; i++) {
     const course = coursePlansFiltered[i];
     for (let j = 0; j < course.lessons.length; j++) {
+      if (isOfficeHoursLesson(course.lessons[j])) continue;
       lessonPlans.push({ ...course.lessons[j], courseName: course.courseName });
     }
   }

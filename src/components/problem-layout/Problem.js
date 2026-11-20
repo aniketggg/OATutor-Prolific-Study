@@ -39,7 +39,6 @@ import { cleanArray } from "../../util/cleanObject";
 import {Accordion, AccordionSummary, Typography} from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AgentIntegration from './AgentIntegration';
-import StandaloneChatView from './StandaloneChatView';
 import AvatarHelpPanel from './AvatarHelpPanel';
 import { withResponsive } from '../../util/ResponsiveContext';
 import MobileBottomSheet from './MobileBottomSheet';
@@ -128,7 +127,6 @@ class Problem extends React.Component {
             avatarVisibleHintIndex: null,
             isAvatarHintVisible: false,
             avatarHintRequestId: 0,
-            standaloneExited: false,
             firstHelpAction: null, // "chat" | "hint" — set once, used to write firstActionType
             agentCloseRequest: 0,
             isAgentChatVisible: false,
@@ -718,6 +716,7 @@ class Problem extends React.Component {
                 kcArray = [];
             }
             const _kcArray = cleanArray(kcArray);
+            let markFirstAttempt = false;
             for (const kc of _kcArray) {
                 if (!this.bktParams[kc]) {
                     console.debug("invalid KC", kc);
@@ -733,9 +732,12 @@ class Problem extends React.Component {
                     continue;
                 }
                 if (this.doMasteryUpdate && (firstAttempts[cardIndex] === undefined || firstAttempts[cardIndex] === false)) {
-                    firstAttempts[cardIndex] = true;
+                    markFirstAttempt = true;
                     update(this.bktParams[kc], bktIsCorrect);
                 }
+            }
+            if (markFirstAttempt) {
+                firstAttempts[cardIndex] = true;
             }
         }
 
@@ -1464,8 +1466,12 @@ class Problem extends React.Component {
             ? 'Off'
             : this.props.lesson?.chat_display_mode || 'Off';
         const isMobile = this.props.responsive?.isMobile ?? false;
+        const debugCenteredLayout = Boolean(this.props.debugCenteredLayout);
         const showHintPanel = !hideHintPanel && chatDisplayMode !== 'Avatar' && this.giveStuHints;
-        const showSideHintPanel = showHintPanel && !isMobile;
+        const showSideHintPanel =
+            showHintPanel &&
+            !isMobile &&
+            !debugCenteredLayout;
         const avatarHintStepIndex = this.state.avatarHintStepIndex ?? this.getAvatarHintTargetStepIndex();
         const avatarHintPayload = this.state.avatarHintsByStep[avatarHintStepIndex];
         const avatarHints = avatarHintPayload?.hints || [];
@@ -1491,27 +1497,6 @@ class Problem extends React.Component {
             stepIndex: this.state.avatarHintStepIndex,
             hintIndex: this.state.avatarVisibleHintIndex,
         };
-        if (chatDisplayMode === 'Full' && !this.state.standaloneExited) {
-            return (
-                <StandaloneChatView
-                    lesson={this.props.lesson}
-                    problem={problem}
-                    seed={seed}
-                    problemVars={this.props.problemVars}
-                    stepStates={this.state.stepStates}
-                    bktParams={this.bktParams}
-                    getActiveStepData={this.getActiveStepData}
-                    attemptHistory={this.state.attemptHistory}
-                    user={this.props.user}
-                    lessonMasteryMap={this.props.lessonMasteryMap}
-                    hintUsageByStep={this.state.hintUsageByStep}
-                    condition="standalone_gpt_only"
-                    applyHelpPenalty={this.applyHelpPenalty}
-                    chatPenaltyMode={this.chatPenaltyMode}
-                    onExit={() => this.setState({ standaloneExited: true })}
-                />
-            );
-        }
 
         const drawerOpen = this.props.drawerOpen;
         const layoutGap = drawerOpen ? 3 : 4;
@@ -1528,7 +1513,7 @@ class Problem extends React.Component {
                     <Grid
                         item
                         xs={12}
-                        md={hideHintPanel || isMobile ? 12 : (drawerOpen ? 8 : 7)}
+                        md={hideHintPanel || isMobile || debugCenteredLayout ? 12 : (drawerOpen ? 8 : 7)}
                     >
                         <div className={classes.prompt} role={"banner"}>
                             <Card className={classes.titleCard}>
@@ -1548,7 +1533,7 @@ class Problem extends React.Component {
                                                     problem.variabilization,
                                                     seed
                                                 ),
-                                                this.context
+                                                this.context, problem.figureAlts
                                             )}
                                         </span>
                                         {this.enableTTS && this.ttsPlayer && (
@@ -1579,7 +1564,7 @@ class Problem extends React.Component {
                                                 problem.variabilization,
                                                 seed
                                             ),
-                                            this.context
+                                            this.context, problem.figureAlts
                                         )}
                                     </div>
                                 </CardContent>
@@ -1587,7 +1572,7 @@ class Problem extends React.Component {
                             <Spacer height={8} />
                         </div>
                     <div width="100%">
-                        {this.context.debug ? (
+                        {this.context.debug && this.props.showDebugNavigation ? (
                             <Grid container spacing={0}>
                                 <Grid item xs={2} key={0} />
                                 <Grid item xs={2} key={1}>
@@ -1602,9 +1587,6 @@ class Problem extends React.Component {
                                             className={classes.button}
                                             style={{ width: "100%" }}
                                             size="small"
-                                            onClick={() =>
-                                                (this.context.needRefresh = true)
-                                            }
                                         >
                                             {translate('problem.PreviousProblem')}
                                         </Button>
@@ -1623,9 +1605,6 @@ class Problem extends React.Component {
                                             className={classes.button}
                                             style={{ width: "100%" }}
                                             size="small"
-                                            onClick={() =>
-                                                (this.context.needRefresh = true)
-                                            }
                                         >
                                            {translate('problem.NextProblem')}
                                         </Button>
@@ -1637,6 +1616,12 @@ class Problem extends React.Component {
                             null
                         )}
                         </div>
+
+                        {debugCenteredLayout && showHintPanel && !isMobile && (
+                            <div style={{ marginBottom: 16 }}>
+                                {this.renderStandardHintPanel()}
+                            </div>
+                        )}
 
                         <div role={"main"}>
                             {problem.steps.map((step, idx) => {
@@ -1686,7 +1671,7 @@ class Problem extends React.Component {
                                                                 ),
                                                                 seed
                                                             ),
-                                                            this.context
+                                                            this.context, step.figureAlts
                                                         )}
                                                     </span>
                                                     {this.enableTTS && this.stepTTSPlayers[idx] && (
@@ -1748,7 +1733,7 @@ class Problem extends React.Component {
                         {showHintPanel && isMobile && this.renderMobileHintSheet()}
 
                         <div width="100%">
-                            {this.context.debug ? (
+                            {this.context.debug && this.props.showDebugNavigation ? (
                                 <Grid container spacing={0}>
                                     <Grid item xs={2} key={0} />
                                     <Grid item xs={2} key={1}>
@@ -1763,9 +1748,6 @@ class Problem extends React.Component {
                                                 className={classes.button}
                                                 style={{ width: "100%" }}
                                                 size="small"
-                                                onClick={() =>
-                                                    (this.context.needRefresh = true)
-                                                }
                                             >
                                                 {translate('problem.PreviousProblem')}
                                             </Button>
@@ -1784,9 +1766,6 @@ class Problem extends React.Component {
                                                 className={classes.button}
                                                 style={{ width: "100%" }}
                                                 size="small"
-                                                onClick={() =>
-                                                    (this.context.needRefresh = true)
-                                                }
                                             >
                                             {translate('problem.NextProblem')}
                                             </Button>
@@ -1794,7 +1773,7 @@ class Problem extends React.Component {
                                     </Grid>
                                     <Grid item xs={2} key={4} />
                                 </Grid>
-                            ) : (
+                            ) : this.context.debug ? null : (
                                 
                                 <Grid
                                     container
@@ -1829,10 +1808,10 @@ class Problem extends React.Component {
                         xs={12}
                         md={drawerOpen ? 4 : 5}
                         style={{
-                        position: "sticky",
-                        top: hintStickTop,
-                        alignSelf: "flex-start",
-                        zIndex: 2,
+                            position: "sticky",
+                            top: hintStickTop,
+                            alignSelf: "flex-start",
+                            zIndex: 2,
                     }}
                     >
                         {chatDisplayMode === 'Avatar' ? (
@@ -1870,6 +1849,7 @@ class Problem extends React.Component {
                         )}
                     </Grid>
                     )}
+
 
                     {isMobile && chatDisplayMode === 'Avatar' && (
                     <Grid item xs={12}>

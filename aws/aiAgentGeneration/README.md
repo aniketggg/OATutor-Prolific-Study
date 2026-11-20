@@ -25,20 +25,20 @@ Key files:
 | --- | --- |
 | `index.mjs` | Lambda entrypoint, CORS, request routing, streaming response, CloudWatch logging, DynamoDB session memory |
 | `agent-logic.mjs` | Prompt loading, chat prompt construction, multimodal message construction, suggested-question prompt and parsing |
-| `PROMPTv1.txt` / `PROMPTv2.txt` | Allowed chat prompt templates selected by lesson config |
+| `prompts/` | Chat prompt templates. Lesson `chat_prompt` is a basename (e.g. `PROMPTv2a.txt`) |
 | `src/components/problem-layout/AgentHelper.js` | Frontend API client for chat turns and suggested questions |
-| `src/components/problem-layout/AgentChatbox.js` | Shared chat UI used by Window, Avatar, and Full modes |
+| `src/components/problem-layout/AgentChatbox.js` | Shared chat UI used by Window, Avatar, and Office Hours (Full) |
 
 ## Chat Display Modes
 
-The frontend reads `lesson.chat_display_mode` from `coursePlans.json`.
+The frontend reads `lesson.chat_display_mode` from the flattened lesson (authored in `coursePlans.json`, except Office Hours which is injected in `config.js`).
 
 | Mode | Behavior |
 | --- | --- |
 | `Off` | AI Tutor is not rendered. Problem and normal hint UI behave without chat. |
 | `Window` | Floating Oski chat window rendered from `Problem.js` through `AgentIntegration`. |
 | `Avatar` | Embedded Window-style chat panel beside the problem. Includes compact Avatar hint UI inside the chat shell and suggested questions below the textbox. |
-| `Full` | Full-screen standalone AI Tutor view via `StandaloneChatView`. The current problem step is shown above the embedded chat. |
+| `Full` | Full-page chat via `StandaloneChatView`; no ITS problem. Authored on a lesson: that lesson's `chat_documents` from `coursePlans.json`. Synthetic Office Hours lesson (`office-hours--…`, when the course has `office_hours: true`): course-wide documents. Lambda uses `PROMPT-officehours.txt`. |
 
 `AgentChatbox` is shared across modes. `AvatarHelpPanel` uses Avatar-only slots (`afterMessagesContent`, `beforeInputContent`) so compact hint cards and hint buttons do not affect Window mode styling.
 
@@ -54,6 +54,8 @@ Sent by `AgentHelper.sendMessage()`.
 {
   "sessionId": "session_...",
   "turnId": 1,
+  "requestId": "session_..._1",
+  "memoryVersion": 1,
   "userMessage": "Can you help me start?",
   "problemContext": {},
   "studentState": {},
@@ -71,17 +73,17 @@ Sent by `AgentHelper.sendMessage()`.
 
 The Lambda:
 
-1. Loads existing conversation history from DynamoDB.
+1. Acquires the session lease and loads bounded recent turns plus rolling memory from DynamoDB.
 2. Builds the prompt with `buildAgentPrompt()`.
 3. Streams newline-delimited JSON chunks:
 
 ```json
 {"type":"content","content":"Let's","timestamp":...}
 {"type":"content","content":" start...","timestamp":...}
-{"type":"complete","fullResponse":"Let's start...","timestamp":...}
+{"type":"complete","sequence":1,"requestId":"session_..._1","memoryVersion":1}
 ```
 
-4. Stores the user/assistant turn back to DynamoDB for multi-turn session memory.
+4. Atomically archives the exchange and commits bounded session state before sending `complete`.
 
 Research chat history (`chat_opened`, `chat_message`, etc.) is logged from the browser to Firebase `chatHistory` / `development_chatHistory` via `Firebase.logChatHistory()`.
 
@@ -183,14 +185,15 @@ Built by `AgentChatbox.getStudentState()`:
 
 ## Prompt Templates
 
-`agent-logic.mjs` only allows these prompt files:
+Prompt files live in `prompts/`. `coursePlans.json` and the frontend still pass a **basename only** (for example `PROMPTv2a.txt`). `agent-logic.mjs` resolves that to `prompts/<basename>` and rejects path separators.
 
 | Template | Notes |
 | --- | --- |
-| `PROMPTv1.txt` | Older tutor behavior template |
-| `PROMPTv2.txt` | Default template |
+| `prompts/PROMPTv1.txt` | Older tutor behavior template |
+| `prompts/PROMPTv2.txt` | Interactive tutor template |
+| `prompts/PROMPTv2a.txt` | Default template |
 
-The frontend passes `lesson.chat_prompt` as `chatPrompt`. If the file name is missing or not allowed, `agent-logic.mjs` falls back to `PROMPTv2.txt`.
+If the file name is missing or contains a path, `agent-logic.mjs` falls back to `PROMPTv2a.txt`.
 
 `PROMPTv1.txt` is the older expert math tutor prompt. `PROMPTv2.txt` is the newer, more interactive tutor prompt informed by:
 
@@ -298,6 +301,8 @@ Lambda:
 | `OPENAI_MODEL` | `gpt-4o` | Streaming chat model; should support vision if images are sent |
 | `SUGGESTIONS_MODEL` | `gpt-4o-mini` | Non-streaming model for suggested questions |
 | `CONVERSATION_TABLE_NAME` | `agent-conversations` | DynamoDB table for session memory |
+| `CHAT_SUMMARY_MODEL` | `gpt-4o-mini` | Rolling conversation summarizer |
+| `CHAT_SUMMARIZATION_ENABLED` | `true` | Set `false` for bounded recent history without LLM summaries |
 | `LOG_FULL_PROMPT` | `false` | If `true`, writes full prompt text to CloudWatch for debugging |
 | `LOG_ERROR_STACK` | `false` | If `true`, includes error stacks in CloudWatch error events |
 
@@ -305,9 +310,9 @@ Lambda:
 
 ### DynamoDB Conversation Memory (keep this)
 
-`loadConversationHistory(sessionId)` reads previous turns from DynamoDB. `updateConversationHistory()` appends the new user and assistant messages after each completed chat turn.
+`conversation-memory.mjs` stores a rolling structured summary and bounded recent exchanges at the session key. Exact exchanges and idempotent replay records are separate items in the same table. Old `messages` arrays migrate on first use.
 
-This is **not** research logging. It is runtime session memory so Oski remembers earlier messages in the same chat session. The frontend sends `conversationHistory: []` on every request; the Lambda relies on DynamoDB to rebuild context across turns.
+The browser sends bounded bootstrap history until it receives a `memoryVersion: 1` acknowledgment, then relies on server-owned memory. It keeps a bounded visible window and loads older messages through `requestType: chatHistory` with an exclusive `beforeSequence` cursor.
 
 Items are written with a 24-hour TTL so stale sessions auto-expire:
 
@@ -315,7 +320,7 @@ Items are written with a 24-hour TTL so stale sessions auto-expire:
 ttl: Math.floor(Date.now() / 1000) + (24 * 60 * 60)
 ```
 
-Keep DynamoDB unless you redesign chat to send full history from the browser on every turn.
+See [CHAT_MEMORY.md](CHAT_MEMORY.md) for limits, concurrency/failure behavior, IAM permissions, rollout, and regression tests. Backend deployment must include the new module and required DynamoDB write permissions before deploying the updated frontend.
 
 ### Firebase Chat History
 
@@ -371,7 +376,7 @@ Jest currently may fail before tests run if the repo's Jest config does not tran
 
 Backend deployment check:
 
-1. Deploy the latest `aws/aiAgentGeneration/index.mjs`, `agent-logic.mjs`, and prompt files.
+1. Deploy the latest `aws/aiAgentGeneration/index.mjs`, `agent-logic.mjs`, and the `prompts/` directory.
 2. Confirm Lambda env vars, especially `OPENAI_API_KEY`, `OPENAI_MODEL`, `SUGGESTIONS_MODEL`, and `CONVERSATION_TABLE_NAME`.
 3. Confirm the frontend `.env` has `REACT_APP_AI_AGENT_URL=<Lambda Function URL>`.
 4. Restart the frontend dev server after changing `.env`.
@@ -385,5 +390,5 @@ Backend deployment check:
 | Suggested questions always fall back | Lambda is stale or suggestions request is failing | Confirm deployed Lambda includes `requestType: "suggestedQuestions"` handling and `SUGGESTIONS_MODEL` is valid |
 | OpenAI error says content is null | Stale Lambda or malformed request | Current code coerces non-string `userMessage` to `""`; redeploy latest backend |
 | Images are ignored | No figure tokens found or image fetch failed | Check browser console warnings from `fetchFiguresAsBase64()` |
-| Prompt changes do not appear | Prompt file not deployed or `chatPrompt` not allowed | Only `PROMPTv1.txt` and `PROMPTv2.txt` are accepted |
+| Prompt changes do not appear | `prompts/` not deployed, or `chatPrompt` basename missing from that folder | Confirm Lambda zip includes `prompts/` and `chat_prompt` matches a file basename |
 | Mode changes do not appear | `coursePlans.json` change not loaded | Rebuild/restart frontend and confirm `lesson.chat_display_mode` |

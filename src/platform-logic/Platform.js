@@ -3,6 +3,7 @@ import { AppBar, Toolbar } from "@material-ui/core";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Grid from "@material-ui/core/Grid";
 import ProblemWrapper from "@components/problem-layout/ProblemWrapper.js";
+import StandaloneChatView from "@components/problem-layout/StandaloneChatView.js";
 import LessonSelectionWrapper from "@components/problem-layout/LessonSelectionWrapper.js";
 import { withRouter } from "react-router-dom";
 
@@ -14,9 +15,9 @@ import {
     MIDDLEWARE_URL,
     SITE_NAME,
     ThemeContext,
-    MASTERY_THRESHOLD,
     DEFAULT_LANGUAGE,
     getNormalizedMastery,
+    getLessonThreshold,
 } from "../config/config.js";
 import {
     resolveMetaLesson,
@@ -27,6 +28,7 @@ import {
 import to from "await-to-js";
 import { toast } from "react-toastify";
 import ToastID from "../util/toastIds";
+import { getStudentDisplayName } from "../util/getStudentDisplayName";
 import BrandLogoNav from "@components/BrandLogoNav";
 import { cleanArray } from "../util/cleanObject";
 import ErrorBoundary from "@components/ErrorBoundary";
@@ -40,7 +42,7 @@ import confetti from "canvas-confetti";
 import userIcon from "../assets/UserThumb.svg";
 import IconButton from "@material-ui/core/IconButton";
 import FeedbackOutlinedIcon from "@material-ui/icons/FeedbackOutlined";
-import leftArrow from "../assets/chevron-left.svg";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
 import Popup from "../components/Popup/Popup";
 import About from "../pages/Posts/About.js";
@@ -62,6 +64,7 @@ import withWidth from "@material-ui/core/withWidth";
 
 import { ProgressTooltip, InfoTooltip } from "@components/Tooltip";
 import { isMobileWidth } from "../util/responsive";
+import { isFullChatLesson } from "../util/officeHours.js";
 
 let problemPool = require(`@generated/processed-content-pool/${CONTENT_SOURCE}.json`);
 
@@ -390,6 +393,13 @@ class Platform extends React.Component {
     if (prevCompletedProbs) {
       this.completedProbs = new Set(prevCompletedProbs);
     }
+    if (isFullChatLesson(lesson)) {
+      this.setState({
+        currProblem: null,
+        status: "learning",
+      });
+      return;
+    }
     const nextProblem = this._nextProblem(this.context ? this.context : context);
     this.setState({
       currProblem: nextProblem,
@@ -681,7 +691,9 @@ class Platform extends React.Component {
       }
 
       for (const problemId of remaining) {
-        const nextFixedProblem = problems.find((problem) => problem.id === problemId);
+        // Search the whole pool: `problems` above drops anything tagged with another
+        // lesson's lessonId, but a fixed list names its problems explicitly.
+        const nextFixedProblem = this.problemIndex.problems.find((problem) => problem.id === problemId);
         if (!nextFixedProblem) {
           console.error(
             `Fixed problem order (${this.lesson.id}): problem "${problemId}" not found in the content pool, skipping it.`
@@ -736,7 +748,7 @@ class Platform extends React.Component {
       }
     }
 
-    chosenProblem = context.heuristic(problems, this.completedProbs);
+    chosenProblem = context.heuristic(problems, this.completedProbs, getLessonThreshold(this.lesson));
 
     const objectives = Object.keys(this.lesson.learningObjectives);
     let score = objectives.reduce((x, y) => {
@@ -763,7 +775,7 @@ class Platform extends React.Component {
         return null;
       } else {
         this.completedProbs = new Set();
-        chosenProblem = context.heuristic(problems, this.completedProbs);
+        chosenProblem = context.heuristic(problems, this.completedProbs, getLessonThreshold(this.lesson));
       }
     }
 
@@ -835,6 +847,8 @@ class Platform extends React.Component {
       if (this.lesson?.isPartOfMetaLesson && this.metaLesson) {
         return;
       }
+      // Save progress/KC updates before showing completion, so that the final answer actually finishes the lesson
+      this.props.saveProgress();
       // toast.success("You've successfully completed this assignment!", {
       //   toastId: ToastID.successfully_completed_lesson.toString(),
       // });
@@ -984,7 +998,7 @@ class Platform extends React.Component {
           count += 1;
         }
       }
-      map[lesson.id] = count ? sum / count : 0;
+      map[lesson.id] = count ? getNormalizedMastery(sum / count, lesson) : 0;
     }
     return map;
   };
@@ -1204,7 +1218,11 @@ class Platform extends React.Component {
     const drawerWidth = 340;
     const isMobile = isMobileWidth(width);
 
-    this.studentNameDisplay = this.context.studentName ? decodeURIComponent(this.context.studentName) : translate("platform.LoggedIn");
+    this.studentNameDisplay = getStudentDisplayName(
+      this.context,
+      translate("platform.NotLoggedIn"),
+      translate("platform.LoggedIn")
+    );
 
     const tocCourseName = this.state.selectedCourse?.courseName || findLessonById(this.props.lessonID)?.courseName;
     const currentLesson = findLessonById(this.props.lessonID);
@@ -1216,7 +1234,10 @@ class Platform extends React.Component {
 
     const lessonMasteryMap = this.getLessonMasteryMap(tocCourseName);
     const inLesson = Boolean(this.props.lessonID);
-    // Disabled for the Prolific study — was: inLesson && !this.isFromCanvas
+    const isOfficeHours =
+      isFullChatLesson(this.lesson) || isFullChatLesson(currentLesson);
+    // Disabled for the Prolific study. Upstream:
+    // inLesson && !this.isFromCanvas && !isOfficeHours && !this.isMetaLessonSidebarMode()
     const showToc = false;
     const progressData = this.getProgressBarData();
     const isCompletionMode = this.lesson?.enableCompletionMode;
@@ -1237,7 +1258,7 @@ class Platform extends React.Component {
     const PROGRESS_GAP = 20;
     const MAX_PROGRESS_BAR_WIDTH = 900;
     const MIN_PROGRESS_BAR_WIDTH = isMobile ? 0 : 200;
-    const progressStickyTop = isMobile ? 56 : 120;
+    const progressStickyTop = isMobile ? 56 : 64;
 
     return (
       <>
@@ -1285,7 +1306,7 @@ class Platform extends React.Component {
               flexShrink: 0,
               zIndex: this.state.drawerOpen ? 4 : 0,
             }}
-            PaperProps={{ style: { padding: 0 } }}
+            PaperProps={{ style: { padding: 0, top: 64, height: "calc(100vh - 64px)" } }}
           >
             <div style={{ width: drawerWidth, padding: 16 }}>
               <IconButton aria-label="Table of Contents Toggle" onClick={() => this.toggleDrawer(false)}>
@@ -1307,10 +1328,18 @@ class Platform extends React.Component {
 
         <div
           style={{
-            backgroundColor: "#F6F6F6",
-            paddingBottom: 20,
+            backgroundColor: isOfficeHours ? "#eef4fa" : "#F6F6F6",
+            paddingBottom: isOfficeHours ? 0 : 20,
             display: "flex",
             flexDirection: "column",
+            ...(isOfficeHours
+              ? {
+                  height: "100vh",
+                  maxHeight: "100vh",
+                  overflow: "hidden",
+                  overscrollBehavior: "none",
+                }
+              : {}),
           }}
         >
           {/* Top bar */}
@@ -1338,7 +1367,8 @@ class Platform extends React.Component {
                     </div>
                   )}
                   <div style={{ display: "flex", alignItems: "center", marginLeft: "auto", flexShrink: 0 }}>
-                    {this.state.status === "learning" && (
+                    {/* About button removed for the Prolific study */}
+                    {this.state.status === "learning" && !isOfficeHours && (
                       <IconButton aria-label="report problem" onClick={this.toggleFeedback} title={"Report Problem"} size="small">
                         <FeedbackOutlinedIcon htmlColor={"#344054"} style={{ fontSize: 26 }} />
                       </IconButton>
@@ -1350,105 +1380,88 @@ class Platform extends React.Component {
                   </Popup>
                 </div>
               ) : (
-                <Grid container spacing={0} role={"navigation"} alignItems={"center"}>
-                  <Grid item xs={3} key={1}>
-                    <BrandLogoNav isPrivileged={this.isPrivileged} noLink />
-                  </Grid>
-                  <Grid item xs={5} key={2}></Grid>
-                  {/* Hidden for the Prolific study */}
-                  {false && (
-                  <Grid xs={4} item key={3}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        alignItems: "center",
-                        gap: "9px",
-                        color: "#344054",
-                      }}
-                    >
-                      <img src={userIcon} alt="User Icon" />
-                      <div style={{ fontWeight: 600 }}>{this.studentNameDisplay}</div>
+                <div role={"navigation"} style={{ display: "flex", alignItems: "center", width: "100%", gap: 16, minWidth: 0 }}>
+                  <BrandLogoNav isPrivileged={this.isPrivileged} noLink />
+                  {/* Hidden for the Prolific study: course name + Back button. Participants
+                      are never from Canvas, so Back would always show and leave the study. */}
+                  {false && !isOfficeHours && tocCourseName && (
+                    <div style={{ display: "flex", alignItems: "center", gap: 2, minWidth: 0, color: "#344054" }}>
+                      {!this.isFromCanvas && (
+                        <IconButton onClick={this.handleHierarchyBack} aria-label="Back" size="small">
+                          <ChevronLeftIcon htmlColor={"#344054"} />
+                        </IconButton>
+                      )}
+                      <div
+                        title={tocCourseName}
+                        style={{ fontWeight: 600, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}
+                      >
+                        {tocCourseName}
+                      </div>
                     </div>
-                  </Grid>
                   )}
-                </Grid>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "9px",
+                      marginLeft: "auto",
+                      flexShrink: 0,
+                      color: "#344054",
+                    }}
+                  >
+                    {/* "Report a problem" box. About button removed for the Prolific study. */}
+                    {!isOfficeHours && (
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 2,
+                          padding: 4,
+                          backgroundColor: "#FFFFFF",
+                          border: "1px solid #DFE8EE",
+                          borderRadius: 12,
+                          boxShadow: "0 1px 3px rgba(15, 46, 95, 0.06)",
+                        }}
+                      >
+                        {this.state.status === "learning" && (
+                          <Button
+                            variant="text"
+                            onClick={this.toggleFeedback}
+                            aria-label="report problem"
+                            style={{
+                              height: 32,
+                              padding: "0 10px",
+                              boxShadow: "none",
+                              color: "#3F7091",
+                              fontSize: 13,
+                              fontWeight: 600,
+                              textTransform: "none",
+                              backgroundColor: this.state.showFeedback ? "#E9F4FB" : "transparent",
+                            }}
+                          >
+                            Report a problem
+                          </Button>
+                        )}
+                      </div>
+                    )}
+                    {/* Hidden for the Prolific study: user icon / "Not logged in" name */}
+                    {false && (
+                      <>
+                        <img src={userIcon} alt="User Icon" />
+                        <div style={{ fontWeight: 600 }}>{this.studentNameDisplay}</div>
+                      </>
+                    )}
+                  </div>
+                  <Popup isOpen={showPopup} onClose={this.togglePopup}>
+                    <About />
+                  </Popup>
+                </div>
               )}
             </Toolbar>
           </AppBar>
 
           <div className={classes.toolbarOffset} />
 
-          {/* Second top bar (desktop only) */}
-          {!isMobile && (
-          <AppBar position="fixed" className={classes.secondBarOffset}>
-            <Toolbar style={{ minHeight: "56px" }}>
-              <Grid container spacing={0} role={"secondary-navigation"} alignItems={"center"}>
-                <Grid item xs={9} key={1}>
-                  {this.state.selectedCourse ? (
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        alignItems: "center",
-                        gap: "8xpx",
-                      }}
-                    >
-                      {!this.isFromCanvas && (
-                      <IconButton onClick={this.handleHierarchyBack} aria-label="Back" style={{ padding: 2 }}>
-                        <img src={leftArrow} alt="Back Arrow" />
-                      </IconButton>
-                      )}
-
-                      <div style={{ fontWeight: 600 }}> {this.state.selectedCourse.courseName} </div>
-                    </div>
-                  ) : findLessonById(this.props.lessonID) ? (
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        alignItems: "center",
-                        gap: "8px",
-                      }}
-                    >
-                      {!this.isFromCanvas && (
-                      <IconButton onClick={this.handleHierarchyBack} aria-label="Back" style={{ padding: 2 }}>
-                        <img src={leftArrow} alt="Back Arrow" />
-                      </IconButton>
-                      )}
-
-                      <div style={{ fontWeight: 600 }}> {findLessonById(this.props.lessonID).courseName} </div>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </Grid>
-
-                <Grid xs={3} item key={3}>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexGrow: 1,
-                      justifyContent: "flex-end",
-                      border: "none",
-                    }}
-                  >
-                    {this.state.status === "learning" && (
-                      <IconButton aria-label="report problem" onClick={this.toggleFeedback} title={"Report Problem"}>
-                        <FeedbackOutlinedIcon htmlColor={"#ffffff"} style={{ fontSize: 32 }} />
-                      </IconButton>
-                    )}
-                  </div>
-                  <Popup isOpen={showPopup} onClose={this.togglePopup}>
-                    <About />
-                  </Popup>
-                </Grid>
-              </Grid>
-            </Toolbar>
-          </AppBar>
-          )}
-
-          {!isMobile && <div style={{ height: 56 }} />}
 
           {/* Progress Bar */}
           <div
@@ -1456,9 +1469,18 @@ class Platform extends React.Component {
               marginLeft: showToc && this.state.drawerOpen && !isMobile ? drawerWidth : 0,
               marginBottom: 0,
               transition: "margin 0.1s ease",
+              ...(isOfficeHours
+                ? {
+                    flex: 1,
+                    minHeight: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    overflow: "hidden",
+                  }
+                : {}),
             }}
           >
-            {this.state.status === "learning" ? (
+            {this.state.status === "learning" && !isOfficeHours ? (
               <AppBar position="sticky"
                       style={{ top: progressStickyTop, backgroundColor: "#F6F6F6", boxShadow: "none", zIndex: 3 }}>
                 <Toolbar disableGutters style={{ minHeight: isMobile ? 64 : 80, paddingLeft: isMobile ? 8 : 16, paddingRight: isMobile ? 8 : 32 }}>
@@ -1538,7 +1560,7 @@ class Platform extends React.Component {
                                       (() => {
                                         const keys = Object.keys(this.lesson?.learningObjectives || {});
                                         const mastered = keys.filter(
-                                          (k) => (this.context.bktParams[k]?.probMastery ?? 0) >= MASTERY_THRESHOLD
+                                          (k) => (this.context.bktParams[k]?.probMastery ?? 0) >= getLessonThreshold(this.lesson)
                                         ).length;
                                         return (
                                           <div style={{ display: "flex", alignItems: "center", gap: 4, whiteSpace: "nowrap" }}>
@@ -1554,7 +1576,7 @@ class Platform extends React.Component {
 
                                   {!isCompletionMode && Object.entries(this.lesson?.learningObjectives || {}).map(([kc]) => {
                                     const mastery = this.context.bktParams[kc]?.probMastery ?? 0;
-                                    const pct = Math.round(mastery * 100);
+                                    const pct = Math.round(getNormalizedMastery(mastery, this.lesson) * 100);
                                     const label = kc.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
                                     return (
                                       <div key={kc} style={{ marginBottom: 12 }}>
@@ -1749,6 +1771,19 @@ class Platform extends React.Component {
             )}
             {this.state.status === "learning" ? (
               <ErrorBoundary componentName={"Problem"} descriptor={"problem"}>
+                {isOfficeHours ? (
+                  <div
+                    style={{
+                      ...CONTAINER_STYLE,
+                      padding: 0,
+                      flex: 1,
+                      minHeight: 0,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <StandaloneChatView lesson={this.lesson} />
+                  </div>
+                ) : (
                 <div style={CONTAINER_STYLE}>
                   <ProblemWrapper
                     problem={this.state.currProblem}
@@ -1766,6 +1801,7 @@ class Platform extends React.Component {
                     submitFeedback={this.submitFeedback}
                   />
                 </div>
+                )}
               </ErrorBoundary>
             ) : (
               ""
