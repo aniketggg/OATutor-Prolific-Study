@@ -1781,7 +1781,14 @@ class Platform extends React.Component {
                       overflow: "hidden",
                     }}
                   >
-                    <StandaloneChatView lesson={this.lesson} />
+                    <StandaloneChatView
+                      lesson={this.lesson}
+                      onFinish={
+                        this.lesson?.isPartOfMetaLesson && this.metaLesson
+                          ? this.handleMetaSubLessonComplete
+                          : undefined
+                      }
+                    />
                   </div>
                 ) : (
                 <div style={CONTAINER_STYLE}>

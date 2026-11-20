@@ -1015,6 +1015,74 @@
                 "giveStuHints": false,
                 "giveStuFeedback": false,
                 "chat_display_mode": "Off"
+            },
+            {
+                "id": "precalc-study-pretest",
+                "metaId": "PreCalc-standalone-pretest",
+                "name": "PreCalc pretest (standalone arm)",
+                "displayName": "Part 1",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "core_functions:_constant": 0.95,
+                    "linear_and_quadratic": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95
+                },
+                "fixedProblemOrder": [
+                    "a79dde1funccomp1",
+                    "a0dd0e7corepoly1",
+                    "aca598bexp4"
+                ],
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "keepMCOrder": true,
+                "giveStuHints": false,
+                "giveStuFeedback": false,
+                "chat_display_mode": "Off"
+            },
+            {
+                "id": "precalc-study-practice-chat",
+                "metaId": "PreCalc-standalone-practice",
+                "name": "PreCalc practice (standalone arm)",
+                "displayName": "Part 2",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "core_functions:_constant": 0.95,
+                    "linear_and_quadratic": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95,
+                    "algebra_with_absolute_values": 0.95
+                },
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "chat_display_mode": "Full",
+                "chat_min_minutes": 1
+            },
+            {
+                "id": "precalc-study-posttest",
+                "metaId": "PreCalc-standalone-posttest",
+                "name": "PreCalc posttest (standalone arm)",
+                "displayName": "Part 3",
+                "topics": "",
+                "allowRecycle": false,
+                "learningObjectives": {
+                    "composition_of_functions": 0.95,
+                    "algebra_with_absolute_values": 0.95,
+                    "algebra_with_exponents_and_logarithms": 0.95
+                },
+                "fixedProblemOrder": [
+                    "a79dde1funccomp4",
+                    "aff8a70precalnew3",
+                    "aca598bexp9"
+                ],
+                "doMasteryUpdate": false,
+                "showStuMastery": false,
+                "keepMCOrder": true,
+                "giveStuHints": false,
+                "giveStuFeedback": false,
+                "chat_display_mode": "Off"
             }
         ],
         "metaLessons": [
@@ -1026,7 +1094,8 @@
                 "choose": "1",
                 "lessons": [
                     "meta-PreCalc-noai",
-                    "meta-PreCalc-hybrid"
+                    "meta-PreCalc-hybrid",
+                    "meta-PreCalc-standalone"
                 ]
             },
             {
@@ -1051,6 +1120,18 @@
                     "PreCalc-hybrid-pretest",
                     "PreCalc-hybrid-practice",
                     "PreCalc-hybrid-posttest"
+                ]
+            },
+            {
+                "id": "meta-PreCalc-standalone",
+                "type": "meta_lesson",
+                "name": "Pre-Calculus Study",
+                "order": "sequence",
+                "choose": "all",
+                "lessons": [
+                    "PreCalc-standalone-pretest",
+                    "PreCalc-standalone-practice",
+                    "PreCalc-standalone-posttest"
                 ]
             }
         ]
